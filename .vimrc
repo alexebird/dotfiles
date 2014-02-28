@@ -44,6 +44,7 @@ Bundle 'slim-template/vim-slim'
 Bundle 'techlivezheng/vim-plugin-minibufexpl'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'thoughtbot/vim-rspec'
+Bundle 'nelstrom/vim-textobj-rubyblock'
 
 filetype plugin indent on     " required!
 syntax on
