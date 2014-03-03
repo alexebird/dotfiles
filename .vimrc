@@ -3,6 +3,7 @@ let &t_Co=256
 set backspace=indent,eol,start
 set encoding=utf-8
 
+runtime macros/matchit.vim
 set nocompatible               " be iMproved
 filetype off                   " required!
 
@@ -34,16 +35,18 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'bling/vim-airline'
 Bundle 'taglist.vim'
-"Bundle 'airblade/vim-gitgutter'  " slow
+"Bundle 'airblade/vim-gitgutter'  " slow!
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-sleuth'
+Bundle 'tpope/vim-cucumber'
 Bundle 'kien/ctrlp.vim'
 Bundle 'slim-template/vim-slim'
 Bundle 'techlivezheng/vim-plugin-minibufexpl'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'thoughtbot/vim-rspec'
+Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 
 filetype plugin indent on     " required!
