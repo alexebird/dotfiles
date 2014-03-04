@@ -113,11 +113,16 @@ autocmd FileType ruby let g:rubycomplete_classes_in_global=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#branch#enabled = 1
+" default section_z from https://github.com/bling/vim-airline/blob/master/autoload/airline/init.vim#L107
+let g:airline_section_z = airline#section#create(['BN %{bufnr("%")} ', '%3p%% ', 'linenr', ':%3c '])
 
 " plugin: ctrlp
-let g:ctrlp_map = '<c-p>'
+let g:ctrlp_map = '<C-p>'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['Gemfile']
+
+" plugin: miniBufExplorer
+let g:miniBufExplorerAutoStart = 0
 
 " Navigate through wrapped lines intuitively
 imap <silent> <Down> <C-o>gj
@@ -131,3 +136,9 @@ nmap <silent> <Up> gk
 "map <Leader>l :call RunLastSpec()<CR>
 "map <Leader>a :call RunAllSpecs()<CR>
 
+" esc and write file from insert mode
+imap iwi <C-[>:w<CR>
+
+" autosave
+"set updatetime=800 " ms
+"autocmd CursorHoldI,CursorHold,BufLeave <buffer> silent :update
