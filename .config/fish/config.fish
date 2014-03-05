@@ -2,7 +2,7 @@ if test -f ~/src/chruby-fish/share/chruby/chruby.fish
 	source ~/src/chruby-fish/share/chruby/chruby.fish
 	source ~/src/chruby-fish/share/chruby/auto.fish
 	chruby ruby-2.1
-else if which rvm
+else if functions -q rvm
 	rvm use ruby > /dev/null
 end
 
