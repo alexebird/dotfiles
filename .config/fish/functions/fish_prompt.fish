@@ -42,7 +42,7 @@ function fish_prompt --description "Write out the prompt"
 		#end
 
 		#echo (set_color yellow)"$__ruby_version"
-		echo -n -s "$USER" @ "$__fish_prompt_hostname" "$__ruby_version" "$__fish_prompt_normal"  "$__fish_prompt_cwd" (prompt_pwd) "$__fish_prompt_normal" '> '
+		echo -n -s (set_color cyan) "$USER" @ "$__fish_prompt_hostname" "$__ruby_version" "$__fish_prompt_normal"  "$__fish_prompt_cwd" (prompt_pwd) "$__fish_prompt_normal" '> '
 
 	end
 end
