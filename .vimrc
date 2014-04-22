@@ -48,6 +48,7 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'jnwhiteh/vim-golang'
 
 filetype plugin indent on     " required!
 syntax on
