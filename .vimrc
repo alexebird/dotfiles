@@ -49,6 +49,7 @@ Bundle 'thoughtbot/vim-rspec'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'jnwhiteh/vim-golang'
+Bundle 'majutsushi/tagbar'
 
 filetype plugin indent on     " required!
 syntax on
@@ -82,6 +83,7 @@ set timeoutlen=1000 ttimeoutlen=0
 let mapleader = ","
 noremap <Leader>tt :MBEToggle<cr> :MBEFocus<cr>
 noremap <Leader>r :NERDTreeToggle<cr>
+noremap <Leader>e :TagbarToggle<cr>
 "noremap <Leader>n :set number<cr>
 "noremap <Leader>nn :set relativenumber<cr>
 
