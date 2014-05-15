@@ -6,6 +6,9 @@ else if functions -q rvm
 	rvm use ruby > /dev/null
 end
 
+# autojump
+if test -f /Users/alexb/etc/profile.d/autojump.fish; . /Users/alexb/etc/profile.d/autojump.fish; end
+
 set PATH "/usr/local/opt/coreutils/libexec/gnubin" $PATH
 set PATH "/usr/local/opt/gnu-tar/libexec/gnubin" $PATH
 set PATH "/usr/local/opt/gnu-sed/libexec/gnubin" $PATH
