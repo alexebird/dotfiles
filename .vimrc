@@ -145,3 +145,7 @@ imap iwi <C-[>:w<CR>
 " autosave
 "set updatetime=800 " ms
 "autocmd CursorHoldI,CursorHold,BufLeave <buffer> silent :update
+
+" Tagbar
+let g:tagbar_sort = '0'
+

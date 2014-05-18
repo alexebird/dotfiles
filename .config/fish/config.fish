@@ -7,7 +7,7 @@ else if functions -q rvm
 end
 
 # autojump
-if test -f /Users/alexb/etc/profile.d/autojump.fish; . /Users/alexb/etc/profile.d/autojump.fish; end
+if test -f ~/.autojump/etc/profile.d/autojump.fish; . ~/.autojump/etc/profile.d/autojump.fish; end
 
 set PATH "/usr/local/opt/coreutils/libexec/gnubin" $PATH
 set PATH "/usr/local/opt/gnu-tar/libexec/gnubin" $PATH
