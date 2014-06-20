@@ -140,7 +140,9 @@ nmap <silent> <Up> gk
 "map <Leader>a :call RunAllSpecs()<CR>
 
 " esc and write file from insert mode
-imap iwi <C-[>:w<CR>
+"imap iwi <C-[>:w<CR>
+" don't enter ex mode with Q
+nnoremap Q <nop>
 
 " autosave
 "set updatetime=800 " ms
