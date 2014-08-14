@@ -22,6 +22,7 @@ set MANPATH "/usr/local/opt/coreutils/libexec/gnuman" $MANPATH
 set MANPATH "/usr/local/opt/gnu-sed/libexec/gnuman" $MANPATH
 
 set -x RUBYLIB lib $RUBYLIB
+set -x EDITOR vim
 
 set -g -x fish_greeting ''
 
