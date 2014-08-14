@@ -50,6 +50,11 @@ Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'majutsushi/tagbar'
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "garbas/vim-snipmate"
+Bundle 'honza/vim-snippets'
+Bundle 'jiangmiao/auto-pairs'
 
 filetype plugin indent on     " required!
 syntax on
@@ -123,6 +128,7 @@ let g:airline_section_z = airline#section#create(['BN %{bufnr("%")} ', '%3p%% ',
 let g:ctrlp_map = '<C-p>'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['Gemfile']
+let g:ctrlp_cmd = 'CtrlPMRU'
 
 " plugin: miniBufExplorer
 let g:miniBufExplorerAutoStart = 0
