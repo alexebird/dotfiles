@@ -7,6 +7,8 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
 
+(setq x-select-enable-clipboard t)
+
 ;; ido mode
 (ido-mode 1)
 (ido-everywhere 1)
@@ -25,7 +27,8 @@
 (menu-bar-mode -1)
 
 ;; projectile
-(add-hook 'prog-mode-hook 'projectile-mode)
+(projectile-global-mode )
+;(add-hook 'prog-mode-hook 'projectile-mode)
 
 ;; linum
 (setq linum-format " %4d ")
@@ -46,3 +49,12 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 ;; This is your old M-x.
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+;; Ruby Mode
+(add-to-list 'auto-mode-alist '("\\.rake$" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.gemspec$" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.ru$" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("Rakefile$" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("Gemfile$" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("Capfile$" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("Vagrantfile$" . enh-ruby-mode))
