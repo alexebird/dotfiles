@@ -51,6 +51,7 @@ Plugin 'justinmk/vim-sneak'
 Plugin 'ervandew/supertab'
 "Plugin 'Valloric/YouCompleteMe'
 Plugin 'sjl/gundo.vim'
+Plugin 'nathanaelkane/vim-indent-guides'
 
 
 " All of your Plugins must be added before the following line
@@ -70,13 +71,18 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 set shell=/bin/bash
-let &t_Co=256
+"set t_Co=256
 set backspace=indent,eol,start
 set encoding=utf-8
 
-"runtime macros/matchit.vim
-
 syntax on
+syntax enable
+
+"let g:solarized_termcolors=256
+"let g:solarized_visibility = 'high'
+"let g:solarized_contrast = 'high'
+set background=dark
+colorscheme solarized
 
 set tabstop=4
 set shiftwidth=4
@@ -89,6 +95,7 @@ set showcmd
 set nowrap
 set linebreak
 set laststatus=2
+set colorcolumn=80
 " Elimiate delay switching to normal mode
 set timeoutlen=1000 ttimeoutlen=0
 let mapleader = ","
@@ -112,8 +119,8 @@ noremap <leader>e :TagbarToggle<cr>
 
 noremap <leader>w :w<cr>
 noremap <leader>z :st<cr>
-noremap <leader>tn :tabnew<cr>
-noremap <leader>tc :tabclose<cr>
+"noremap <leader>tn :tabnew<cr>
+"noremap <leader>tc :tabclose<cr>
 
 map <leader>x <Plug>NERDCommenterToggle
 
@@ -122,12 +129,6 @@ map <leader>x <Plug>NERDCommenterToggle
 "inoremap <down>  <nop>
 "inoremap <left>  <nop>
 "inoremap <right> <nop>
-
-let g:solarized_termcolors=256
-"let g:solarized_visibility = 'high'
-"let g:solarized_contrast = 'high'
-set background=dark
-colorscheme solarized
 
 autocmd FileType ruby set omnifunc=rubycomplete#Complete
 autocmd FileType ruby let g:rubycomplete_buffer_loading=1
