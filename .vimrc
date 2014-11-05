@@ -95,7 +95,7 @@ set showcmd
 set nowrap
 set linebreak
 set laststatus=2
-set colorcolumn=80
+"set colorcolumn=80
 " Elimiate delay switching to normal mode
 set timeoutlen=1000 ttimeoutlen=0
 let mapleader = ","
@@ -160,6 +160,7 @@ nmap <silent> <up> gk
 
 " airline
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
 let g:airline_powerline_fonts = 0
 let g:airline#extensions#branch#enabled = 1
 " default section_z from https://github.com/bling/vim-airline/blob/master/autoload/airline/init.vim#L107
@@ -171,8 +172,8 @@ let g:airline_right_sep=''
 let g:ctrlp_map = '<C-p>'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['Gemfile']
-let g:ctrlp_match_window_bottom = 0
-let g:ctrlp_match_window_reversed = 0
+"let g:ctrlp_match_window_bottom = 0
+"let g:ctrlp_match_window_reversed = 0
 "let g:ctrlp_cmd = 'CtrlPMRU'
 nnoremap <C-n> :CtrlPBuffer<cr>
 nnoremap <C-m> :CtrlPMRU<cr>
