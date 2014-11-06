@@ -51,6 +51,8 @@ Plugin 'ervandew/supertab'
 "Plugin 'Valloric/YouCompleteMe'
 Plugin 'sjl/gundo.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'scrooloose/syntastic'
+Plugin 'rking/ag.vim'
 
 
 " All of your Plugins must be added before the following line
@@ -68,6 +70,9 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+" required for vim-textobj-rubyblock
+runtime macros/matchit.vim
 
 set shell=/bin/bash
 "set t_Co=256
@@ -194,4 +199,7 @@ highlight GitGutterAdd ctermfg=darkgreen
 highlight GitGutterChange ctermfg=darkyellow
 highlight GitGutterDelete ctermfg=darkred
 highlight GitGutterChangeDelete ctermfg=darkyellow
+
+" auto-pairs
+let g:AutoPairsShortcutFastWrap = '<C-a>'
 
