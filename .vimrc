@@ -28,21 +28,20 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'bling/vim-airline'
-"Plugin 'taglist.vim'
-"Plugin 'airblade/vim-gitgutter'  " slow!
+Plugin 'taglist.vim'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-sleuth'
-"Plugin 'tpope/vim-cucumber'
+Plugin 'tpope/vim-cucumber'
 Plugin 'kien/ctrlp.vim'
 Plugin 'slim-template/vim-slim'
-"Plugin 'techlivezheng/vim-plugin-minibufexpl'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'kana/vim-textobj-user'
 Plugin 'nelstrom/vim-textobj-rubyblock'
-"Plugin 'jnwhiteh/vim-golang'
+Plugin 'jnwhiteh/vim-golang'
 Plugin 'majutsushi/tagbar'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -182,10 +181,17 @@ nnoremap <C-m> :CtrlPMRU<cr>
 let g:tagbar_sort = '0'
 
 " utilsnips
-let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " gundo (undo-tree)
 nnoremap <leader>g :GundoToggle<cr>
+
+" gitgutter
+"highlight clear SignColumn
+highlight SignColumn ctermbg=bg
+highlight GitGutterAdd ctermfg=darkgreen
+highlight GitGutterChange ctermfg=darkyellow
+highlight GitGutterDelete ctermfg=darkred
+highlight GitGutterChangeDelete ctermfg=darkyellow
 
