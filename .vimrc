@@ -203,3 +203,6 @@ highlight GitGutterChangeDelete ctermfg=darkyellow
 " auto-pairs
 let g:AutoPairsShortcutFastWrap = '<C-a>'
 
+" ag
+let g:agprg="ag --ignore log"
+
