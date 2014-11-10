@@ -1,0 +1,17 @@
+[user]
+	email = bird@grandroundshealth.com
+	name = Alex Bird
+[alias]
+	lg = log --graph --decorate=short
+[color]
+	diff = auto
+	status = auto
+	interactive = auto
+	branch = auto
+[core]
+	editor = vim
+	excludesfile = /home/bird/.gitignore_global
+[push]
+	default = simple
+[pull]
+	default = simple
