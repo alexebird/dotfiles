@@ -2,7 +2,12 @@
 	email = bird@grandroundshealth.com
 	name = Alex Bird
 [alias]
+	br = branch
+	ci = commit
+	co = checkout
+	d  = diff
 	lg = log --graph --decorate=short
+	st = status
 [color]
 	diff = auto
 	status = auto
