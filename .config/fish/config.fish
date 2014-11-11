@@ -9,8 +9,13 @@ end
 if test -f ~/.autojump/etc/profile.d/autojump.fish; . ~/.autojump/etc/profile.d/autojump.fish; end
 
 # aliases
-alias gst="git status"
-alias glg="git lg"
+alias gb='git branch'
+alias gci='git commit'
+alias gco='git checkout'
+alias gd='git diff'
+alias git='hub'
+alias gl='git lg'
+alias gs='git status'
 
 set PATH "/usr/local/opt/coreutils/libexec/gnubin" $PATH
 set PATH "/usr/local/opt/gnu-tar/libexec/gnubin" $PATH
