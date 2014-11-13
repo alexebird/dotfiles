@@ -185,6 +185,7 @@ nnoremap <C-n> :CtrlPBuffer<cr>
 nnoremap <C-m> :CtrlPMRU<cr>
 "nnoremap <cr> <nop> 
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_match_window = 'results:50' " overcome limit imposed by max height
 
 " tagbar
 let g:tagbar_sort = '0'
