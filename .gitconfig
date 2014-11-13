@@ -17,6 +17,6 @@
 	editor = vim
 	excludesfile = /home/bird/.gitignore_global
 [push]
-	default = simple
+	default = current
 [pull]
 	default = simple

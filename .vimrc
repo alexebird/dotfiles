@@ -53,6 +53,8 @@ Plugin 'sjl/gundo.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'scrooloose/syntastic'
 Plugin 'rking/ag.vim'
+Plugin 'lmeijvogel/vim-yaml-helper'
+Plugin 'bronson/vim-trailing-whitespace'
 
 
 " All of your Plugins must be added before the following line
@@ -181,6 +183,8 @@ let g:ctrlp_root_markers = ['Gemfile']
 "let g:ctrlp_cmd = 'CtrlPMRU'
 nnoremap <C-n> :CtrlPBuffer<cr>
 nnoremap <C-m> :CtrlPMRU<cr>
+"nnoremap <cr> <nop> 
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
 " tagbar
 let g:tagbar_sort = '0'
@@ -205,4 +209,9 @@ let g:AutoPairsShortcutFastWrap = '<C-a>'
 
 " ag
 let g:agprg="ag --ignore log"
+
+" syntastic
+let g:syntastic_mode_map = { 'mode': 'passive',
+               \ 'active_filetypes': [],
+              \ 'passive_filetypes': [] }
 

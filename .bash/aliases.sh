@@ -7,3 +7,6 @@ alias gco='git checkout'
 alias gd='git diff'
 alias gl='git lg'
 alias gs='git status'
+
+# ag
+alias ag='ag --hidden --smart-case'
