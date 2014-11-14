@@ -113,11 +113,11 @@ nnoremap Q <nop>
 " Clear highlighted search results.
 nnoremap <silent> <c-l> :noh<cr>
 
-" backup to ~/.tmp 
-set backup 
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
-set backupskip=/tmp/*,/private/tmp/* 
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
+" backup to ~/.tmp
+set backup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupskip=/tmp/*,/private/tmp/*
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
 
 noremap <leader>r :NERDTreeToggle<cr>
@@ -152,12 +152,14 @@ nmap <silent> <up> gk
 "map <leader>l :call RunLastSpec()<CR>
 "map <leader>a :call RunAllSpecs()<CR>
 
-" esc and write file from insert mode
-"imap iwi <C-[>:w<CR>
+autocmd BufWinEnter * if &buftype == 'quickfix' | setlocal nonumber | endif
 
-" autosave
-"set updatetime=800 " ms
-"autocmd CursorHoldI,CursorHold,BufLeave <buffer> silent :update
+" Use ag over grep
+"set grepprg=ag\ --nogroup\ --nocolor
+
+" bind K to grep word under cursor
+nnoremap K :Ag "\b<c-r><c-w>\b"<cr>:cw<cr>
+nnoremap \ :Ag<space>
 
 
 "----------------------------------------------------------------------
@@ -174,6 +176,7 @@ let g:airline_section_z = airline#section#create(['BN %{bufnr("%")} ', '%3p%% ',
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 
+
 " ctrlp
 let g:ctrlp_map = '<C-p>'
 let g:ctrlp_working_path_mode = 'ra'
@@ -183,19 +186,26 @@ let g:ctrlp_root_markers = ['Gemfile']
 "let g:ctrlp_cmd = 'CtrlPMRU'
 nnoremap <C-n> :CtrlPBuffer<cr>
 nnoremap <C-m> :CtrlPMRU<cr>
-"nnoremap <cr> <nop> 
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-let g:ctrlp_match_window = 'results:50' " overcome limit imposed by max height
+" Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup --hidden --smart-case -g ""'
+" overcome limit imposed by max height
+let g:ctrlp_match_window = 'results:50'
+" ag is fast enough that CtrlP doesn't need to cache
+let g:ctrlp_use_caching = 0
+
 
 " tagbar
 let g:tagbar_sort = '0'
+
 
 " utilsnips
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
+
 " gundo (undo-tree)
 nnoremap <leader>g :GundoToggle<cr>
+
 
 " gitgutter
 "highlight clear SignColumn
@@ -205,11 +215,14 @@ highlight GitGutterChange ctermfg=darkyellow
 highlight GitGutterDelete ctermfg=darkred
 highlight GitGutterChangeDelete ctermfg=darkyellow
 
+
 " auto-pairs
 let g:AutoPairsShortcutFastWrap = '<C-a>'
 
+
 " ag
-let g:agprg="ag --ignore log"
+let g:agprg="ag --ignore log --nocolor --nogroup --column --hidden --smart-case"
+
 
 " syntastic
 let g:syntastic_mode_map = { 'mode': 'passive',
