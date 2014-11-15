@@ -105,7 +105,7 @@ set laststatus=2
 " Elimiate delay switching to normal mode
 set timeoutlen=1000 ttimeoutlen=0
 let mapleader = ","
-nmap <leader>p :set paste!<CR>
+nmap <F10> :set paste!<CR>
 noremap <leader>n :set relativenumber!<cr>
 
 " don't enter ex mode with Q
@@ -159,7 +159,13 @@ autocmd BufWinEnter * if &buftype == 'quickfix' | setlocal nonumber | endif
 
 " bind K to grep word under cursor
 nnoremap K :Ag "\b<c-r><c-w>\b"<cr>:cw<cr>
+" silver searcher shortcut
 nnoremap \ :Ag<space>
+" mouse select and scroll
+set mouse=a
+" save clipboard register on vimleave
+"autocmd VimLeave * call system("xclip", getreg('+'))
+vnoremap <C-S-c> "+y
 
 
 "----------------------------------------------------------------------
@@ -186,6 +192,7 @@ let g:ctrlp_root_markers = ['Gemfile']
 "let g:ctrlp_cmd = 'CtrlPMRU'
 nnoremap <C-n> :CtrlPBuffer<cr>
 nnoremap <C-m> :CtrlPMRU<cr>
+nnoremap <C-j> :CtrlPTag<cr>
 " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
 let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup --hidden --smart-case -g ""'
 " overcome limit imposed by max height
