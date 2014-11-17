@@ -10,3 +10,6 @@ alias gs='git status'
 
 # ag
 alias ag='ag --hidden --smart-case'
+
+# ctags
+alias ctags-rails='ctags -R --languages=ruby --exclude=.git --exclude=log .'
