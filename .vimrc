@@ -140,6 +140,8 @@ autocmd FileType ruby set omnifunc=rubycomplete#Complete
 autocmd FileType ruby let g:rubycomplete_buffer_loading=1
 autocmd FileType ruby let g:rubycomplete_classes_in_global=1
 
+au BufRead,BufNewFile *.md set filetype=markdown
+
 " Navigate through wrapped lines intuitively
 imap <silent> <down> <c-o>gj
 imap <silent> <up> <c-o>gk
