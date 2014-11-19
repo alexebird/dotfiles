@@ -158,9 +158,9 @@ autocmd BufWinEnter * if &buftype == 'quickfix' | setlocal nonumber | endif
 "set grepprg=ag\ --nogroup\ --nocolor
 
 " bind K to grep word under cursor
-nnoremap K :Ag "\b<c-r><c-w>\b"<cr>:cw<cr>
+nnoremap K :Ag! "\b<c-r><c-w>\b"<cr>:cw<cr>
 " silver searcher shortcut
-nnoremap \ :Ag<space>
+nnoremap \ :Ag!<space>
 " mouse select and scroll
 set mouse=a
 " save clipboard register on vimleave
@@ -179,9 +179,10 @@ vnoremap <C-S-c> "+y
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline_powerline_fonts = 0
-let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#branch#enabled = 0
+let g:airline#extensions#hunks#enabled = 1
 " default section_z from https://github.com/bling/vim-airline/blob/master/autoload/airline/init.vim#L107
-let g:airline_section_z = airline#section#create(['BN %{bufnr("%")} ', '%3p%% ', 'linenr', ':%3c '])
+let g:airline_section_z = airline#section#create(['%p%%', 'linenr', ':%c'])
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 
