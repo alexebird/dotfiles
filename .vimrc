@@ -167,6 +167,9 @@ set mouse=a
 "autocmd VimLeave * call system("xclip", getreg('+'))
 vnoremap <C-S-c> "+y
 
+" Generate ctags for ruby
+"ctags -R --languages=ruby --exclude=.git --exclude=log .
+
 
 "----------------------------------------------------------------------
 " Plugins
