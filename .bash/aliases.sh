@@ -5,7 +5,9 @@ alias gb='git branch'
 alias gci='git commit'
 alias gco='git checkout'
 alias gd='git diff'
+alias gdc='git diff --cached'
 alias gl='git lg'
+alias gla='git lg --branches --remotes --tags'
 alias gs='git status'
 
 # ag
