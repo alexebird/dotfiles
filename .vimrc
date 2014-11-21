@@ -145,6 +145,8 @@ imap <silent> <down> <c-o>gj
 imap <silent> <up> <c-o>gk
 nmap <silent> <down> gj
 nmap <silent> <up> gk
+nmap <silent> j gj
+nmap <silent> k gk
 
 " Rspec mappings
 "map <leader>t :call RunCurrentSpecFile()<CR>
