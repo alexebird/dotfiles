@@ -46,7 +46,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'justinmk/vim-sneak'
+"Plugin 'justinmk/vim-sneak'
 Plugin 'ervandew/supertab'
 "Plugin 'Valloric/YouCompleteMe'
 Plugin 'sjl/gundo.vim'
@@ -55,6 +55,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'rking/ag.vim'
 Plugin 'lmeijvogel/vim-yaml-helper'
 Plugin 'bronson/vim-trailing-whitespace'
+Plugin 'Lokaltog/vim-easymotion'
 
 
 " All of your Plugins must be added before the following line
@@ -241,6 +242,34 @@ let g:agprg="ag --ignore log --nocolor --nogroup --column --hidden --smart-case"
 
 " syntastic
 let g:syntastic_mode_map = { 'mode': 'passive',
-               \ 'active_filetypes': [],
+              \ 'active_filetypes': [],
               \ 'passive_filetypes': [] }
+
+
+" sneak
+"let g:sneak#streak = 1
+
+
+" easymotion
+
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Bi-directional find motion
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap s <Plug>(easymotion-s)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap S <Plug>(easymotion-s2)
+
+" Turn on case sensitive feature
+let g:EasyMotion_smartcase = 1
+let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion"
+
+" JK motions: Line motions
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
 
