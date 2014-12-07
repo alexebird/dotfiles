@@ -1,1 +1,1 @@
-("~/pts/diesel/" "~/" "~/jarvis/")
+("~/" "~/pts/diesel/" "~/jarvis/")
