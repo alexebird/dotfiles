@@ -11,9 +11,10 @@
 
 ;; ido mode
 (ido-mode 1)
-(ido-everywhere 1)
+;(ido-everywhere 1)
 (flx-ido-mode 1)
 ;; disable ido faces to see flx highlights.
+(setq ido-everywhere t)
 (setq ido-enable-flex-matching t)
 (setq ido-use-faces nil)
 
@@ -25,9 +26,12 @@
 
 ;; misc
 (menu-bar-mode -1)
+(setq smooth-scroll-margin 5)
+(global-set-key (kbd "M-p") (lambda () (interactive) (scroll-down 1)))
+(global-set-key (kbd "M-n") (lambda () (interactive) (scroll-up 1)))
 
 ;; projectile
-(projectile-global-mode )
+(projectile-global-mode)
 ;(add-hook 'prog-mode-hook 'projectile-mode)
 
 ;; linum
@@ -35,19 +39,22 @@
 ;(add-hook 'prog-mode-hook 'linum-mode)
 ;(global-linum-mode t)
 
+(add-hook 'after-init-hook 'global-company-mode)
+
+(require 'ac-cider)
+(add-hook 'cider-mode-hook 'ac-flyspell-workaround)
+(add-hook 'cider-mode-hook 'ac-cider-setup)
+(add-hook 'cider-repl-mode-hook 'ac-cider-setup)
+(eval-after-load "auto-complete"
+  '(add-to-list 'ac-modes 'cider-mode))
+
 ;; color theme
-;(load-theme 'solarized-dark t)
 (load-theme 'cyberpunk t)
-;(add-hook 'after-init-hook 
-      ;(lambda () (load-theme 'cyberpunk t)))
 
 ;; rainbows
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 ;; git gutter
-;(require 'git-gutter)
-;(global-git-gutter+-mode t)
-;(git-gutter:linum-setup)
 (global-git-gutter-mode +1)
 
 ;; SMEX
@@ -64,3 +71,19 @@
 (add-to-list 'auto-mode-alist '("Gemfile$" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("Capfile$" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . enh-ruby-mode))
+
+
+;; Clojure mode
+ (add-hook 'lisp-mode-hook 'enable-paredit-mode)
+ (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
+ (add-hook 'ielm-mode-hook 'enable-paredit-mode)
+ (add-hook 'clojure-mode-hook 'enable-paredit-mode)
+ (add-hook 'cider-repl-mode-hook 'enable-paredit-mode)
+ (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
+ (add-hook 'cider-mode-hook 'turn-on-eldoc-mode)
+
+;; Ace Jump mode
+(define-key global-map (kbd "C-o") 'ace-jump-mode)
+
+;; Undo-Tree mode
+(global-undo-tree-mode)
