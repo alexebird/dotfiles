@@ -6,3 +6,4 @@
 !.emacs.d/**/*
 .emacs.d/**/*~
 .emacs.d/tmp
+.emacs.d/ac-comphist.dat

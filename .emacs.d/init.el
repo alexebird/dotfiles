@@ -73,9 +73,9 @@
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . enh-ruby-mode))
 
 
-;; Clojure mode
+;; Clojure
  (add-hook 'lisp-mode-hook 'enable-paredit-mode)
- (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
+ ;(add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
  (add-hook 'ielm-mode-hook 'enable-paredit-mode)
  (add-hook 'clojure-mode-hook 'enable-paredit-mode)
  (add-hook 'cider-repl-mode-hook 'enable-paredit-mode)
