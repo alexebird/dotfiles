@@ -61,6 +61,7 @@ Plugin 'Lokaltog/vim-easymotion'
 "Plugin 'guns/vim-clojure-static'
 "Plugin 'guns/vim-clojure-highlight'
 "Plugin 'vim-scripts/paredit.vim'
+Plugin 'regedarek/ZoomWin'
 
 
 " All of your Plugins must be added before the following line
@@ -184,6 +185,9 @@ vnoremap <C-S-c> "+y
 "----------------------------------------------------------------------
 " Plugins
 "----------------------------------------------------------------------
+
+" NERDTree
+let g:nerdtree_tabs_open_on_gui_startup=0
 
 " airline
 let g:airline#extensions#tabline#enabled = 1

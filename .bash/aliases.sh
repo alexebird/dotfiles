@@ -15,3 +15,5 @@ alias ag='ag --hidden --smart-case'
 
 # ctags
 alias ctags-rails='ctags -R --languages=ruby --exclude=.git --exclude=log .'
+
+alias open='xdg-open'
