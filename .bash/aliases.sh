@@ -9,9 +9,13 @@ alias gdc='git diff --cached'
 alias gl='git lg'
 alias gla='git lg --branches --remotes --tags'
 alias gs='git status'
+alias gp='git push'
+alias gpl='git pull'
 
 # ag
 alias ag='ag --hidden --smart-case'
 
 # ctags
 alias ctags-rails='ctags -R --languages=ruby --exclude=.git --exclude=log .'
+
+alias open='xdg-open'
