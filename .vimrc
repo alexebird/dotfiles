@@ -287,3 +287,6 @@ map <Leader>h <Plug>(easymotion-linebackward)
 "au Syntax * RainbowParenthesesLoadSquare
 "au Syntax * RainbowParenthesesLoadBraces
 
+
+" NERD Tree
+let NERDTreeSortOrder=[]
