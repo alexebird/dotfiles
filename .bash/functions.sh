@@ -23,16 +23,24 @@ alias bs='branch_search'
 # fast git checkout
 function fco() {
     term=$1
+
+    if [ -z "$term" ]; then
+        echo usage: $0 SEARCH_TERM
+        return 1
+    fi
+
     branch=$(branch_search $term)
 
     if [[ $? -eq 0 ]]; then
         git co $branch
     fi
+
+    return 0
 }
 
 function fuck() {
     build=$1
-    min_time='2 hours ago'
+    min_time='4 hours ago'
     error_filter="('rspec ./') OR ('Failure/Error') OR ('# /' OR '# .')"
     papertrail --min-time "$min_time" "$build AND ($error_filter)" | less -R -X +G
 }
