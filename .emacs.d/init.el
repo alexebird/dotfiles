@@ -74,11 +74,11 @@
 
 
 ;; Clojure
- (add-hook 'lisp-mode-hook 'enable-paredit-mode)
+ (add-hook 'lisp-mode-hook 'paredit-mode)
  ;(add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
- (add-hook 'ielm-mode-hook 'enable-paredit-mode)
- (add-hook 'clojure-mode-hook 'enable-paredit-mode)
- (add-hook 'cider-repl-mode-hook 'enable-paredit-mode)
+ (add-hook 'ielm-mode-hook 'paredit-mode)
+ (add-hook 'clojure-mode-hook 'paredit-mode)
+ (add-hook 'cider-repl-mode-hook 'paredit-mode)
  (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
  (add-hook 'cider-mode-hook 'turn-on-eldoc-mode)
 
