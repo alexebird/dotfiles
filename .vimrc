@@ -188,6 +188,7 @@ vnoremap <C-S-c> "+y
 
 " NERDTree
 let g:nerdtree_tabs_open_on_gui_startup=0
+"let NERDTreeSortOrder=[]
 
 " airline
 let g:airline#extensions#tabline#enabled = 1
@@ -286,7 +287,3 @@ map <Leader>h <Plug>(easymotion-linebackward)
 "au Syntax * RainbowParenthesesLoadRound
 "au Syntax * RainbowParenthesesLoadSquare
 "au Syntax * RainbowParenthesesLoadBraces
-
-
-" NERD Tree
-let NERDTreeSortOrder=[]

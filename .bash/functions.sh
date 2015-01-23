@@ -3,7 +3,7 @@ function branch_search() {
     term=$1
 
     if [[ $term ]]; then
-        branches=$(git br | grep -v "*" | grep --color=never "$term" | tr -d ' ')
+        branches=$(git br | grep -v "*" | grep --color=never --ignore-case "$term" | tr -d ' ')
 
         if [[ "1" != $(echo -e "$branches" | wc -l) ]]; then
             echo failed. multiple matches: >&2
