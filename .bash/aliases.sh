@@ -21,10 +21,9 @@ alias ctags-rails='ctags -R --languages=ruby --exclude=.git --exclude=log .'
 alias open='xdg-open'
 
 # ls
-alias ls='ls -F --color=auto'
+alias ls='ls -F'
 alias l='ls'
-alias la='ls -Atrh'
-alias ll='ls -ltrh'
+alias ll='\ls -Fltrh'
 
 # grep
 alias grep='grep --color=auto'
