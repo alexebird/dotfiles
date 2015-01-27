@@ -1,0 +1,7 @@
+log
+tmp
+*.sock
+*.fugitiveblame
+icomoon-session.json
+.git
+public/assets
