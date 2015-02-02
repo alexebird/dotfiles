@@ -19,4 +19,4 @@
 [push]
 	default = current
 [pull]
-	default = simple
+	default = current
