@@ -6,7 +6,7 @@ function branch_search() {
         branches=$(git br | grep -v "*" | grep --color=never --ignore-case "$term" | tr -d ' ')
 
         if [[ "1" != $(echo -e "$branches" | wc -l) ]]; then
-            echo failed. multiple matches: >&2
+            echo multiple matches: >&2
             echo -e "$branches"    >&2
             return 1
         fi
