@@ -1,0 +1,22 @@
+[user]
+	email = alexebird@gmail.com
+	name = Alex Bird
+[alias]
+	br = branch
+	ci = commit
+	co = checkout
+	d  = diff
+	lg = log --graph --decorate
+	st = status
+[color]
+	diff = auto
+	status = auto
+	interactive = auto
+	branch = auto
+[core]
+	editor = vim
+	excludesfile = /home/bird/.gitignore_global
+[push]
+	default = current
+[pull]
+	default = current
