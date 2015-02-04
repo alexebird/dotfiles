@@ -408,12 +408,12 @@
         <command>dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause</command>
       </action>
     </keybind>
-    <keybind key="F9">
+    <keybind key="C-F8">
       <action name="Execute">
         <command>dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous</command>
       </action>
     </keybind>
-    <keybind key="F10">
+    <keybind key="A-F8">
       <action name="Execute">
         <command>dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next</command>
       </action>
