@@ -131,7 +131,7 @@ noremap <leader>r :NERDTreeToggle<cr>
 noremap <leader>e :TagbarToggle<cr>
 
 noremap <leader>w :w<cr>
-noremap <leader>z :st<cr>
+"noremap <leader>z :st<cr>
 "noremap <leader>tn :tabnew<cr>
 "noremap <leader>tc :tabclose<cr>
 
