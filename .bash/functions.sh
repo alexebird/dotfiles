@@ -2,6 +2,12 @@
 function branch_search() {
     term=$1
 
+    # show the last branch when - is passed
+    if [[ "$term" == "-" ]]; then
+        git rev-parse --abbrev-ref=strict @{-1}
+        return 0
+    fi
+
     if [[ $term ]]; then
         #branches=$(git br | grep -v "*" | grep --color=never --ignore-case "$term" | tr -d ' ')
         branches=$(git for-each-ref --sort=-committerdate refs/heads/ | awk '{ print $3 }' | sed 's|refs/heads/||')
