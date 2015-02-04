@@ -1,6 +1,7 @@
 alias genpass='< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c16; echo'
 
 # git
+alias git='hub'
 alias gb='git branch'
 alias gci='git commit'
 alias gco='git checkout'

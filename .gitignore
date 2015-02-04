@@ -7,3 +7,4 @@
 .emacs.d/**/*~
 .emacs.d/tmp
 .emacs.d/ac-comphist.dat
+.emacs.d/autosaves
