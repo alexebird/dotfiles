@@ -1,22 +1,16 @@
-# search for git branches
+# search for a git branch
 function branch_search() {
     term=$1
 
-    # show the last branch when - is passed
+    # show the last branch when '-' is passed
     if [[ "$term" == "-" ]]; then
         git rev-parse --abbrev-ref=strict @{-1}
         return 0
     fi
 
     if [[ $term ]]; then
-        #branches=$(git br | grep -v "*" | grep --color=never --ignore-case "$term" | tr -d ' ')
         branches=$(git for-each-ref --sort=-committerdate refs/heads/ | awk '{ print $3 }' | sed 's|refs/heads/||')
-        branch=$(echo -e "$branches" | grep --color=never --ignore-case "$term" | head -1)
-
-        #if [[ "1" != $(echo -e "$branches" | wc -l) ]]; then
-            #echo -e "$branches" >&2
-            #return 1
-        #fi
+        branch=$(echo -e "$branches" | grep --color=never --ignore-case --regexp="$term" | head -1)
 
         if [[ -z "$branch" ]]; then
             return 1
@@ -42,7 +36,7 @@ function fco() {
     fi
 
     if [ -z "$term" ]; then
-        echo usage: $0 SEARCH_TERM
+        echo usage: fco CHARS
         return 1
     fi
 
@@ -53,12 +47,4 @@ function fco() {
     fi
 
     return 0
-}
-
-function fuck() {
-    build=$1
-    min_time='4 hours ago'
-    error_filter="('rspec ./') OR ('Failure/Error') OR ('# /' OR '# .')"
-    rvm use 2.1.5 > /dev/null
-    papertrail --min-time "$min_time" "$build AND ($error_filter)" | less -R -X +G
 }
