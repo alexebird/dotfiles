@@ -46,7 +46,6 @@ Plugin 'majutsushi/tagbar'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'jiangmiao/auto-pairs'
-"Plugin 'justinmk/vim-sneak'
 Plugin 'ervandew/supertab'
 "Plugin 'Valloric/YouCompleteMe'
 Plugin 'sjl/gundo.vim'
@@ -56,11 +55,6 @@ Plugin 'rking/ag.vim'
 Plugin 'lmeijvogel/vim-yaml-helper'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'Lokaltog/vim-easymotion'
-"Plugin 'kien/rainbow_parentheses.vim'
-"Plugin 'tpope/vim-fireplace'
-"Plugin 'guns/vim-clojure-static'
-"Plugin 'guns/vim-clojure-highlight'
-"Plugin 'vim-scripts/paredit.vim'
 Plugin 'regedarek/ZoomWin'
 
 
@@ -168,18 +162,23 @@ autocmd BufWinEnter * if &buftype == 'quickfix' | setlocal nonumber | endif
 " Use ag over grep
 "set grepprg=ag\ --nogroup\ --nocolor
 
+" Searching
 " bind K to grep word under cursor
-nnoremap & :Ag! "\b<c-r><c-w>\b"<cr>:cw<cr>
+nnoremap & :Ag! '\b<c-r><c-w>\b'<cr>
 " silver searcher shortcut
 nnoremap \ :Ag!<space>
+" search for selection
+vnoremap // y/<c-r>"<cr>
+" note: <Esc> clears the range
+vnoremap \\ <Esc>:Ag! '<c-r>"'<cr>
+
 " mouse select and scroll
 set mouse=a
-" save clipboard register on vimleave
-"autocmd VimLeave * call system("xclip", getreg('+'))
-vnoremap <C-S-c> "+y
+vnoremap Y "+y
 
-" Generate ctags for ruby
+" Shell command to generate ctags for ruby
 "ctags -R --languages=ruby --exclude=.git --exclude=log .
+
 
 
 "----------------------------------------------------------------------
@@ -208,9 +207,9 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['Gemfile', 'project.clj']
 "let g:ctrlp_match_window_bottom = 0
 "let g:ctrlp_match_window_reversed = 0
-"let g:ctrlp_cmd = 'CtrlPMRU'
+let g:ctrlp_cmd = 'CtrlPMRU'
 nnoremap <C-n> :CtrlPBuffer<cr>
-nnoremap <C-m> :CtrlPMRU<cr>
+"nnoremap <C-m> :CtrlPMRU<cr>
 nnoremap <C-j> :CtrlPTag<cr>
 " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
 let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup --hidden --smart-case -g ""'
@@ -247,17 +246,13 @@ let g:AutoPairsShortcutFastWrap = '<C-a>'
 
 
 " ag
-let g:agprg="ag --ignore log --nocolor --nogroup --column --hidden --smart-case"
+let g:agprg="ag --nocolor --nogroup --column --hidden --smart-case --ignore log"
 
 
 " syntastic
 let g:syntastic_mode_map = { 'mode': 'passive',
               \ 'active_filetypes': [],
               \ 'passive_filetypes': [] }
-
-
-" sneak
-"let g:sneak#streak = 1
 
 
 " easymotion
@@ -278,12 +273,3 @@ map <Leader>l <Plug>(easymotion-lineforward)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 map <Leader>h <Plug>(easymotion-linebackward)
-
-
-" rainbow parens
-"let g:rbpt_max = 16
-"let g:rbpt_loadcmd_toggle = 0
-"au VimEnter * RainbowParenthesesToggle
-"au Syntax * RainbowParenthesesLoadRound
-"au Syntax * RainbowParenthesesLoadSquare
-"au Syntax * RainbowParenthesesLoadBraces
