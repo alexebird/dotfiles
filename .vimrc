@@ -163,8 +163,8 @@ autocmd BufWinEnter * if &buftype == 'quickfix' | setlocal nonumber | endif
 "set grepprg=ag\ --nogroup\ --nocolor
 
 " Searching
-" bind K to grep word under cursor
-nnoremap & :Ag! '\b<c-r><c-w>\b'<cr>
+" search for word under cursor
+nnoremap & :Ag! '<c-r><c-w>'<cr>
 " silver searcher shortcut
 nnoremap \ :Ag!<space>
 " search for selection
