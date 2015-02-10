@@ -207,9 +207,9 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['Gemfile', 'project.clj']
 "let g:ctrlp_match_window_bottom = 0
 "let g:ctrlp_match_window_reversed = 0
-let g:ctrlp_cmd = 'CtrlPMRU'
+"let g:ctrlp_cmd = 'CtrlPMRU'
 nnoremap <C-n> :CtrlPBuffer<cr>
-"nnoremap <C-m> :CtrlPMRU<cr>
+nnoremap <C-m> :CtrlPMRU<cr>
 nnoremap <C-j> :CtrlPTag<cr>
 " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
 let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup --hidden --smart-case -g ""'
