@@ -13,6 +13,8 @@ alias glo='git lg --oneline'
 alias gs='git status'
 #alias gp='git push'
 #alias gpp='git pull'
+alias bs='git branch-search'
+alias fco='git fast-checkout'
 
 # ag
 alias ag='ag --hidden --smart-case'

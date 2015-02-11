@@ -161,20 +161,27 @@ autocmd BufWinEnter * if &buftype == 'quickfix' | setlocal nonumber | endif
 
 " Use ag over grep
 "set grepprg=ag\ --nogroup\ --nocolor
+"set grepprg=git\ grep
 
 " Searching
-" search for word under cursor
-nnoremap & :Ag! '<c-r><c-w>'<cr>
-" silver searcher shortcut
-nnoremap \ :Ag!<space>
+" global search prompt
+nnoremap \ :Ag!<space>''<Left>
+" global search for whole word under cursor
+nnoremap \| :Ag! '\b<cword>\b'<CR>
+" global search for word under cursor as text
+nnoremap g\| :Ag! <cword><CR>
+" global search for selection (<Esc> clears the range)
+vnoremap \ <Esc>:Ag! '<C-r>"'<CR>
+
 " search for selection
-vnoremap // y/<c-r>"<cr>
-" note: <Esc> clears the range
-vnoremap \\ <Esc>:Ag! '<c-r>"'<cr>
+vnoremap * y/<C-r>"<CR>
+vnoremap # y?<C-r>"<CR>
 
 " mouse select and scroll
 set mouse=a
-vnoremap Y "+y
+" yank to system clipboard
+"vnoremap Y "+y
+nnoremap YY ^"+y$
 
 " Shell command to generate ctags for ruby
 "ctags -R --languages=ruby --exclude=.git --exclude=log .
@@ -194,7 +201,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline_powerline_fonts = 0
 let g:airline#extensions#branch#enabled = 0
-let g:airline#extensions#hunks#enabled = 1
+let g:airline#extensions#hunks#enabled = 0
 " default section_z from https://github.com/bling/vim-airline/blob/master/autoload/airline/init.vim#L107
 let g:airline_section_z = airline#section#create(['%p%%', 'linenr', ':%c'])
 let g:airline_left_sep=''
