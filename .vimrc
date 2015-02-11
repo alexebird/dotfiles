@@ -120,6 +120,8 @@ set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set backupskip=/tmp/*,/private/tmp/*
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
+" this makes everything you do fuck with the system clipboard
+"set clipboard=unnamedplus
 
 noremap <leader>r :NERDTreeToggle<cr>
 noremap <leader>e :TagbarToggle<cr>
@@ -179,9 +181,18 @@ vnoremap # y?<C-r>"<CR>
 
 " mouse select and scroll
 set mouse=a
-" yank to system clipboard
-"vnoremap Y "+y
-nnoremap YY ^"+y$
+" yank selection to system clipboard
+vnoremap Y "+y
+" yank line to system clipboard without trailing newline
+nnoremap Y ^"+y$
+" yank line to system clipboard
+nnoremap YY "+yy
+" paste from system clipboard
+"nnoremap <C-v> "+p
+nnoremap + O<Esc>"+p
+" paste from system clipboard
+"inoremap <C-S-v> "+p
+
 
 " Shell command to generate ctags for ruby
 "ctags -R --languages=ruby --exclude=.git --exclude=log .
@@ -224,6 +235,8 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup --hidden --smart-case -
 let g:ctrlp_match_window = 'results:50'
 " ag is fast enough that CtrlP doesn't need to cache
 let g:ctrlp_use_caching = 0
+" get rid of annoying ctrlP behavior
+unmap <CR>
 
 
 " tagbar
