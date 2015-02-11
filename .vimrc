@@ -233,7 +233,7 @@ let g:ctrlp_match_window = 'results:50'
 " ag is fast enough that CtrlP doesn't need to cache
 let g:ctrlp_use_caching = 0
 let g:ctrlp_mruf_relative = 1
-let g:ctrlp_mruf_exclude = '/tmp/.*'
+let g:ctrlp_mruf_exclude = '/tmp/.*\|\.git/.*'
 nnoremap <C-h> :CtrlPTag<CR>
 nnoremap <C-j> :CtrlPMRU<CR>
 nnoremap <C-k> :CtrlPBuffer<CR>
