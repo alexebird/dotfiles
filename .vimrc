@@ -226,15 +226,17 @@ let g:ctrlp_root_markers = ['Gemfile', 'project.clj']
 "let g:ctrlp_match_window_bottom = 0
 "let g:ctrlp_match_window_reversed = 0
 "let g:ctrlp_cmd = 'CtrlPMRU'
-nnoremap <C-h> :CtrlPTag<CR>
-nnoremap <C-j> :CtrlPMRU<CR>
-nnoremap <C-k> :CtrlPBuffer<CR>
 " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
 let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup --hidden --smart-case -g ""'
 " overcome limit imposed by max height
 let g:ctrlp_match_window = 'results:50'
 " ag is fast enough that CtrlP doesn't need to cache
 let g:ctrlp_use_caching = 0
+let g:ctrlp_mruf_relative = 1
+let g:ctrlp_mruf_exclude = '/tmp/.*'
+nnoremap <C-h> :CtrlPTag<CR>
+nnoremap <C-j> :CtrlPMRU<CR>
+nnoremap <C-k> :CtrlPBuffer<CR>
 
 
 " tagbar
