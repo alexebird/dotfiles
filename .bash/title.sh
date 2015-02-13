@@ -1,17 +1,23 @@
 function tab_title() {
-  if [ -z "$1" ]
-  then
-    title=${PWD##*/} # current directory
+  if [[ ${PWD} == ${HOME} ]]; then
+    TITLE='~'
+  elif [[ ${PWD} == '/' ]]; then
+    TITLE='/'
+  elif [ -z "$1" ]; then
+    SLASH_COUNT=$(echo -n ${PWD} | tr -d -c '/'  | wc -c)
+    if [[ ${SLASH_COUNT} == 1 ]]; then
+      TITLE="/${PWD##*/}"
+    else
+      TITLE="${PWD##*/}"
+    fi
   else
-    title=$1 # first param
+    TITLE="${1}"
   fi
-  echo -n -e "\033]0;$title\007"
+  echo -n -e "\033]0;${TITLE}\007"
 }
-
 
 # auto-title
 cd() { builtin cd "$@" && tab_title; }
 pushd() { builtin pushd "$@" && tab_title; }
 popd() { builtin popd "$@" && tab_title; }
 tab_title
-
