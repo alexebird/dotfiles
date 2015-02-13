@@ -8,7 +8,10 @@ function tab_title() {
     if [[ ${SLASH_COUNT} == 1 ]]; then
       TITLE="/${PWD##*/}"
     else
-      TITLE="${PWD##*/}"
+      # only show last dir
+      #TITLE="${PWD##*/}"
+      # show whole path plus the tilde
+      TITLE="${PWD/#$HOME/\~}"
     fi
   else
     TITLE="${1}"
