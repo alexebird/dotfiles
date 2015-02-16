@@ -173,11 +173,12 @@ nnoremap \| :Ag! '\b<cword>\b'<CR>
 " global search for word under cursor as text
 nnoremap g\| :Ag! <cword><CR>
 " global search for selection (<Esc> clears the range)
-vnoremap \ <Esc>:Ag! '<C-r>"'<CR>
+vnoremap \ <Esc>:Ag! '<C-r>*'<CR>
 
 " search for selection
-vnoremap * y/<C-r>"<CR>
-vnoremap # y?<C-r>"<CR>
+" Esc to clear the selection, then search for the last selected thing.
+vnoremap * <Esc>/<C-r>*<CR>
+vnoremap # <Esc>?<C-r>*<CR>
 
 " mouse select and scroll
 set mouse=a
