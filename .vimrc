@@ -35,6 +35,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-cucumber'
+Plugin 'tpope/vim-surround'
 Plugin 'kien/ctrlp.vim'
 Plugin 'slim-template/vim-slim'
 Plugin 'kchmck/vim-coffee-script'
@@ -56,6 +57,7 @@ Plugin 'lmeijvogel/vim-yaml-helper'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'regedarek/ZoomWin'
+Plugin 'ekalinin/Dockerfile.vim'
 
 
 " All of your Plugins must be added before the following line
@@ -144,6 +146,7 @@ autocmd FileType ruby let g:rubycomplete_buffer_loading=1
 autocmd FileType ruby let g:rubycomplete_classes_in_global=1
 
 au BufRead,BufNewFile *.md set filetype=markdown
+au BufRead,BufNewFile user-data set filetype=yaml
 
 " Navigate through wrapped lines intuitively
 imap <silent> <down> <c-o>gj
