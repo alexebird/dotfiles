@@ -42,7 +42,7 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'kana/vim-textobj-user'
 Plugin 'nelstrom/vim-textobj-rubyblock'
-Plugin 'jnwhiteh/vim-golang'
+Plugin 'fatih/vim-go'
 Plugin 'majutsushi/tagbar'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -122,6 +122,7 @@ set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set backupskip=/tmp/*,/private/tmp/*
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
+
 " this makes everything you do fuck with the system clipboard
 "set clipboard=unnamedplus
 
@@ -193,7 +194,7 @@ nnoremap Y ^"+y$
 nnoremap YY "+yy
 " paste from system clipboard
 "nnoremap <C-v> "+p
-nnoremap + O<Esc>"+p
+nnoremap + o<Esc>"+p
 " paste from system clipboard
 "inoremap <C-S-v> "+p
 
