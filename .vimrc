@@ -104,6 +104,8 @@ set showcmd
 set nowrap
 set linebreak
 set laststatus=2
+set title
+"set autowriteall  " <---- huh??
 "set colorcolumn=80
 " Elimiate delay switching to normal mode
 set timeoutlen=1000 ttimeoutlen=0
@@ -129,7 +131,8 @@ set writebackup
 noremap <leader>r :NERDTreeToggle<cr>
 noremap <leader>e :TagbarToggle<cr>
 
-noremap <leader>w :w<cr>
+noremap <leader>w :wa<cr>
+noremap <leader>. :wa<cr>
 noremap <leader>z :st<cr>
 "noremap <leader>tn :tabnew<cr>
 "noremap <leader>tc :tabclose<cr>
