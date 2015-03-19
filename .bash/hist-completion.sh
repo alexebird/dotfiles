@@ -8,3 +8,7 @@ bind '"\e[B": history-search-forward'
 # C-p/C-n
 bind '"\C-p": history-search-backward'
 bind '"\C-n": history-search-forward'
+
+function hs {
+    grep "$*" $HISTFILE
+}

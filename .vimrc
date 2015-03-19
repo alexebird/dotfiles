@@ -197,7 +197,8 @@ nnoremap Y ^"+y$
 nnoremap YY "+yy
 " paste from system clipboard
 "nnoremap <C-v> "+p
-nnoremap + o<Esc>"+p
+"nnoremap + o<Esc>"+p
+nnoremap + "+p
 " paste from system clipboard
 "inoremap <C-S-v> "+p
 
