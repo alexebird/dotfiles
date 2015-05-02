@@ -1,5 +1,12 @@
-set nocompatible               " be iMproved
-filetype off                   " required!
+"  __     ___
+"  \ \   / (_)_ __ ___
+"   \ \ / /| | '_ ` _ \   Ftw
+"    \ V / | | | | | | |
+"     \_/  |_|_| |_| |_|  alexebird@gmail.com
+"
+
+set nocompatible
+filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -58,6 +65,14 @@ Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'regedarek/ZoomWin'
 Plugin 'ekalinin/Dockerfile.vim'
+
+" clj
+Plugin 'guns/vim-clojure-highlight'
+Plugin 'guns/vim-clojure-static'
+Plugin 'guns/vim-sexp'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 
 
 " All of your Plugins must be added before the following line
@@ -235,8 +250,7 @@ let g:ctrlp_root_markers = ['Gemfile', 'project.clj']
 "let g:ctrlp_match_window_bottom = 0
 "let g:ctrlp_match_window_reversed = 0
 "let g:ctrlp_cmd = 'CtrlPMRU'
-" Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-let g:ctrlp_user_command = 'ag %s -l -U --nocolor --nogroup --hidden --smart-case -g ""'
+let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup --hidden --smart-case -g ""'
 " overcome limit imposed by max height
 let g:ctrlp_match_window = 'results:50'
 " ag is fast enough that CtrlP doesn't need to cache
@@ -268,6 +282,7 @@ highlight GitGutterAdd ctermfg=darkgreen
 highlight GitGutterChange ctermfg=darkyellow
 highlight GitGutterDelete ctermfg=darkred
 highlight GitGutterChangeDelete ctermfg=darkyellow
+nmap :GR :GitGutterRevertHunk<cr>
 
 
 " auto-pairs
@@ -302,3 +317,48 @@ map <Leader>l <Plug>(easymotion-lineforward)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 map <Leader>h <Plug>(easymotion-linebackward)
+
+
+" rainbow parens
+let g:rbpt_colorpairs = [
+	\ ['darkgrey',       'RoyalBlue3'],
+	\ ['darkmagenta',    'SeaGreen3'],
+	\ ['darkgreen',    'DarkOrchid3'],
+	\ ['white',   'firebrick3'],
+	\ ['darkyellow',    'RoyalBlue3'],
+	\ ['darkblue',     'SeaGreen3'],
+	\ ['red', 'DarkOrchid3'],
+	\ ['cyan',       'firebrick3'],
+	\ ['darkyellow',        'RoyalBlue3'],
+	\ ['magenta',       'SeaGreen3'],
+	\ ['darkgreen',   'RoyalBlue3'],
+	\ ['darkred',     'DarkOrchid3'],
+	\ ['darkblue',    'firebrick3'],
+	\ ['darkmagenta', 'DarkOrchid3'],
+	\ ['darkcyan',    'SeaGreen3'],
+	\ ['darkyellow',       'firebrick3'],
+	\ ]
+
+"let s:pairs = [
+	"\ ['brown',       'RoyalBlue3'],
+	"\ ['Darkblue',    'SeaGreen3'],
+	"\ ['darkgray',    'DarkOrchid3'],
+	"\ ['darkgreen',   'firebrick3'],
+	"\ ['darkcyan',    'RoyalBlue3'],
+	"\ ['darkred',     'SeaGreen3'],
+	"\ ['darkmagenta', 'DarkOrchid3'],
+	"\ ['brown',       'firebrick3'],
+	"\ ['gray',        'RoyalBlue3'],
+	"\ ['black',       'SeaGreen3'],
+	"\ ['darkmagenta', 'DarkOrchid3'],
+	"\ ['Darkblue',    'firebrick3'],
+	"\ ['darkgreen',   'RoyalBlue3'],
+	"\ ['darkcyan',    'SeaGreen3'],
+	"\ ['darkred',     'DarkOrchid3'],
+	"\ ['red',         'firebrick3'],
+	"\ ]
+au FileType clojure RainbowParenthesesActivate
+au Syntax clojure RainbowParenthesesLoadRound
+au Syntax clojure RainbowParenthesesLoadSquare
+au Syntax clojure RainbowParenthesesLoadBraces
+
