@@ -43,6 +43,7 @@ Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-cucumber'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
 Plugin 'kien/ctrlp.vim'
 Plugin 'slim-template/vim-slim'
 Plugin 'kchmck/vim-coffee-script'
@@ -120,6 +121,7 @@ set nowrap
 set linebreak
 set laststatus=2
 set title
+set synmaxcol=300 " Avoids editor lockup in files with extremely long lines."
 "set autowriteall  " <---- huh??
 "set colorcolumn=80
 " Elimiate delay switching to normal mode
@@ -217,6 +219,11 @@ nnoremap + "+p
 " paste from system clipboard
 "inoremap <C-S-v> "+p
 
+cnoremap <C-W>q <C-W>c
+cnoremap <C-W><C-Q> <C-W>c
+autocmd CmdwinEnter * :set nonumber
+autocmd CmdwinLeave * :set number
+
 
 " Shell command to generate ctags for ruby
 "ctags -R --languages=ruby --exclude=.git --exclude=log .
@@ -282,7 +289,7 @@ highlight GitGutterAdd ctermfg=darkgreen
 highlight GitGutterChange ctermfg=darkyellow
 highlight GitGutterDelete ctermfg=darkred
 highlight GitGutterChangeDelete ctermfg=darkyellow
-nmap :GR :GitGutterRevertHunk<cr>
+command GR GitGutterRevertHunk
 
 
 " auto-pairs
@@ -317,6 +324,10 @@ map <Leader>l <Plug>(easymotion-lineforward)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 map <Leader>h <Plug>(easymotion-linebackward)
+
+
+" supertab
+let g:SuperTabDefaultCompletionType = "context"
 
 
 " rainbow parens
