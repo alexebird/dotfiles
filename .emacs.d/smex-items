@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- package-install
- package-refresh-contents
- ido-find-file
- eval-expression
- ido-mode
- buffer-menu
- cd
+ cider-eval-buffer
+ comment-region
+ uncomment-region
+ kill-sexp
+ load-file
+ ace-jump-char-mode
+ switch-to-previous-buffer
 )
 
 ;; ----- smex-data -----
@@ -18,4 +18,22 @@
  (ido-find-file . 1)
  (package-install . 6)
  (package-refresh-contents . 1)
+ (cider-jack-in . 5)
+ (projectile-mode . 2)
+ (package-list-packages . 1)
+ (cider-restart . 1)
+ (cider-eval-ns-form . 1)
+ (cider-eval-region . 8)
+ (cider-eval-buffer . 56)
+ (kill-sexp . 6)
+ (comment-region . 6)
+ (undo-tree-mode . 2)
+ (undo-tree-visualize . 1)
+ (mark-sexp . 2)
+ (uncomment-region . 5)
+ (cider-quit . 1)
+ (cider-connect . 1)
+ (load-file . 4)
+ (switch-to-previous-buffer . 1)
+ (ace-jump-char-mode . 1)
 )

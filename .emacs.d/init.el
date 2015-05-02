@@ -91,7 +91,15 @@
  (add-hook 'cider-mode-hook 'turn-on-eldoc-mode)
 
 ;; Ace Jump mode
-(define-key global-map (kbd "C-o") 'ace-jump-mode)
+(define-key global-map (kbd "C-o") 'ace-jump-char-mode)
 
 ;; Undo-Tree mode
 (global-undo-tree-mode)
+
+;; Key bindings
+;(defun switch-to-previous-buffer ()
+;  "Switch to previously open buffer. Repeated invocations toggle between the two most recently open buffers."
+;    (interactive)
+;    (switch-to-buffer (other-buffer (current-buffer) 1)))
+
+;(global-set-key (kbd "C-x C-j") 'switch-to-previous-buffer)
