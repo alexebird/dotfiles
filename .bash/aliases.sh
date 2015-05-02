@@ -21,14 +21,16 @@ alias fco='git fast-checkout'
 alias ag='ag --hidden --smart-case'
 
 # ctags
-alias ctags-rails='ctags -R --languages=ruby --exclude=.git --exclude=log .'
+alias ctags-rb='ctags -R --languages=ruby --exclude=.git --exclude=log .'
 
 alias open='xdg-open'
 
 # ls
 alias ls='ls -F'
 alias l='ls'
+alias l1='ls -1'
 alias ll='\ls -Fltrh'
+alias la='ls -Al'
 
 # grep
 alias grep='grep --color=auto'
