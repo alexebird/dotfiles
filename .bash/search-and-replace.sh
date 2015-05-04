@@ -5,5 +5,6 @@ function sar() {
     FROM=$2
     TO=$3
 
-    find -name $PATTERN -type f -print -exec sed s/$FROM/$TO/g {} \;
+    find . -type d -name .git -prune -o -type f -name "${PATTERN}" -print -exec sed -i -e"s/${FROM}/${TO}/g" {} \;
+
 }

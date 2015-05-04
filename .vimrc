@@ -66,6 +66,8 @@ Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'regedarek/ZoomWin'
 Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'rodjek/vim-puppet'
+Plugin 'asymmetric/upstart.vim'
 
 " clj
 Plugin 'guns/vim-clojure-highlight'
@@ -125,7 +127,7 @@ set synmaxcol=300 " Avoids editor lockup in files with extremely long lines."
 "set autowriteall  " <---- huh??
 "set colorcolumn=80
 " Elimiate delay switching to normal mode
-set timeoutlen=1000 ttimeoutlen=0
+set timeoutlen=500 ttimeoutlen=0
 let mapleader = ","
 nmap <F10> :set paste!<CR>
 noremap <leader>n :set relativenumber!<cr>
@@ -142,8 +144,17 @@ set backupskip=/tmp/*,/private/tmp/*
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
 
+
+command! SS source $MYVIMRC
+command! SV edit $MYVIMRC
+
 " this makes everything you do fuck with the system clipboard
 "set clipboard=unnamedplus
+
+nmap <leader>a <leader>h
+nmap <leader>s <leader>j
+nmap <leader>d <leader>k
+nmap <leader>f <leader>l
 
 noremap <leader>r :NERDTreeToggle<cr>
 noremap <leader>e :TagbarToggle<cr>
@@ -168,6 +179,7 @@ autocmd FileType ruby let g:rubycomplete_classes_in_global=1
 
 au BufRead,BufNewFile *.md set filetype=markdown
 au BufRead,BufNewFile user-data set filetype=yaml
+au BufRead,BufNewFile *.conf set filetype=upstart
 
 " Navigate through wrapped lines intuitively
 imap <silent> <down> <c-o>gj

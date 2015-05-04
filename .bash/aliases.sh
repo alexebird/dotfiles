@@ -30,7 +30,7 @@ alias ls='ls -F'
 alias l='ls'
 alias l1='ls -1'
 alias ll='\ls -Fltrh'
-alias la='ls -Al'
+alias la='\ls -FltrhA'
 
 # grep
 alias grep='grep --color=auto'
@@ -40,3 +40,6 @@ alias egrep='egrep --color=auto'
 # urls
 alias urlencode='python -c "import urllib, sys; print urllib.quote(sys.argv[1])"'
 alias urldecode='python -c "import urllib, sys; print urllib.unquote(sys.argv[1])"'
+
+alias shit='ssh it'
+alias rbj='ruby -rawesome_print -rjson -e'
