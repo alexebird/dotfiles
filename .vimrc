@@ -52,8 +52,8 @@ Plugin 'kana/vim-textobj-user'
 Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'fatih/vim-go'
 Plugin 'majutsushi/tagbar'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+"Plugin 'SirVer/ultisnips'
+"Plugin 'honza/vim-snippets'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'ervandew/supertab'
 "Plugin 'Valloric/YouCompleteMe'
@@ -339,7 +339,7 @@ map <Leader>h <Plug>(easymotion-linebackward)
 
 
 " supertab
-let g:SuperTabDefaultCompletionType = "context"
+"let g:SuperTabDefaultCompletionType = "context"
 
 
 " rainbow parens
