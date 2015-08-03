@@ -5,7 +5,7 @@ function honesty-environment() {
 
     if [[ ${HONESTY_ENV} == 'local' ]]; then
         export INTEGRITY_DATABASE_URL='mysql://root@localhost/integrity'
-        export GITHUB_READ_TOKEN='2303674b8ff215e368c5d90c66ed0f4c074849da'
+        export GITHUB_READ_TOKEN='foo'
     elif [ -z "${HONESTY_ENV}" ]; then
         echo "usage: honesty-environment ENV (available envs: local)"
         return 1

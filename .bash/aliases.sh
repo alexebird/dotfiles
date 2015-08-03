@@ -17,6 +17,7 @@ alias gs='git status'
 #alias gpp='git pull'
 alias bs='git branch-search'
 alias fco='git fast-checkout'
+alias deletemerged='git branch --merged | grep -v "*" | xargs -n 1 git branch -d'
 
 # ag
 alias ag='ag --hidden --smart-case'
@@ -34,13 +35,35 @@ alias ll='\ls -Fltrh'
 alias la='\ls -FltrhA'
 
 # grep
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+alias grep='grep --color=always'
+
+# less
+alias less='less -R'
 
 # urls
 alias urlencode='python -c "import urllib, sys; print urllib.quote(sys.argv[1])"'
 alias urldecode='python -c "import urllib, sys; print urllib.unquote(sys.argv[1])"'
 
+# awk
+alias f1='awk "{print \$1}"'
+alias f1x='f1 | xargs'
+
+# fun
 alias shit='ssh it'
 alias rbj='ruby -rawesome_print -rjson -e'
+alias ddd='gpg -d'
+alias rr='reset'
+alias pssh="ps -eo pid,args | grep ssh | grep -v 'grep\|sshd\|ssh-agent'"
+alias myip="ifconfig eth2 | grep -o --color=none '10\.\0\.20\.[[:digit:]]\+'"
+
+function sshk()
+{
+    pssh | grep "\b$1\b"
+}
+
+function gnb()
+{
+    git checkout master
+    git pull
+    git co -b `name-branch $1`
+}

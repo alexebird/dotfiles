@@ -68,6 +68,7 @@ Plugin 'regedarek/ZoomWin'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'rodjek/vim-puppet'
 Plugin 'asymmetric/upstart.vim'
+Plugin 'jamessan/vim-gnupg'
 
 " clj
 Plugin 'guns/vim-clojure-highlight'
@@ -123,7 +124,7 @@ set nowrap
 set linebreak
 set laststatus=2
 set title
-set synmaxcol=120 " Avoids editor lockup in files with extremely long lines."
+set synmaxcol=300 " Avoids editor lockup in files with extremely long lines."
 "set autowriteall  " <---- huh??
 "set colorcolumn=80
 " Elimiate delay switching to normal mode
