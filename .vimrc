@@ -70,6 +70,9 @@ Plugin 'rodjek/vim-puppet'
 Plugin 'asymmetric/upstart.vim'
 Plugin 'jamessan/vim-gnupg'
 
+" motion mods
+Plugin 'bkad/CamelCaseMotion'
+
 " clj
 Plugin 'guns/vim-clojure-highlight'
 Plugin 'guns/vim-clojure-static'
@@ -129,7 +132,6 @@ set synmaxcol=300 " Avoids editor lockup in files with extremely long lines."
 "set colorcolumn=80
 " Elimiate delay switching to normal mode
 set timeoutlen=500 ttimeoutlen=0
-set iskeyword-=_
 let mapleader = ","
 nmap <F10> :set paste!<CR>
 noremap <leader>n :set relativenumber!<cr>
