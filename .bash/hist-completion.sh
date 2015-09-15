@@ -10,5 +10,5 @@ bind '"\C-p": history-search-backward'
 bind '"\C-n": history-search-forward'
 
 function hs {
-    history | grep "$*"
+    history | grep -i "$*"
 }
