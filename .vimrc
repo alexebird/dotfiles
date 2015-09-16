@@ -163,7 +163,7 @@ nmap <leader>f <leader>l
 noremap <leader>r :NERDTreeToggle<cr>
 noremap <leader>e :TagbarToggle<cr>
 
-noremap <leader>w :wa<cr>
+"noremap <leader>w :wa<cr>
 noremap <leader>. :wa<cr>
 noremap <leader>z :st<cr>
 "noremap <leader>tn :tabnew<cr>
