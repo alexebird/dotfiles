@@ -55,6 +55,7 @@ alias ddd='gpg -d'
 alias rr='reset'
 alias pssh="ps -eo pid,args | grep ssh | grep -v 'grep\|sshd\|ssh-agent'"
 alias myip="ifconfig eth2 | grep -o --color=none '10\.\0\.20\.[[:digit:]]\+'"
+alias banner='figlet -f graffiti'
 
 function sshk()
 {
