@@ -151,6 +151,9 @@ set writebackup
 
 command! SS source $MYVIMRC
 command! SV edit $MYVIMRC
+command! TT ! ctags -R --languages=ruby --exclude=.git --exclude=log .
+"command! TT silent ! ctags -R --languages=ruby --exclude=.git --exclude=log . | execute ':redraw!'
+command! E %Eval
 
 " this makes everything you do fuck with the system clipboard
 "set clipboard=unnamedplus
@@ -305,7 +308,7 @@ highlight GitGutterAdd ctermfg=darkgreen
 highlight GitGutterChange ctermfg=darkyellow
 highlight GitGutterDelete ctermfg=darkred
 highlight GitGutterChangeDelete ctermfg=darkyellow
-command GR GitGutterRevertHunk
+command! GR GitGutterRevertHunk
 
 
 " auto-pairs
