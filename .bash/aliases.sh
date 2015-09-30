@@ -17,7 +17,7 @@ alias gs='git status'
 #alias gpp='git pull'
 alias bs='git branch-search'
 alias fco='git fast-checkout'
-alias deletemerged='git branch --merged | grep -v "*" | xargs -n 1 git branch -d'
+alias pm='git checkout master && git pull && git checkout - && git merge master'
 
 # ag
 alias ag='ag --hidden --smart-case'
@@ -56,6 +56,11 @@ alias rr='reset'
 alias pssh="ps -eo pid,args | grep ssh | grep -v 'grep\|sshd\|ssh-agent'"
 alias myip="ifconfig eth2 | grep -o --color=none '10\.\0\.20\.[[:digit:]]\+'"
 alias banner='figlet -f graffiti'
+alias vpn='sudo ipsec down grnds-sfo && sudo ipsec up grnds-sfo'
+#alias enable-pointer='xinput set-prop 13 "Device Enabled" 1'
+#alias disable-pointer='xinput set-prop 13 "Device Enabled" 0'
+#alias enable-touchpad='xinput set-prop 12 "Device Enabled" 1'
+#alias disable-touchpad='xinput set-prop 12 "Device Enabled" 0'
 
 function sshk()
 {
@@ -67,4 +72,14 @@ function gnb()
     git checkout master
     git pull
     git co -b `name-branch $1`
+}
+
+function prme()
+{
+    mkpr $(basename $(pwd)) $(bs)
+}
+
+function grnds-dns()
+{
+    sudo sh -c 'echo search grandrounds.com >> /etc/resolv.conf'
 }
