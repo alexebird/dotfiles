@@ -153,7 +153,8 @@ command! SS source $MYVIMRC
 command! SV edit $MYVIMRC
 command! TT ! ctags -R --languages=ruby --exclude=.git --exclude=log .
 "command! TT silent ! ctags -R --languages=ruby --exclude=.git --exclude=log . | execute ':redraw!'
-command! E %Eval
+command! E Eval
+command! EE %Eval
 
 " this makes everything you do fuck with the system clipboard
 "set clipboard=unnamedplus
