@@ -2,6 +2,37 @@
 # http://effectif.com/git/config
 # http://sitaramc.github.com/2-command-line-usage/souped-up-bash-prompt.html
 # http://zerowidth.com/blog/2008/11/29/command-prompt-tips.html
+
+aws_env_short()
+{
+  case "${AWS_ENVIRONMENT}" in
+    'development')
+      echo 'dev'
+      ;;
+    'test')
+      echo 'test'
+      ;;
+    'uat')
+      echo 'uat'
+      ;;
+    'integration')
+      echo 'i'
+      ;;
+    'integration1')
+      echo 'i1'
+      ;;
+    'integration2')
+      echo 'i2'
+      ;;
+    'integration3')
+      echo 'i3'
+      ;;
+    *)
+      return 1
+      ;;
+  esac
+}
+
 prompt_function() {
   local        BLUE='\[\e[0;34m\]'
   local  LIGHT_BLUE='\[\e[1;34m\]'
@@ -46,8 +77,8 @@ prompt_function() {
     swarmy=''
   fi
 
-  if [ -n "${AWS_ENVIRONMENT}" ]; then
-    awsenv="${PURPLE}(aws:$(ae))"
+  if aws_env_short > /dev/null ; then
+    awsenv="${YELLOW}(aws:$(aws_env_short))"
   else
     awsenv=''
   fi
