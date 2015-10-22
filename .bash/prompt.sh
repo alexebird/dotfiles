@@ -39,6 +39,19 @@ prompt_function() {
   fi
   #PS1="${LIGHT_GRAY}\u@\h: \w${git_color}$(__git_ps1)${LIGHT_GRAY}\$${RESET} "
   #PS1="${LIGHT_GRAY}[$(date +'%I:%M:%S%P %-m/%d')]\n${LIGHT_GRAY}\w${git_color}$(__git_ps1)${LIGHT_GRAY}\$${RESET} "
-  PS1="${LIGHT_GRAY}\w${git_color}$(__git_ps1)${LIGHT_GRAY}\$${RESET} "
+
+  if [ -n "$SWARM_ENV" ]; then
+    swarmy="${BLUE}(swarm:${SWARM_ENV})"
+  else
+    swarmy=''
+  fi
+
+  if [ -n "${AWS_ENVIRONMENT}" ]; then
+    awsenv="${PURPLE}(aws:$(ae))"
+  else
+    awsenv=''
+  fi
+
+  PS1="${LIGHT_GRAY}\w${git_color}$(__git_ps1)${awsenv}${swarmy}${LIGHT_GRAY}\$${RESET} "
 }
-PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} prompt_function"
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a ; prompt_function"

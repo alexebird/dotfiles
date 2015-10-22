@@ -18,6 +18,7 @@ alias gs='git status --short'
 alias bs='git branch-search'
 alias fco='git fast-checkout'
 alias pm='git checkout master && git pull && git checkout - && git merge master'
+alias git-prune-local='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
 
 # ag
 alias ag='ag --hidden --smart-case'
@@ -62,22 +63,22 @@ alias vpn='sudo ipsec down grnds-sfo && sudo ipsec up grnds-sfo'
 #alias enable-touchpad='xinput set-prop 12 "Device Enabled" 1'
 #alias disable-touchpad='xinput set-prop 12 "Device Enabled" 0'
 
-function sshk()
-{
-    pssh | grep "\b$1\b"
-}
+# docker
+alias dps='docker ps -a | less -S'
 
-function gnb()
-{
-    git checkout master
-    git pull
-    git co -b `name-branch $1`
-}
+# grnds
+alias ae='gr-aws-environment'
+alias ae-dev='ae development'
+alias ae-test='ae test'
+alias ae-i3='ae integration3'
+alias ae-uat='ae uat'
 
-function prme()
-{
-    mkpr $(basename $(pwd)) $(bs)
-}
+#function gnb()
+#{
+    #git checkout master
+    #git pull
+    #git co -b `name-branch $1`
+#}
 
 function grnds-dns()
 {
