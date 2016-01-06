@@ -69,6 +69,8 @@ Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'rodjek/vim-puppet'
 Plugin 'asymmetric/upstart.vim'
 Plugin 'jamessan/vim-gnupg'
+Plugin 'alexebird/vim-ansible-yaml'
+Plugin 'lucastadeu/cyberpunk.vim'
 
 " motion mods
 Plugin 'bkad/CamelCaseMotion'
@@ -80,6 +82,9 @@ Plugin 'guns/vim-sexp'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+
+" elixir
+Plugin 'elixir-lang/vim-elixir'
 
 
 " All of your Plugins must be added before the following line
@@ -114,9 +119,11 @@ syntax enable
 "let g:solarized_contrast = 'high'
 set background=dark
 colorscheme solarized
+"colorscheme cyberpunk
 
 set tabstop=4
 set shiftwidth=4
+set expandtab
 set number
 set hlsearch
 set incsearch
@@ -188,6 +195,8 @@ autocmd FileType ruby let g:rubycomplete_classes_in_global=1
 au BufRead,BufNewFile *.md set filetype=markdown
 au BufRead,BufNewFile user-data set filetype=yaml
 au BufRead,BufNewFile *.conf set filetype=upstart
+au FileType sh setl sw=4 sts=5 et
+au FileType bash setl sw=4 sts=5 et
 
 " Navigate through wrapped lines intuitively
 imap <silent> <down> <c-o>gj
@@ -274,7 +283,6 @@ let g:airline_right_sep=''
 let g:ctrlp_map = '<C-p>'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['Gemfile', 'project.clj']
-"let g:ctrlp_match_window_bottom = 0
 "let g:ctrlp_match_window_reversed = 0
 "let g:ctrlp_cmd = 'CtrlPMRU'
 let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup --hidden --smart-case -g ""'
@@ -304,11 +312,11 @@ nnoremap <leader>g :GundoToggle<cr>
 
 " gitgutter
 "highlight clear SignColumn
-highlight SignColumn ctermbg=bg
-highlight GitGutterAdd ctermfg=darkgreen
-highlight GitGutterChange ctermfg=darkyellow
-highlight GitGutterDelete ctermfg=darkred
-highlight GitGutterChangeDelete ctermfg=darkyellow
+"highlight SignColumn ctermbg=bg
+"highlight GitGutterAdd ctermfg=darkgreen
+"highlight GitGutterChange ctermfg=darkyellow
+"highlight GitGutterDelete ctermfg=darkred
+"highlight GitGutterChangeDelete ctermfg=darkyellow
 command! GR GitGutterRevertHunk
 
 
@@ -392,4 +400,3 @@ au FileType clojure RainbowParenthesesActivate
 au Syntax clojure RainbowParenthesesLoadRound
 au Syntax clojure RainbowParenthesesLoadSquare
 au Syntax clojure RainbowParenthesesLoadBraces
-

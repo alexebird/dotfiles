@@ -64,25 +64,36 @@ prompt_function() {
   # use "${prompt_color}\$${RESET}" instead of "\$" below
 
   if test $(git status 2> /dev/null | grep -c :) -eq 0; then
-    git_color="${GREEN}"
+    local git_color="${GREEN}"
   else
-    git_color="${RED}"
+    local git_color="${RED}"
   fi
   #PS1="${LIGHT_GRAY}\u@\h: \w${git_color}$(__git_ps1)${LIGHT_GRAY}\$${RESET} "
   #PS1="${LIGHT_GRAY}[$(date +'%I:%M:%S%P %-m/%d')]\n${LIGHT_GRAY}\w${git_color}$(__git_ps1)${LIGHT_GRAY}\$${RESET} "
 
   if [ -n "$SWARM_ENV" ]; then
-    swarmy="${BLUE}(swarm:${SWARM_ENV})"
+    if [[ "${SWARM_ENV}" == 'production' ]]; then
+      local swarm_env_short='prod'
+    else
+      local swarm_env_short="${SWARM_ENV}"
+    fi
+    local swarmy="${BLUE}(dkr:${swarm_env_short})"
   else
-    swarmy=''
+    local swarmy=''
   fi
 
   if aws_env_short > /dev/null ; then
-    awsenv="${YELLOW}(aws:$(aws_env_short))"
+    local awsenv="${YELLOW}(aws:$(aws_env_short))"
   else
-    awsenv=''
+    local awsenv=''
   fi
 
-  PS1="${LIGHT_GRAY}\w${git_color}$(__git_ps1)${awsenv}${swarmy}${LIGHT_GRAY}\$${RESET} "
+  if [ -n "$TRACKER_TOKEN" ]; then
+    local tracker="${PURPLE}(t)"
+  else
+    local tracker=''
+  fi
+
+  PS1="${LIGHT_GRAY}\w${git_color}$(__git_ps1)${awsenv}${swarmy}${tracker}${LIGHT_GRAY}\$${RESET} "
 }
 PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a ; prompt_function"
