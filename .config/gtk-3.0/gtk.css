@@ -1,0 +1,11 @@
+TerminalWindow .notebook tab:active {
+	background-color: #002B36;
+}
+
+TerminalWindow .notebook {
+	border: 0;
+	padding: 0;
+	background-color: #586E75;
+	color: #bbb;
+	border-radius: 0;
+}
