@@ -37,7 +37,8 @@ alias ll='\ls -Fltrh'
 alias la='\ls -FltrhA'
 
 # grep
-alias grep='grep --color=always'
+alias grep='grep --color=auto'
+alias erep='egrep --color=auto'
 
 # less
 alias less='less -R'

@@ -70,7 +70,7 @@ Plugin 'rodjek/vim-puppet'
 Plugin 'asymmetric/upstart.vim'
 Plugin 'jamessan/vim-gnupg'
 Plugin 'alexebird/vim-ansible-yaml'
-Plugin 'lucastadeu/cyberpunk.vim'
+"Plugin 'lucastadeu/cyberpunk.vim'
 
 " motion mods
 Plugin 'bkad/CamelCaseMotion'
@@ -400,3 +400,5 @@ au FileType clojure RainbowParenthesesActivate
 au Syntax clojure RainbowParenthesesLoadRound
 au Syntax clojure RainbowParenthesesLoadSquare
 au Syntax clojure RainbowParenthesesLoadBraces
+
+autocmd FileType clojure nnoremap <buffer> cpc :Eval<cr>
