@@ -253,7 +253,7 @@
     <!-- Keybindings for switching displays -->
     <keybind key="W-s">
       <action name="Execute">
-        <command>/home/bird/bin/swoop.sh</command>
+        <command>gnome-terminal -x bash -c '/home/bird/bin/swoop.sh'</command>
       </action>
     </keybind>
     <!-- Keybindings for windows -->

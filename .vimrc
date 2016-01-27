@@ -64,7 +64,7 @@ Plugin 'rking/ag.vim'
 Plugin 'lmeijvogel/vim-yaml-helper'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'Lokaltog/vim-easymotion'
-Plugin 'regedarek/ZoomWin'
+"Plugin 'regedarek/ZoomWin'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'rodjek/vim-puppet'
 Plugin 'asymmetric/upstart.vim'
@@ -325,7 +325,8 @@ let g:AutoPairsShortcutFastWrap = '<C-a>'
 
 
 " ag
-let g:agprg="ag --nocolor --nogroup --column --hidden --smart-case --ignore log"
+"let g:ag_working_path_mode="r"
+let g:ag_prg="ag --vimgrep --hidden --smart-case --ignore log"
 
 
 " syntastic
