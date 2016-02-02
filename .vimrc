@@ -109,7 +109,7 @@ runtime macros/matchit.vim
 set shell=/bin/bash
 "set t_Co=256
 set backspace=indent,eol,start
-set encoding=utf-8
+"set encoding=utf-8
 
 syntax on
 syntax enable
@@ -214,24 +214,20 @@ nmap <silent> k gk
 
 autocmd BufWinEnter * if &buftype == 'quickfix' | setlocal nonumber | endif
 
-" Use ag over grep
-"set grepprg=ag\ --nogroup\ --nocolor
-"set grepprg=git\ grep
-
 " Searching
 " global search prompt
-nnoremap \ :Ag!<space>''<Left>
-" global search for whole word under cursor
-nnoremap \| :Ag! '\b<cword>\b'<CR>
+nnoremap \ :Ag! ''<Left>
+" global search for whole word under cursor using '|' character
+nnoremap <bar> :Ag! '\b<cword>\b'<CR>
 " global search for word under cursor as text
-nnoremap g\| :Ag! <cword><CR>
+nnoremap g\ :Ag! <cword><CR>
 " global search for selection (<Esc> clears the range)
-vnoremap \ <Esc>:Ag! '<C-r>*'<CR>
+vnoremap \ "9y<Esc>:Ag! '<C-r>9'<CR>
 
 " search for selection
 " Esc to clear the selection, then search for the last selected thing.
-vnoremap * <Esc>/<C-r>*<CR>
-vnoremap # <Esc>?<C-r>*<CR>
+vnoremap * "9y<Esc>/<C-r>9<CR>
+vnoremap # "9y<Esc>?<C-r>9<CR>
 
 " mouse select and scroll
 set mouse=a
