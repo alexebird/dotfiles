@@ -297,9 +297,8 @@ nnoremap <C-k> :CtrlPBuffer<CR>
 let g:tagbar_sort = '0'
 
 
-" utilsnips
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 
 " gundo (undo-tree)
@@ -357,22 +356,22 @@ map <Leader>h <Plug>(easymotion-linebackward)
 
 " rainbow parens
 let g:rbpt_colorpairs = [
-	\ ['darkgrey',       'RoyalBlue3'],
-	\ ['darkmagenta',    'SeaGreen3'],
-	\ ['darkgreen',    'DarkOrchid3'],
-	\ ['white',   'firebrick3'],
-	\ ['darkyellow',    'RoyalBlue3'],
-	\ ['darkblue',     'SeaGreen3'],
-	\ ['red', 'DarkOrchid3'],
-	\ ['cyan',       'firebrick3'],
-	\ ['darkyellow',        'RoyalBlue3'],
-	\ ['magenta',       'SeaGreen3'],
+	\ ['darkgrey',    'RoyalBlue3'],
+	\ ['darkmagenta', 'SeaGreen3'],
+	\ ['darkgreen',   'DarkOrchid3'],
+	\ ['white',       'firebrick3'],
+	\ ['darkyellow',  'RoyalBlue3'],
+	\ ['darkblue',    'SeaGreen3'],
+	\ ['red',         'DarkOrchid3'],
+	\ ['cyan',        'firebrick3'],
+	\ ['darkyellow',  'RoyalBlue3'],
+	\ ['magenta',     'SeaGreen3'],
 	\ ['darkgreen',   'RoyalBlue3'],
 	\ ['darkred',     'DarkOrchid3'],
 	\ ['darkblue',    'firebrick3'],
 	\ ['darkmagenta', 'DarkOrchid3'],
 	\ ['darkcyan',    'SeaGreen3'],
-	\ ['darkyellow',       'firebrick3'],
+	\ ['darkyellow',  'firebrick3'],
 	\ ]
 
 "let s:pairs = [
