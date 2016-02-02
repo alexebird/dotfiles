@@ -406,7 +406,7 @@
     <!-- Lock the screen on Ctrl + Alt + l-->
     <keybind key="C-A-l">
       <action name="Execute">
-        <command>lxsession-default lock</command>
+        <command>xscreensaver-command -lock</command>
       </action>
     </keybind>
     <keybind key="F8">
