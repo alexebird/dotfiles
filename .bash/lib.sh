@@ -255,6 +255,8 @@ prompt_function() {
   PS1="${LIGHT_GRAY}\w${git_color}$(__git_ps1)${awsenv}${swarmy}${LIGHT_GRAY}\$${RESET} "
 }
 
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a ; prompt_function"
+
 tab_title() {
   if [[ ${PWD} == ${HOME} ]]; then
     TITLE='~'
