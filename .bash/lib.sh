@@ -278,6 +278,12 @@ tab_title() {
   echo -n -e "\033]0;${TITLE}\007"
 }
 
+# auto-title
+cd()    { __zsh_like_cd cd    "$@" && tab_title; }
+pushd() { __zsh_like_cd pushd "$@" && tab_title; }
+popd()  { __zsh_like_cd popd  "$@" && tab_title; }
+tab_title
+
 unswap_alt_super() {
   setxkbmap -layout us -option ''
   remap_capslock
