@@ -69,7 +69,7 @@ alias rz='restart zulip || start zulip'
 #alias disable-pointer='xinput set-prop 13 "Device Enabled" 0'
 #alias enable-touchpad='xinput set-prop 12 "Device Enabled" 1'
 #alias disable-touchpad='xinput set-prop 12 "Device Enabled" 0'
-alias bat='for i in 0 1; do echo BAT$i ; upower -i "/org/freedesktop/UPower/devices/battery_BAT${i}" | grep "time to empty" ; done'
+alias bat='for i in 0 1; do echo BAT$i ; upower -i "/org/freedesktop/UPower/devices/battery_BAT${i}" | grep --color=never "time to empty" ; done'
 alias bundle-cache-ls='aws s3 ls s3://grnds-test-coreos/'
 bundle-cache-rm()
 {
