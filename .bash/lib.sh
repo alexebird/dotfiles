@@ -56,6 +56,7 @@ alias urldecode='python -c "import urllib, sys; print urllib.unquote(sys.argv[1]
 
 
 # fun
+alias upgrade='sudo apt-get -y update && sudo apt-get -y dist-upgrade'
 alias shit='ssh it'
 alias rbj='ruby -rawesome_print -rjson -e'
 alias ddd='gpg -d'

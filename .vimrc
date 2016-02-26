@@ -14,27 +14,11 @@ call vundle#begin()
 " let Vundle manage Vundle
 " required!
 Plugin 'gmarik/Vundle.vim'
-
-" My Bundles here:
-"
-" original repos on github
-" Plugin 'tpope/vim-fugitive'
-" Plugin 'Lokaltog/vim-easymotion'
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Plugin 'tpope/vim-rails.git'
-" vim-scripts repos
-" Plugin 'L9'
-" Plugin 'FuzzyFinder'
-" non github repos
-" Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (ie. when working on your own plugin)
-" Plugin 'file:///Users/gmarik/path/to/plugin'
-" ...
-"
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'taglist.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
@@ -244,8 +228,15 @@ nnoremap + "+p
 " paste from system clipboard
 "inoremap <C-S-v> "+p
 
-cnoremap <C-W>q <C-W>c
-cnoremap <C-W><C-Q> <C-W>c
+function! CopyFilnameToClipboard()
+    let @+=@%
+    execute 'file'
+endfunction
+
+nnoremap <silent> <C-g> :call CopyFilnameToClipboard()<CR>
+
+cnoremap <C-w>q <C-w>c
+cnoremap <C-w><C-q> <C-w>c
 autocmd CmdwinEnter * :set nonumber
 autocmd CmdwinLeave * :set number
 
