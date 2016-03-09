@@ -91,6 +91,7 @@ alias ae-uat='ae uat'
 alias te='tracker-environment'
 alias de='dev-environment'
 alias pe='papertrail-environment'
+alias he='honesty-environment'
 
 #function gnb()
 #{
