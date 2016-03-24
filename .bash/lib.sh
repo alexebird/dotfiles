@@ -318,7 +318,12 @@ gr-gh-status() {
   local state="${3:?missing arg 3: state (pending, success, error, or failure)}"
   local desc="${4:?missing arg 4: desc}"
 
-  curl -s "https://api.github.com/repos/ConsultingMD/${repo}/statuses/${sha}" -XPOST -d@- <<-HERE | jq .
+  curl -s \
+    "https://api.github.com/repos/ConsultingMD/${repo}/statuses/${sha}" \
+    -H "Content-Type: application/json" \
+    -H "authToken: TODO" \
+    -XPOST \
+    -d@- <<-HERE | jq .
 {
   "state": "${state}",
   "description": "${desc}",
