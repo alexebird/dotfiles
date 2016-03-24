@@ -3,7 +3,7 @@ alias lock='lxlock'
 alias copy='xsel -ib'
 alias paste='xsel -b'
 
-alias h='history'
+#alias h='history'
 hs() {
     history | grep -i "$*"
 }
@@ -27,6 +27,14 @@ alias fco='git fast-checkout'
 alias pm='git checkout master && git pull && git checkout - && git merge master'
 alias git-prune-local='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
 alias git-track='git branch --set-upstream-to=origin/`bs` `bs`'
+
+orphaned_local_branches() {
+  local remotes=$(git branch -a | grep '  remotes' | sed -e's|  remotes/origin/||')
+  for e in $(git branch | sed -e's/\(* \)\|\(  \)//') ; do
+    echo "$remotes" | grep -q $e || echo "$e"
+  done
+}
+
 
 # ag
 alias ag='ag --hidden --smart-case'
@@ -302,4 +310,19 @@ fix_caps_lock() {
 mount_smb() {
   sudo PASSWD="$(gpg --batch -d ~/downloads/sfnas_xen-host_creds.txt.gpg 2> /dev/null | grep 'pwd: ' | awk '{print $2}')" \
     mount -t cifs //sfnas.grandrounds.com/ISOs/ /mnt/sfnas/ -o rw,username=xen-host
+}
+
+gr-gh-status() {
+  local repo="${1:?missing arg 1: repo}"
+  local sha="${2:?missing arg 2: sha}"
+  local state="${3:?missing arg 3: state (pending, success, error, or failure)}"
+  local desc="${4:?missing arg 4: desc}"
+
+  curl -s "https://api.github.com/repos/ConsultingMD/${repo}/statuses/${sha}" -XPOST -d@- <<-HERE | jq .
+{
+  "state": "${state}",
+  "description": "${desc}",
+  "context": "developer-status"
+}
+HERE
 }
