@@ -2,6 +2,11 @@ alias genpass='< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c16; echo'
 alias lock='lxlock'
 alias copy='xsel -ib'
 alias paste='xsel -b'
+alias hell='honesty-environment local'
+alias dp='docker ps --format "table {{.ID}}\t{{.Status}}\t{{.Names}}"'
+alias dpp='docker ps --format "table {{.ID}}\t{{.Status}}\t{{.Ports}}\t{{.Names}}"'
+alias wdp="watch -n1 'docker ps --format \"table {{.ID}}\t{{.Status}}\t{{.Names}}\"'"
+alias h='highlight'
 
 #alias h='history'
 hs() {
@@ -21,6 +26,7 @@ alias gl='git lg'
 alias gla='git lg --branches --remotes --tags'
 alias glo='git lg --oneline'
 alias gs='git status --short'
+alias gds='gd --stat'
 alias gp='git push -u'
 alias bs='git branch-search'
 alias fco='git fast-checkout'
@@ -93,6 +99,7 @@ alias consul='docker run --rm --name consul gliderlabs/consul'
 # grnds
 alias ae='gr-aws-environment'
 alias ae-dev='ae development'
+alias ae-ci='ae ci'
 alias ae-test='ae test'
 alias ae-i3='ae integration3'
 alias ae-uat='ae uat'
@@ -179,6 +186,9 @@ aws_env_short()
       ;;
     'test')
       echo 'test'
+      ;;
+    'ci')
+      echo 'ci'
       ;;
     'uat')
       echo 'uat'
