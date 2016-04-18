@@ -86,8 +86,8 @@ alias rz='restart zulip || start zulip'
 #alias disable-touchpad='xinput set-prop 12 "Device Enabled" 0'
 alias bat='for i in 0 1; do echo BAT$i ; upower -i "/org/freedesktop/UPower/devices/battery_BAT${i}" | grep --color=never "time to empty" ; done'
 alias bundle-cache-ls='aws s3 ls s3://grnds-test-coreos/'
-bundle-cache-rm()
-{
+
+bundle-cache-rm() {
     aws s3 rm s3://grnds-test-coreos/${1}-bundle.tar.gz
 }
 
@@ -115,13 +115,11 @@ alias he='honesty-environment'
     #git co -b `name-branch $1`
 #}
 
-grnds_dns()
-{
+grnds_dns() {
   sudo sh -c 'echo search grandrounds.com >> /etc/resolv.conf'
 }
 
-f()
-{
+f() {
   awk "{print \$$1}"
 }
 
@@ -178,8 +176,7 @@ gpg_agent_start() {
   #fi
 }
 
-aws_env_short()
-{
+aws_env_short() {
   case "${AWS_ENVIRONMENT}" in
     'development')
       echo 'dev'
@@ -266,13 +263,19 @@ prompt_function() {
     local awsenv=''
   fi
 
+  if gr-my-vpn-ip > /dev/null ; then
+    local vpn_info="${PURPLE}(v)"
+  else
+    local vpn_info=''
+  fi
+
   #if [ -n "$TRACKER_TOKEN" ]; then
     #local tracker="${PURPLE}(t)"
   #else
     #local tracker=''
   #fi
 
-  PS1="${LIGHT_GRAY}\w${git_color}$(__git_ps1)${awsenv}${swarmy}${LIGHT_GRAY}\$${RESET} "
+  PS1="${LIGHT_GRAY}\w${git_color}$(__git_ps1)${awsenv}${vpn_info}${swarmy}${LIGHT_GRAY}\$${RESET} "
 }
 
 PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a ; prompt_function"

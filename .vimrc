@@ -141,7 +141,7 @@ set writebackup
 
 
 command! SS source $MYVIMRC
-command! SV edit $MYVIMRC
+command! SV edit ~/.vimrc
 command! TT ! ctags -R --languages=ruby --exclude=.git --exclude=log .
 "command! TT silent ! ctags -R --languages=ruby --exclude=.git --exclude=log . | execute ':redraw!'
 command! E Eval
