@@ -86,6 +86,7 @@ alias rz='restart zulip || start zulip'
 #alias disable-touchpad='xinput set-prop 12 "Device Enabled" 0'
 alias bat='for i in 0 1; do echo BAT$i ; upower -i "/org/freedesktop/UPower/devices/battery_BAT${i}" | grep --color=never "time to empty" ; done'
 alias bundle-cache-ls='aws s3 ls s3://grnds-test-coreos/'
+alias g='figlet -f doh G'
 
 bundle-cache-rm() {
     aws s3 rm s3://grnds-test-coreos/${1}-bundle.tar.gz
@@ -121,6 +122,10 @@ grnds_dns() {
 
 f() {
   awk "{print \$$1}"
+}
+
+fl() {
+  awk '{print $NF}'
 }
 
 for i in $(seq 10); do
@@ -159,7 +164,7 @@ remap_capslock() {
 }
 
 gpg_agent_start() {
-  export GPGKEY='F29B9AF3'
+  #export GPGKEY='F29B9AF3'
   if [[ $(ps -ef | grep gpg-agent | grep -v grep) ]]; then
     export GPG_AGENT_INFO="$(find /tmp -type s -name 'S.gpg-agent' 2> /dev/null):$(ps -ef | grep gpg-agent | grep -v grep | awk '{print $2}'):1"
   fi
