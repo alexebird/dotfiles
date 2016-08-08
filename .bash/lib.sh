@@ -349,3 +349,7 @@ gr-gh-status() {
 }
 HERE
 }
+
+docker-login() {
+  curl https://honesty.ci.grandrounds.com/docker_login.sh | bash
+}
