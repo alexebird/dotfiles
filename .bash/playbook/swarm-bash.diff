@@ -1,0 +1,100 @@
+diff --git a/hieradata/swarm/common.yaml b/hieradata/swarm/common.yaml
+index 3445674..bf9d00f 100644
+--- a/hieradata/swarm/common.yaml
++++ b/hieradata/swarm/common.yaml
+@@ -9,7 +9,6 @@ classes:
+   - ssh::groups
+   - systemd
+   - docker
+-  - swarm::personal_bashrc
+   - swarm::metrics
+ sethostname::hostname: '%{::hostname}'
+ sethostname::grnds_bashrc: false
+diff --git a/modules/deps/manifests/swarm_deps.pp b/modules/deps/manifests/swarm_deps.pp
+index 4a8aac1..1775bb1 100644
+--- a/modules/deps/manifests/swarm_deps.pp
++++ b/modules/deps/manifests/swarm_deps.pp
+@@ -38,7 +38,7 @@ class deps::swarm_deps {
+   package { 'docker-engine':
+     ensure => 'installed',
+     name   => 'docker-engine',
+-    after  => [
++    require => [
+         Exec['apt_update'],
+         Apt::Source['docker']
+     ],
+diff --git a/modules/swarm/manifests/personal_bashrc.pp b/modules/swarm/manifests/personal_bashrc.pp
+deleted file mode 100644
+index b7b938f..0000000
+--- a/modules/swarm/manifests/personal_bashrc.pp
++++ /dev/null
+@@ -1,10 +0,0 @@
+-# == Class: swarm::personal_bashrc
+-class swarm::personal_bashrc {
+-  swarm::personal_bashrc_def { 'root-personal_bashrc':
+-    user => 'root'
+-  }
+-
+-  swarm::personal_bashrc_def { "${::puppetuser}-personal_bashrc":
+-    user => $::puppetuser
+-  }
+-}
+diff --git a/modules/swarm/manifests/personal_bashrc_def.pp b/modules/swarm/manifests/personal_bashrc_def.pp
+deleted file mode 100644
+index f5bd372..0000000
+--- a/modules/swarm/manifests/personal_bashrc_def.pp
++++ /dev/null
+@@ -1,34 +0,0 @@
+-# == Define: swarm::personal_bashrc_def
+-define swarm::personal_bashrc_def($user) {
+-
+-  $bashrc_fname = "${user_home}/.bashrc"
+-  $personal_bashrc_fname = "${user_home}/.personal_bashrc"
+-  $source_line = "[ -f ${personal_bashrc_fname} ] && source ${personal_bashrc_fname}"
+-
+-  exec { "/bin/echo '${source_line}' >> '${bashrc_fname}'":
+-    unless => "/bin/grep -qFx '${source_line}' '${bashrc_fname}'"
+-  }
+-
+-  $user_home = $user ? {
+-    'root'            => '/root',
+-    "${::puppetuser}" => "/home/${::puppetuser}"
+-  }
+-
+-  $mode = $user ? {
+-    'root'            => '0600',
+-    "${::puppetuser}" => '0644'
+-  }
+-
+-  $ps1_color = $user ? {
+-    'root'            => '01;31',
+-    "${::puppetuser}" => '01;34'
+-  }
+-
+-  file { $personal_bashrc_fname:
+-    ensure  => 'present',
+-    mode    => $mode,
+-    owner   => $user,
+-    group   => $user,
+-    content => template('swarm/personal_bashrc.erb')
+-  }
+-}
+diff --git a/modules/swarm/templates/personal_bashrc.erb b/modules/swarm/templates/personal_bashrc.erb
+deleted file mode 100644
+index ce37743..0000000
+--- a/modules/swarm/templates/personal_bashrc.erb
++++ /dev/null
+@@ -1,13 +0,0 @@
+-bind '"\e[A": history-search-backward'
+-bind '"\e[B": history-search-forward'
+-bind '"\C-p": history-search-backward'
+-bind '"\C-n": history-search-forward'
+-
+-alias ll='ls -Fltrh'
+-alias la='ls -FltrhA'
+-
+-# journald aliases
+-alias j='journalctl'
+-alias jf='journalctl -f'
+-
+-PS1='${debian_chroot:+($debian_chroot)}\[\033[<%= scope['ps1_color'] %>m\]\u@\H:\w\$\[\033[00m\] '

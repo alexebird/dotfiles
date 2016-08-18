@@ -1,12 +1,14 @@
 [user]
-	email = alexebird@gmail.com
+	email = bird@grandrounds.com
 	name = Alex Bird
 [alias]
 	br = branch
 	ci = commit
 	co = checkout
 	d  = diff
-	lg = log --graph --decorate
+	;lg = log --graph --decorate
+	# waterlog = log --pretty=format:'%C(yellow)%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --graph
+	lg = log --pretty=format:'%C(yellow)%h%C(reset) %C(green)%cr%C(reset) %C(blue)%an%C(reset)%C(auto)%d%C(reset) | %s' --abbrev-commit --date=relative --graph
 	st = status
 [color]
 	diff = auto

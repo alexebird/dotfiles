@@ -14,27 +14,11 @@ call vundle#begin()
 " let Vundle manage Vundle
 " required!
 Plugin 'gmarik/Vundle.vim'
-
-" My Bundles here:
-"
-" original repos on github
-" Plugin 'tpope/vim-fugitive'
-" Plugin 'Lokaltog/vim-easymotion'
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Plugin 'tpope/vim-rails.git'
-" vim-scripts repos
-" Plugin 'L9'
-" Plugin 'FuzzyFinder'
-" non github repos
-" Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (ie. when working on your own plugin)
-" Plugin 'file:///Users/gmarik/path/to/plugin'
-" ...
-"
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'taglist.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
@@ -64,11 +48,13 @@ Plugin 'rking/ag.vim'
 Plugin 'lmeijvogel/vim-yaml-helper'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'Lokaltog/vim-easymotion'
-Plugin 'regedarek/ZoomWin'
+"Plugin 'regedarek/ZoomWin'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'rodjek/vim-puppet'
 Plugin 'asymmetric/upstart.vim'
 Plugin 'jamessan/vim-gnupg'
+Plugin 'alexebird/vim-ansible-yaml'
+"Plugin 'lucastadeu/cyberpunk.vim'
 
 " motion mods
 Plugin 'bkad/CamelCaseMotion'
@@ -80,6 +66,9 @@ Plugin 'guns/vim-sexp'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+
+" elixir
+Plugin 'elixir-lang/vim-elixir'
 
 
 " All of your Plugins must be added before the following line
@@ -104,7 +93,7 @@ runtime macros/matchit.vim
 set shell=/bin/bash
 "set t_Co=256
 set backspace=indent,eol,start
-set encoding=utf-8
+"set encoding=utf-8
 
 syntax on
 syntax enable
@@ -114,9 +103,11 @@ syntax enable
 "let g:solarized_contrast = 'high'
 set background=dark
 colorscheme solarized
+"colorscheme cyberpunk
 
 set tabstop=4
 set shiftwidth=4
+set expandtab
 set number
 set hlsearch
 set incsearch
@@ -150,7 +141,7 @@ set writebackup
 
 
 command! SS source $MYVIMRC
-command! SV edit $MYVIMRC
+command! SV edit ~/.vimrc
 command! TT ! ctags -R --languages=ruby --exclude=.git --exclude=log .
 "command! TT silent ! ctags -R --languages=ruby --exclude=.git --exclude=log . | execute ':redraw!'
 command! E Eval
@@ -188,6 +179,8 @@ autocmd FileType ruby let g:rubycomplete_classes_in_global=1
 au BufRead,BufNewFile *.md set filetype=markdown
 au BufRead,BufNewFile user-data set filetype=yaml
 au BufRead,BufNewFile *.conf set filetype=upstart
+au FileType sh setl sw=4 sts=5 et
+au FileType bash setl sw=4 sts=5 et
 
 " Navigate through wrapped lines intuitively
 imap <silent> <down> <c-o>gj
@@ -205,24 +198,20 @@ nmap <silent> k gk
 
 autocmd BufWinEnter * if &buftype == 'quickfix' | setlocal nonumber | endif
 
-" Use ag over grep
-"set grepprg=ag\ --nogroup\ --nocolor
-"set grepprg=git\ grep
-
 " Searching
 " global search prompt
-nnoremap \ :Ag!<space>''<Left>
-" global search for whole word under cursor
-nnoremap \| :Ag! '\b<cword>\b'<CR>
+nnoremap \ :Ag! ''<Left>
+" global search for whole word under cursor using '|' character
+nnoremap <bar> :Ag! '\b<cword>\b'<CR>
 " global search for word under cursor as text
-nnoremap g\| :Ag! <cword><CR>
+nnoremap g\ :Ag! <cword><CR>
 " global search for selection (<Esc> clears the range)
-vnoremap \ <Esc>:Ag! '<C-r>*'<CR>
+vnoremap \ "9y<Esc>:Ag! '<C-r>9'<CR>
 
 " search for selection
 " Esc to clear the selection, then search for the last selected thing.
-vnoremap * <Esc>/<C-r>*<CR>
-vnoremap # <Esc>?<C-r>*<CR>
+vnoremap * "9y<Esc>/<C-r>9<CR>
+vnoremap # "9y<Esc>?<C-r>9<CR>
 
 " mouse select and scroll
 set mouse=a
@@ -239,8 +228,15 @@ nnoremap + "+p
 " paste from system clipboard
 "inoremap <C-S-v> "+p
 
-cnoremap <C-W>q <C-W>c
-cnoremap <C-W><C-Q> <C-W>c
+function! CopyFilnameToClipboard()
+    let @+=@%
+    execute 'file'
+endfunction
+
+nnoremap <silent> <C-g> :call CopyFilnameToClipboard()<CR>
+
+cnoremap <C-w>q <C-w>c
+cnoremap <C-w><C-q> <C-w>c
 autocmd CmdwinEnter * :set nonumber
 autocmd CmdwinLeave * :set number
 
@@ -274,7 +270,6 @@ let g:airline_right_sep=''
 let g:ctrlp_map = '<C-p>'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['Gemfile', 'project.clj']
-"let g:ctrlp_match_window_bottom = 0
 "let g:ctrlp_match_window_reversed = 0
 "let g:ctrlp_cmd = 'CtrlPMRU'
 let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup --hidden --smart-case -g ""'
@@ -293,9 +288,8 @@ nnoremap <C-k> :CtrlPBuffer<CR>
 let g:tagbar_sort = '0'
 
 
-" utilsnips
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 
 " gundo (undo-tree)
@@ -304,11 +298,11 @@ nnoremap <leader>g :GundoToggle<cr>
 
 " gitgutter
 "highlight clear SignColumn
-highlight SignColumn ctermbg=bg
-highlight GitGutterAdd ctermfg=darkgreen
-highlight GitGutterChange ctermfg=darkyellow
-highlight GitGutterDelete ctermfg=darkred
-highlight GitGutterChangeDelete ctermfg=darkyellow
+"highlight SignColumn ctermbg=bg
+"highlight GitGutterAdd ctermfg=darkgreen
+"highlight GitGutterChange ctermfg=darkyellow
+"highlight GitGutterDelete ctermfg=darkred
+"highlight GitGutterChangeDelete ctermfg=darkyellow
 command! GR GitGutterRevertHunk
 
 
@@ -317,7 +311,8 @@ let g:AutoPairsShortcutFastWrap = '<C-a>'
 
 
 " ag
-let g:agprg="ag --nocolor --nogroup --column --hidden --smart-case --ignore log"
+"let g:ag_working_path_mode="r"
+let g:ag_prg="ag --vimgrep --hidden --smart-case --ignore log"
 
 
 " syntastic
@@ -352,22 +347,22 @@ map <Leader>h <Plug>(easymotion-linebackward)
 
 " rainbow parens
 let g:rbpt_colorpairs = [
-	\ ['darkgrey',       'RoyalBlue3'],
-	\ ['darkmagenta',    'SeaGreen3'],
-	\ ['darkgreen',    'DarkOrchid3'],
-	\ ['white',   'firebrick3'],
-	\ ['darkyellow',    'RoyalBlue3'],
-	\ ['darkblue',     'SeaGreen3'],
-	\ ['red', 'DarkOrchid3'],
-	\ ['cyan',       'firebrick3'],
-	\ ['darkyellow',        'RoyalBlue3'],
-	\ ['magenta',       'SeaGreen3'],
+	\ ['darkgrey',    'RoyalBlue3'],
+	\ ['darkmagenta', 'SeaGreen3'],
+	\ ['darkgreen',   'DarkOrchid3'],
+	\ ['white',       'firebrick3'],
+	\ ['darkyellow',  'RoyalBlue3'],
+	\ ['darkblue',    'SeaGreen3'],
+	\ ['red',         'DarkOrchid3'],
+	\ ['cyan',        'firebrick3'],
+	\ ['darkyellow',  'RoyalBlue3'],
+	\ ['magenta',     'SeaGreen3'],
 	\ ['darkgreen',   'RoyalBlue3'],
 	\ ['darkred',     'DarkOrchid3'],
 	\ ['darkblue',    'firebrick3'],
 	\ ['darkmagenta', 'DarkOrchid3'],
 	\ ['darkcyan',    'SeaGreen3'],
-	\ ['darkyellow',       'firebrick3'],
+	\ ['darkyellow',  'firebrick3'],
 	\ ]
 
 "let s:pairs = [
@@ -393,3 +388,4 @@ au Syntax clojure RainbowParenthesesLoadRound
 au Syntax clojure RainbowParenthesesLoadSquare
 au Syntax clojure RainbowParenthesesLoadBraces
 
+autocmd FileType clojure nnoremap <buffer> cpc :Eval<cr>
