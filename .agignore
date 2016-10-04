@@ -8,3 +8,5 @@ public/assets
 monger
 test
 .lein-repl-history
+_build
+node_modules
