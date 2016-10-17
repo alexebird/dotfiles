@@ -8,3 +8,7 @@ public/assets
 monger
 test
 .lein-repl-history
+build/
+cordova
+jquery.*.js
+app/javascript/vendor
