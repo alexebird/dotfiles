@@ -24,7 +24,8 @@ alias gd='git diff'
 alias gdc='git diff --cached'
 alias gl='git lg'
 alias gla='git lg --branches --remotes --tags'
-alias glo='git lg --oneline'
+alias glo='git waterlog'
+alias glg='git waterlog --graph'
 alias gs='git status --short'
 alias gds='gd --stat'
 alias gp='git push -u'
@@ -356,4 +357,8 @@ HERE
 
 docker-login() {
   curl https://honesty.ci.grandrounds.com/docker_login.sh | bash
+}
+
+whereisfunc() {
+  shopt -s extdebug ; declare -F "$1" ; shopt -s extdebug
 }

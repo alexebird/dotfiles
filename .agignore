@@ -12,3 +12,5 @@ build/
 cordova
 jquery.*.js
 app/javascript/vendor
+_build
+node_modules
