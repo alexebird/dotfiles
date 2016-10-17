@@ -268,10 +268,12 @@ prompt_function() {
     local awsenv=''
   fi
 
-  if gr-my-vpn-ip > /dev/null ; then
-    local vpn_info="${PURPLE}(v)"
-  else
-    local vpn_info=''
+  if ! uname -a | grep -q Darwin; then
+    if gr-my-vpn-ip > /dev/null ; then
+      local vpn_info="${PURPLE}(v)"
+    else
+      local vpn_info=''
+    fi
   fi
 
   #if [ -n "$TRACKER_TOKEN" ]; then
@@ -307,9 +309,11 @@ tab_title() {
 }
 
 # auto-title
-cd()    { __zsh_like_cd cd    "$@" && tab_title; }
-pushd() { __zsh_like_cd pushd "$@" && tab_title; }
-popd()  { __zsh_like_cd popd  "$@" && tab_title; }
+if ! uname -a | grep -q Darwin; then
+  cd()    { __zsh_like_cd cd    "$@" && tab_title; }
+  pushd() { __zsh_like_cd pushd "$@" && tab_title; }
+  popd()  { __zsh_like_cd popd  "$@" && tab_title; }
+fi
 tab_title
 
 unswap_alt_super() {
