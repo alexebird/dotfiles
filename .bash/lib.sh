@@ -1,3 +1,5 @@
+source ~/.bash/aws-user.sh
+
 alias genpass='< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c16; echo'
 alias lock='lxlock'
 alias copy='xsel -ib'
