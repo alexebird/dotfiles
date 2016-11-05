@@ -69,6 +69,7 @@ Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 
 " elixir
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'slime-lang/vim-slime-syntax'
 
 
 " All of your Plugins must be added before the following line
@@ -124,6 +125,8 @@ set synmaxcol=300 " Avoids editor lockup in files with extremely long lines."
 " Elimiate delay switching to normal mode
 set timeoutlen=500 ttimeoutlen=0
 let mapleader = ","
+nnoremap <Space> <Nop>
+let maplocalleader=" "
 nmap <F10> :set paste!<CR>
 noremap <leader>n :set relativenumber!<cr>
 
@@ -286,7 +289,7 @@ nnoremap <C-k> :CtrlPBuffer<CR>
 
 
 " tagbar
-let g:tagbar_sort = '0'
+"let g:tagbar_sort = '0'
 
 
 "let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -317,9 +320,9 @@ let g:ag_prg="ag --vimgrep --hidden --smart-case --ignore log"
 
 
 " syntastic
-let g:syntastic_mode_map = { 'mode': 'passive',
-              \ 'active_filetypes': [],
-              \ 'passive_filetypes': [] }
+"let g:syntastic_mode_map = { 'mode': 'passive',
+              "\ 'active_filetypes': [],
+              "\ 'passive_filetypes': [] }
 
 
 " easymotion
@@ -336,10 +339,10 @@ nmap S <Plug>(easymotion-s2)
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion"
 " JK motions: Line motions
-map <Leader>l <Plug>(easymotion-lineforward)
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-map <Leader>h <Plug>(easymotion-linebackward)
+"map <Leader>l <Plug>(easymotion-lineforward)
+"map <Leader>j <Plug>(easymotion-j)
+"map <Leader>k <Plug>(easymotion-k)
+"map <Leader>h <Plug>(easymotion-linebackward)
 
 
 " supertab
@@ -389,4 +392,4 @@ au Syntax clojure RainbowParenthesesLoadRound
 au Syntax clojure RainbowParenthesesLoadSquare
 au Syntax clojure RainbowParenthesesLoadBraces
 
-autocmd FileType clojure nnoremap <buffer> cpc :Eval<cr>
+"autocmd FileType clojure nnoremap <buffer> cpc :Eval<cr>
