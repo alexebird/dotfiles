@@ -42,7 +42,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Lubuntu-dark-panel</name>
+    <name>Lubuntu-default</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -191,42 +191,42 @@
         <wrap>no</wrap>
       </action>
     </keybind>
-    <!--<keybind key="C-A-Up">-->
-    <!--<action name="GoToDesktop">-->
-    <!--<to>up</to>-->
-    <!--<wrap>no</wrap>-->
-    <!--</action>-->
-    <!--</keybind>-->
-    <!--<keybind key="C-A-Down">-->
-    <!--<action name="GoToDesktop">-->
-    <!--<to>down</to>-->
-    <!--<wrap>no</wrap>-->
-    <!--</action>-->
-    <!--</keybind>-->
-    <!--<keybind key="S-A-Left">-->
-    <!--<action name="SendToDesktop">-->
-    <!--<to>left</to>-->
-    <!--<wrap>no</wrap>-->
-    <!--</action>-->
-    <!--</keybind>-->
-    <!--<keybind key="S-A-Right">-->
-    <!--<action name="SendToDesktop">-->
-    <!--<to>right</to>-->
-    <!--<wrap>no</wrap>-->
-    <!--</action>-->
-    <!--</keybind>-->
-    <!--<keybind key="S-A-Up">-->
-    <!--<action name="SendToDesktop">-->
-    <!--<to>up</to>-->
-    <!--<wrap>no</wrap>-->
-    <!--</action>-->
-    <!--</keybind>-->
-    <!--<keybind key="S-A-Down">-->
-    <!--<action name="SendToDesktop">-->
-    <!--<to>down</to>-->
-    <!--<wrap>no</wrap>-->
-    <!--</action>-->
-    <!--</keybind>-->
+    <keybind key="C-A-Up">
+      <action name="GoToDesktop">
+        <to>up</to>
+        <wrap>no</wrap>
+      </action>
+    </keybind>
+    <keybind key="C-A-Down">
+      <action name="GoToDesktop">
+        <to>down</to>
+        <wrap>no</wrap>
+      </action>
+    </keybind>
+    <keybind key="S-A-Left">
+      <action name="SendToDesktop">
+        <to>left</to>
+        <wrap>no</wrap>
+      </action>
+    </keybind>
+    <keybind key="S-A-Right">
+      <action name="SendToDesktop">
+        <to>right</to>
+        <wrap>no</wrap>
+      </action>
+    </keybind>
+    <keybind key="S-A-Up">
+      <action name="SendToDesktop">
+        <to>up</to>
+        <wrap>no</wrap>
+      </action>
+    </keybind>
+    <keybind key="S-A-Down">
+      <action name="SendToDesktop">
+        <to>down</to>
+        <wrap>no</wrap>
+      </action>
+    </keybind>
     <keybind key="W-F1">
       <action name="GoToDesktop">
         <to>1</to>
@@ -249,12 +249,6 @@
     </keybind>
     <keybind key="W-d">
       <action name="ToggleShowDesktop"/>
-    </keybind>
-    <!-- Keybindings for switching displays -->
-    <keybind key="W-s">
-      <action name="Execute">
-        <command>gnome-terminal -x bash -c '/home/bird/bin/swoop.sh'</command>
-      </action>
     </keybind>
     <!-- Keybindings for windows -->
     <keybind key="A-F4">
@@ -329,22 +323,22 @@
       </action>
     </keybind>
     <!-- Keybindings for window tiling -->
-    <!--<keybind key="W-Left">        # HalfLeftScreen-->
-    <!--<action name="UnmaximizeFull"/>-->
-    <!--<action name="MoveResizeTo"><x>0</x><y>0</y><height>97%</height><width>50%</width></action>-->
-    <!--</keybind>-->
-    <!--<keybind key="W-Right">        # HalfRightScreen-->
-    <!--<action name="UnmaximizeFull"/>-->
-    <!--<action name="MoveResizeTo"><x>-0</x><y>0</y><height>97%</height><width>50%</width></action>-->
-    <!--</keybind>-->
-    <!--<keybind key="W-Up">        # HalfUpperScreen-->
-    <!--<action name="UnmaximizeFull"/>-->
-    <!--<action name="MoveResizeTo"><x>0</x><y>0</y><width>100%</width><height>50%</height></action>-->
-    <!--</keybind>-->
-    <!--<keybind key="W-Down">        # HalfLowerScreen-->
-    <!--<action name="UnmaximizeFull"/>-->
-    <!--<action name="MoveResizeTo"><x>0</x><y>-0</y><width>100%</width><height>50%</height></action>-->
-    <!--</keybind>-->
+    <keybind key="W-Left">        # HalfLeftScreen
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo"><x>0</x><y>0</y><height>100%</height><width>50%</width></action>
+    </keybind>
+    <keybind key="W-Right">        # HalfRightScreen
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo"><x>-0</x><y>0</y><height>100%</height><width>50%</width></action>
+    </keybind>
+    <keybind key="W-Up">        # HalfUpperScreen
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo"><x>0</x><y>0</y><width>100%</width><height>50%</height></action>
+    </keybind>
+    <keybind key="W-Down">        # HalfLowerScreen
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo"><x>0</x><y>-0</y><width>100%</width><height>50%</height></action>
+    </keybind>
     <!-- Keybindings for running applications on Home + E -->
     <keybind key="W-e">
       <action name="Execute">
@@ -358,12 +352,12 @@
     <!-- Keybindings for running Run menu from Lxpanel on Home + R-->
     <keybind key="W-r">
       <action name="Execute">
-        <command>lxsession-default launcher_manager</command>
+        <command>lxsession-default launcher</command>
       </action>
     </keybind>
     <keybind key="A-F2">
       <action name="Execute">
-        <command>lxsession-default launcher_manager</command>
+        <command>lxsession-default launcher</command>
       </action>
     </keybind>
     <!-- Keybindings for running Menu from Lxpanel -->
@@ -406,37 +400,18 @@
     <!-- Lock the screen on Ctrl + Alt + l-->
     <keybind key="C-A-l">
       <action name="Execute">
-        <command>xscreensaver-command -lock</command>
-      </action>
-    </keybind>
-    <keybind key="F8">
-      <action name="Execute">
-        <command>dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause</command>
-      </action>
-    </keybind>
-    <keybind key="C-F8">
-      <action name="Execute">
-        <command>dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous</command>
-      </action>
-    </keybind>
-    <keybind key="A-F8">
-      <action name="Execute">
-        <command>dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next</command>
+        <command>lxsession-default lock</command>
       </action>
     </keybind>
     <!-- Keybinding for Volume management -->
-    <!--<keybind key="XF86AudioRaiseVolume">-->
-    <keybind key="C-A-Up">
+    <keybind key="XF86AudioRaiseVolume">
       <action name="Execute">
-        <!--<command>amixer -q sset Master 3%+ unmute</command>-->
-        <command>amixer -D pulse sset Master 3%+</command>
+        <command>amixer -q sset Master 3%+ unmute</command>
       </action>
     </keybind>
-    <!--<keybind key="XF86AudioLowerVolume">-->
-    <keybind key="C-A-Down">
+    <keybind key="XF86AudioLowerVolume">
       <action name="Execute">
-        <!--<command>amixer -q sset Master 3%- unmute</command>-->
-        <command>amixer -D pulse sset Master 3%-</command>
+        <command>amixer -q sset Master 3%- unmute</command>
       </action>
     </keybind>
     <keybind key="XF86AudioMute">
@@ -470,7 +445,7 @@
     <!-- Keybindings for Multimedia Keys and LCD Backlight (alternative when not using gnome-power-manager or xfce4-volumed) -->
     <keybind key="C-F7">
       <action name="Execute">
-        <command>sleep 2;xset dpms force off</command>
+        <command>xset dpms force off</command>
       </action>
     </keybind>
     <keybind key="C-F10">
