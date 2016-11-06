@@ -19,3 +19,10 @@ TerminalWindow .notebook {
 	color: black;
 	background-color: #3385ff;
 }
+
+TerminalWindow .notebook .button,
+TerminalWindow .notebook .button:active {
+    padding: 2 2 2 10;
+    background-image: none;
+    border: 0;
+}
