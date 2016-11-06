@@ -103,7 +103,7 @@ syntax enable
 "let g:solarized_visibility = 'high'
 "let g:solarized_contrast = 'high'
 set background=dark
-colorscheme solarized
+"colorscheme solarized
 "colorscheme cyberpunk
 
 set tabstop=4
