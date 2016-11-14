@@ -122,6 +122,7 @@ set linebreak
 set laststatus=2
 set title
 set synmaxcol=300 " Avoids editor lockup in files with extremely long lines."
+set listchars=eol:$
 "set autowriteall  " <---- huh??
 "set colorcolumn=80
 " Elimiate delay switching to normal mode

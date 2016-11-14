@@ -51,7 +51,12 @@ alias ag='ag --hidden --smart-case'
 # ctags
 alias ctags-rb='ctags -R --languages=ruby --exclude=.git --exclude=log .'
 
-alias open='xdg-open'
+if ! uname -a | grep -q Darwin ; then
+  alias open='xdg-open'
+else
+  alias copy='pbcopy'
+  alias paste='pbpaste'
+fi
 
 # ls
 alias ls='ls -F'
