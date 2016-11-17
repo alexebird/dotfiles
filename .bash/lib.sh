@@ -366,3 +366,5 @@ fix_caps_lock() {
 whereisfunc() {
   shopt -s extdebug ; declare -F "$1" ; shopt -s extdebug
 }
+
+#for f in $(find . -type f -a \( -name '*.new.gpg' -prune -o -print \)) ; do echo "re-encrypting '${f}'" ; rm -f "${f/%gpg/new.gpg}" ; gpg -d -o- "${f}" | gpg -e -r D7F63FC6 -r FF32D64D -a -o "${f/%gpg/new.gpg}" && mv "${f/%gpg/new.gpg}" "${f}" ; done

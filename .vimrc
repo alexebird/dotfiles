@@ -55,6 +55,7 @@ Plugin 'asymmetric/upstart.vim'
 Plugin 'jamessan/vim-gnupg'
 Plugin 'alexebird/vim-ansible-yaml'
 "Plugin 'lucastadeu/cyberpunk.vim'
+Plugin 'robertmeta/nofrils'
 
 " motion mods
 Plugin 'bkad/CamelCaseMotion'
@@ -105,6 +106,7 @@ syntax enable
 set background=dark
 "colorscheme solarized
 "colorscheme cyberpunk
+colorscheme nofrils-dark
 
 set tabstop=4
 set shiftwidth=4
@@ -118,7 +120,7 @@ set showcmd
 set nowrap
 set linebreak
 set laststatus=2
-set title
+set notitle
 set synmaxcol=300 " Avoids editor lockup in files with extremely long lines."
 "set autowriteall  " <---- huh??
 "set colorcolumn=80
