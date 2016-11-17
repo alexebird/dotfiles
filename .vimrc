@@ -122,6 +122,7 @@ set linebreak
 set laststatus=2
 set notitle
 set synmaxcol=300 " Avoids editor lockup in files with extremely long lines."
+set listchars=eol:$
 "set autowriteall  " <---- huh??
 "set colorcolumn=80
 " Elimiate delay switching to normal mode
@@ -220,25 +221,44 @@ vnoremap # "9y<Esc>?<C-r>9<CR>
 
 " mouse select and scroll
 set mouse=a
+
+
+"
+" Clipboard Shit
+"
+
 " yank selection to system clipboard
 vnoremap Y "+y
+"vnoremap Y "zy | :call CopyRegToClipboard()<CR>
+"vnoremap Y :call CopyRegToClipboard()<CR>
+"vnoremap <silent> Y :'<,'>w !pbcopy<CR><CR>
+
 " yank line to system clipboard without trailing newline
 nnoremap Y ^"+y$
+"nnoremap Y ^"zy$ | exec system("pbcopy", @z)
+
 " yank line to system clipboard
 nnoremap YY "+yy
+"nnoremap <silent> YY :.w !pbcopy<CR><CR>
+
 " paste from system clipboard
-"nnoremap <C-v> "+p
-"nnoremap + o<Esc>"+p
 nnoremap + "+p
-" paste from system clipboard
-"inoremap <C-S-v> "+p
+"nnoremap + :r !pbpaste<CR>
 
 function! CopyFilnameToClipboard()
     let @+=@%
+    "exec system("pbcopy", @%)
     execute 'file'
 endfunction
 
+"function! CopyRegToClipboard()
+    "exec system("pbcopy", @z)
+"endfunction
+
 nnoremap <silent> <C-g> :call CopyFilnameToClipboard()<CR>
+
+" / clipboard
+
 
 cnoremap <C-w>q <C-w>c
 cnoremap <C-w><C-q> <C-w>c

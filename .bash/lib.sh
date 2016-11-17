@@ -51,7 +51,12 @@ alias ag='ag --hidden --smart-case'
 # ctags
 alias ctags-rb='ctags -R --languages=ruby --exclude=.git --exclude=log .'
 
-alias open='xdg-open'
+if ! uname -a | grep -q Darwin ; then
+  alias open='xdg-open'
+else
+  alias copy='pbcopy'
+  alias paste='pbpaste'
+fi
 
 # ls
 alias ls='ls -F'
@@ -91,37 +96,10 @@ alias banner='figlet -f graffiti'
 #alias bundle-cache-ls='aws s3 ls s3://grnds-test-coreos/'
 alias g='figlet -f doh G'
 
-#bundle-cache-rm() {
-#    aws s3 rm s3://grnds-test-coreos/${1}-bundle.tar.gz
-#}
-
 # docker
 #alias dps='docker ps -a | less -S'
 #alias docker-nodes="docker info | tail -n+6 | head -n-3 | grep -v '└' | tail -n+2"
 #alias consul='docker run --rm --name consul gliderlabs/consul'
-
-# grnds
-#alias ae='gr-aws-environment'
-#alias ae-dev='ae development'
-#alias ae-ci='ae ci'
-#alias ae-test='ae test'
-#alias ae-i3='ae integration3'
-#alias ae-uat='ae uat'
-#alias te='tracker-environment'
-#alias de='dev-environment'
-#alias pe='papertrail-environment'
-#alias he='honesty-environment'
-
-#function gnb()
-#{
-    #git checkout master
-    #git pull
-    #git co -b `name-branch $1`
-#}
-
-#grnds_dns() {
-#  sudo sh -c 'echo search grandrounds.com >> /etc/resolv.conf'
-#}
 
 f() {
   awk "{print \$$1}"
@@ -184,38 +162,6 @@ gpg_agent_start() {
   #fi
 }
 
-#aws_env_short() {
-#  case "${AWS_ENVIRONMENT}" in
-#    'development')
-#      echo 'dev'
-#      ;;
-#    'test')
-#      echo 'test'
-#      ;;
-#    'ci')
-#      echo 'ci'
-#      ;;
-#    'uat')
-#      echo 'uat'
-#      ;;
-#    'integration')
-#      echo 'i'
-#      ;;
-#    'integration1')
-#      echo 'i1'
-#      ;;
-#    'integration2')
-#      echo 'i2'
-#      ;;
-#    'integration3')
-#      echo 'i3'
-#      ;;
-#    *)
-#      return 1
-#      ;;
-#  esac
-#}
-
 prompt_function() {
   local        BLUE='\[\e[0;34m\]'
   local  LIGHT_BLUE='\[\e[1;34m\]'
@@ -228,8 +174,13 @@ prompt_function() {
   local      YELLOW='\[\e[0;33m\]'
   local LIGHT_YELLOW='\[\e[1;33m\]'
   local       WHITE='\[\e[1;37m\]'
+
   local  LIGHT_GRAY='\[\e[0;37m\]'
   local        GRAY='\[\e[1;30m\]'
+
+  local  LIGHT_CYAN='\[\e[0;36m\]'
+  local        CYAN='\[\e[1;36m\]'
+
   local       RESET='\[\e[0m\]'
 
   # previous_return_value=$?;
@@ -286,7 +237,7 @@ prompt_function() {
   #fi
 
   #PS1="${LIGHT_GRAY}\w${git_color}$(__git_ps1)${awsenv}${vpn_info}${swarmy}${LIGHT_GRAY}\$${RESET} "
-  PS1="${LIGHT_GREEN}\w${git_color}$(__git_ps1)${WHITE}\$${RESET} "
+  PS1="${CYAN}\w${git_color}$(__git_ps1)${CYAN}\$${RESET} "
 }
 
 PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a ; prompt_function"
@@ -333,35 +284,6 @@ swap_alt_super() {
 fix_caps_lock() {
   setxkbmap -layout us -option ''
 }
-
-#mount_smb() {
-#  sudo PASSWD="$(gpg --batch -d ~/downloads/sfnas_xen-host_creds.txt.gpg 2> /dev/null | grep 'pwd: ' | awk '{print $2}')" \
-#    mount -t cifs //sfnas.grandrounds.com/ISOs/ /mnt/sfnas/ -o rw,username=xen-host
-#}
-
-#gr-gh-status() {
-#  local repo="${1:?missing arg 1: repo}"
-#  local sha="${2:?missing arg 2: sha}"
-#  local state="${3:?missing arg 3: state (pending, success, error, or failure)}"
-#  local desc="${4:?missing arg 4: desc}"
-#
-#  curl -s \
-#    "https://api.github.com/repos/ConsultingMD/${repo}/statuses/${sha}" \
-#    -H "Content-Type: application/json" \
-#    -H "authToken: TODO" \
-#    -XPOST \
-#    -d@- <<-HERE | jq .
-#{
-#  "state": "${state}",
-#  "description": "${desc}",
-#  "context": "developer-status"
-#}
-#HERE
-#}
-
-#docker-login() {
-#  curl https://honesty.ci.grandrounds.com/docker_login.sh | bash
-#}
 
 whereisfunc() {
   shopt -s extdebug ; declare -F "$1" ; shopt -s extdebug
