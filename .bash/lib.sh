@@ -1,5 +1,9 @@
 source ~/.bash/aws-user.sh
 
+for f in $(find ~/.bash/lendup/bash/ -type f -name '*.sh'); do
+  source "${f}"
+done
+
 alias genpass='< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c16; echo'
 #alias lock='lxlock'
 alias copy='xsel -ib'
@@ -236,8 +240,30 @@ prompt_function() {
     #local tracker=''
   #fi
 
+  local vpn="$(tunnelblick_ps1)"
+  if [ -n "${vpn}" ]; then
+    #vpn="${CYAN}(\e[1;0;41m${vpn}${RESET}${CYAN})"
+    vpn="\e[1;0;41m${vpn}${RESET}"
+  else
+    vpn=''
+  fi
+
+  local tfapply="${TF_ALLOW_APPLY}"
+  if [ -n "${tfapply}" ]; then
+    tfapply="\e[0;30;43mtf!!!${RESET}"
+  else
+    tfapply=''
+  fi
+
+  local nomad_env="${NOMAD_ENV}"
+  if [ -n "${nomad_env}" ]; then
+    nomad_env="${BLUE}(${nomad_env})${RESET}"
+  else
+    nomad_env=''
+  fi
+
   #PS1="${LIGHT_GRAY}\w${git_color}$(__git_ps1)${awsenv}${vpn_info}${swarmy}${LIGHT_GRAY}\$${RESET} "
-  PS1="${CYAN}\w${git_color}$(__git_ps1)${CYAN}\$${RESET} "
+  PS1="${CYAN}\w${git_color}$(__git_ps1)${nomad_env}${vpn}${tfapply}${CYAN}\$${RESET} "
 }
 
 PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a ; prompt_function"
@@ -270,7 +296,7 @@ tab() {
 #  popd()  { __zsh_like_cd popd  "$@" && tab_title; }
 #fi
 
-tab
+#tab
 
 unswap_alt_super() {
   setxkbmap -layout us -option ''
@@ -288,3 +314,9 @@ fix_caps_lock() {
 whereisfunc() {
   shopt -s extdebug ; declare -F "$1" ; shopt -s extdebug
 }
+
+name-branch() {
+  paste | ruby -e'puts STDIN.read.gsub(/[\s_]+/, "-").downcase'
+}
+
+#for f in $(find . -type f -a \( -name '*.new.gpg' -prune -o -print \)) ; do echo "re-encrypting '${f}'" ; rm -f "${f/%gpg/new.gpg}" ; gpg -d -o "${f}" | gpg -e r <PUBKEY> -r ... -a -o "${f/%gpg/new.gpg}" && mv "${f/%gpg/new.gpg}" "${f}" ; done
