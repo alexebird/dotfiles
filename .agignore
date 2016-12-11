@@ -16,3 +16,5 @@ _build
 node_modules
 *_rsa*
 *.js.map
+*.tfstate
+*.tfstate.backup

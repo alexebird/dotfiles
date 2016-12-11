@@ -72,6 +72,9 @@ Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'slime-lang/vim-slime-syntax'
 
+" lendup
+Plugin 'hashivim/vim-terraform'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -345,6 +348,15 @@ let g:ag_prg="ag --vimgrep --hidden --smart-case --ignore log"
 "let g:syntastic_mode_map = { 'mode': 'passive',
               "\ 'active_filetypes': [],
               "\ 'passive_filetypes': [] }
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_sh_checkers = ['shellcheck']
 
 
 " easymotion
