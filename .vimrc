@@ -329,7 +329,7 @@ nnoremap <leader>g :GundoToggle<cr>
 "highlight GitGutterChange ctermfg=darkyellow
 "highlight GitGutterDelete ctermfg=darkred
 "highlight GitGutterChangeDelete ctermfg=darkyellow
-command! GR GitGutterRevertHunk
+command! GR GitGutterUndoHunk
 
 
 " auto-pairs

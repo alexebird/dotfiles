@@ -253,9 +253,9 @@ tab() {
       TITLE="/${PWD##*/}"
     else
       # only show last dir
-      #TITLE="${PWD##*/}"
+      TITLE="${PWD##*/}"
       # show whole path plus the tilde
-      TITLE="${PWD/#$HOME/\~}"
+      #TITLE="${PWD/#$HOME/\~}"
     fi
   else
     TITLE="${1}"
@@ -290,3 +290,17 @@ whereisfunc() {
 }
 
 #for f in $(find . -type f -a \( -name '*.new.gpg' -prune -o -print \)) ; do echo "re-encrypting '${f}'" ; rm -f "${f/%gpg/new.gpg}" ; gpg -d -o- "${f}" | gpg -e -r D7F63FC6 -r FF32D64D -a -o "${f/%gpg/new.gpg}" && mv "${f/%gpg/new.gpg}" "${f}" ; done
+
+
+#[Unit]
+#Description=Albert
+
+#[Service]
+#User=bird
+#Group=bird
+#Environment=DISPLAY=:0
+#Restart=on-failure
+#ExecStart=/usr/bin/albert
+
+#[Install]
+#WantedBy=multi-user.target
