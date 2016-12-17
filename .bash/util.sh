@@ -1,3 +1,5 @@
+#!/bin/bash
+
 alias dp='docker ps --format "table {{.ID}}\t{{.Status}}\t{{.Names}}"'
 alias dpp='docker ps --format "table {{.ID}}\t{{.Status}}\t{{.Ports}}\t{{.Names}}"'
 alias wdp="watch -n1 'docker ps --format \"table {{.ID}}\t{{.Status}}\t{{.Names}}\"'"
