@@ -2,11 +2,6 @@ alias genpass="tr -dc '_%#$@&*^!A-Za-z0-9' < /dev/urandom | head -c20; echo"
 alias dp='docker ps --format "table {{.ID}}\t{{.Status}}\t{{.Names}}"'
 alias dpp='docker ps --format "table {{.ID}}\t{{.Status}}\t{{.Ports}}\t{{.Names}}"'
 alias wdp="watch -n1 'docker ps --format \"table {{.ID}}\t{{.Status}}\t{{.Names}}\"'"
-
-hs() {
-    history | grep -i "$*"
-}
-
 alias git='hub'
 eval "$(hub alias -s)"
 alias gb='git branch'
@@ -24,16 +19,21 @@ alias fco='git fast-checkout'
 alias pm='git checkout master && git pull && git checkout - && git merge master'
 alias git-prune-local='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
 alias git-track='git branch --set-upstream-to=origin/`bs` `bs`'
-
-orphaned_local_branches() {
-  local remotes=$(git branch -a | grep '  remotes' | sed -e's|  remotes/origin/||')
-  for e in $(git branch | sed -e's/\(* \)\|\(  \)//') ; do
-    echo "$remotes" | grep -q $e || echo "$e"
-  done
-}
-
 alias ag='ag --hidden --smart-case'
 #alias ctags-rb='ctags -R --languages=ruby --exclude=.git --exclude=log .'
+alias ls='ls -F'
+alias l='ls'
+alias l1='ls -1'
+alias ll='\ls -Fltrh'
+alias la='\ls -FltrhA'
+alias grep='grep --color=auto'
+alias less='less -R'
+alias urlencode='python -c "import urllib, sys; print urllib.quote(sys.argv[1])"'
+alias urldecode='python -c "import urllib, sys; print urllib.unquote(sys.argv[1])"'
+alias banner='figlet -f graffiti'
+alias g='figlet -f doh G'
+#alias docker-nodes="docker info | tail -n+6 | head -n-3 | grep -v '└' | tail -n+2"
+alias ipz="jq -rC '.Reservations[].Instances | map(. | ((.NetworkInterfaces[].PrivateIpAddress), (.KeyName), (.Tags | from_entries | .Name))) | @tsv' | sort -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4"
 
 if ! uname -a | grep -q Darwin ; then
   alias open='xdg-open'
@@ -42,41 +42,16 @@ else
   alias paste='pbpaste'
 fi
 
-# ls
-alias ls='ls -F'
-alias l='ls'
-alias l1='ls -1'
-alias ll='\ls -Fltrh'
-alias la='\ls -FltrhA'
+orphaned_local_branches() {
+  local remotes=$(git branch -a | grep '  remotes' | sed -e's|  remotes/origin/||')
+  for e in $(git branch | sed -e's/\(* \)\|\(  \)//') ; do
+    echo "$remotes" | grep -q $e || echo "$e"
+  done
+}
 
-# grep
-alias grep='grep --color=auto'
-
-# less
-alias less='less -R'
-
-# urls
-alias urlencode='python -c "import urllib, sys; print urllib.quote(sys.argv[1])"'
-alias urldecode='python -c "import urllib, sys; print urllib.unquote(sys.argv[1])"'
-
-# fun
-#alias upgrade='sudo apt-get -y update && sudo apt-get -y dist-upgrade'
-#alias shit='ssh it'
-#alias rbj='ruby -rawesome_print -rjson -e'
-#alias ddd='gpg -d'
-#alias rr='reset'
-#alias pssh="ps -eo pid,args | grep ssh | grep -v 'grep\|sshd\|ssh-agent'"
-#alias myip="ifconfig eth2 | grep -o --color=none '10\.\0\.20\.[[:digit:]]\+'"
-alias banner='figlet -f graffiti'
-#alias enable-pointer='xinput set-prop 13 "Device Enabled" 1'
-#alias disable-pointer='xinput set-prop 13 "Device Enabled" 0'
-#alias enable-touchpad='xinput set-prop 12 "Device Enabled" 1'
-#alias disable-touchpad='xinput set-prop 12 "Device Enabled" 0'
-#alias bat='for i in 0 1; do echo BAT$i ; upower -i "/org/freedesktop/UPower/devices/battery_BAT${i}" | grep --color=never "time to empty" ; done'
-alias g='figlet -f doh G'
-
-# docker
-#alias docker-nodes="docker info | tail -n+6 | head -n-3 | grep -v '└' | tail -n+2"
+hs() {
+    history | grep -i "$*"
+}
 
 f() {
   awk "{print \$$1}"
@@ -109,5 +84,3 @@ whereisfunc() {
 name-branch() {
   paste | ruby -e'puts STDIN.read.gsub(/[\s_]+/, "-").downcase'
 }
-
-alias ipz="jq -rC '.Reservations[].Instances | map(. | ((.NetworkInterfaces[].PrivateIpAddress), (.KeyName), (.Tags | from_entries | .Name))) | @tsv' | sort -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4"
