@@ -42,27 +42,10 @@ gpg_agent_start() {
 }
 
 prompt_function() {
-  local        BLUE='\[\e[0;34m\]'
-  local  LIGHT_BLUE='\[\e[1;34m\]'
-  local      PURPLE='\[\e[0;35m\]'
-  local LIGHT_PURPLE='\[\e[1;35m\]'
-  local         RED='\[\e[0;31m\]'
-  local   LIGHT_RED='\[\e[1;31m\]'
-  local       GREEN='\[\e[0;32m\]'
-  local LIGHT_GREEN='\[\e[1;32m\]'
-  local      YELLOW='\[\e[0;33m\]'
-  local LIGHT_YELLOW='\[\e[1;33m\]'
-  local       WHITE='\[\e[1;37m\]'
-  local  LIGHT_GRAY='\[\e[0;37m\]'
-  local        GRAY='\[\e[1;30m\]'
-  local  LIGHT_CYAN='\[\e[0;36m\]'
-  local        CYAN='\[\e[1;36m\]'
-  local       RESET='\[\e[0m\]'
-
   #PS1="${LIGHT_GRAY}\u@\h: \w${git_color}$(__git_ps1)${LIGHT_GRAY}\$${RESET} "
   #PS1="${LIGHT_GRAY}[$(date +'%I:%M:%S%P %-m/%d')]\n${LIGHT_GRAY}\w${git_color}$(__git_ps1)${LIGHT_GRAY}\$${RESET} "
   #PS1="${LIGHT_GRAY}\w${git_color}$(__git_ps1)${awsenv}${vpn_info}${swarmy}${LIGHT_GRAY}\$${RESET} "
-  PS1="${CYAN}\w$(git_color_ps1)$(aws_env_ps1)$(nomad_env_ps1)$(vpn_ps1)$(terraform_ps1)${CYAN}\$${RESET} "
+  PS1="${COLOR_CYAN}\w$(git_color_ps1)$(aws_env_ps1)$(nomad_env_ps1)$(vpn_ps1)$(terraform_ps1)${COLOR_CYAN}\$${COLOR_RESET} "
 }
 
 PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a ; prompt_function"
