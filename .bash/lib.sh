@@ -1,9 +1,5 @@
 source ~/.bash/aws-user.sh
 
-for f in $(find ~/.bash/lendup/bash/ -type f -name '*.sh'); do
-  source "${f}"
-done
-
 alias genpass='< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c16; echo'
 #alias lock='lxlock'
 alias copy='xsel -ib'
@@ -334,5 +330,7 @@ whereisfunc() {
 name-branch() {
   paste | ruby -e'puts STDIN.read.gsub(/[\s_]+/, "-").downcase'
 }
+
+alias ipz="jq -rC '.Reservations[].Instances | map(. | ((.NetworkInterfaces[].PrivateIpAddress), (.KeyName), (.Tags | from_entries | .Name))) | @tsv' | sort -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4"
 
 #for f in $(find . -type f -a \( -name '*.new.gpg' -prune -o -print \)) ; do echo "re-encrypting '${f}'" ; rm -f "${f/%gpg/new.gpg}" ; gpg -d -o "${f}" | gpg -e r <PUBKEY> -r ... -a -o "${f/%gpg/new.gpg}" && mv "${f/%gpg/new.gpg}" "${f}" ; done
