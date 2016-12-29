@@ -41,11 +41,24 @@ gpg_agent_start() {
   #fi
 }
 
+function my_git_color_ps1() {
+  if test $(git status 2> /dev/null | grep -c :) -eq 0; then
+    echo "${COLOR_GREEN}$(__git_ps1)${COLOR_RESET}"
+  else
+    echo "${COLOR_RED}$(__git_ps1)${COLOR_RESET}"
+  fi
+}
+
 prompt_function() {
   #PS1="${LIGHT_GRAY}\u@\h: \w${git_color}$(__git_ps1)${LIGHT_GRAY}\$${RESET} "
   #PS1="${LIGHT_GRAY}[$(date +'%I:%M:%S%P %-m/%d')]\n${LIGHT_GRAY}\w${git_color}$(__git_ps1)${LIGHT_GRAY}\$${RESET} "
   #PS1="${LIGHT_GRAY}\w${git_color}$(__git_ps1)${awsenv}${vpn_info}${swarmy}${LIGHT_GRAY}\$${RESET} "
-  PS1="${COLOR_CYAN}\w$(git_color_ps1)$(aws_env_ps1)$(nomad_env_ps1)$(vpn_ps1)$(terraform_ps1)${COLOR_CYAN}\$${COLOR_RESET} "
+
+  if [[ -n "${LENDUP_HOME}" ]]; then
+    PS1="${COLOR_CYAN}\w$(git_color_ps1)$(aws_env_ps1)$(nomad_env_ps1)$(vpn_ps1)$(terraform_ps1)${COLOR_CYAN}\$${COLOR_RESET} "
+  else
+    PS1="${COLOR_CYAN}\w$(my_git_color_ps1)${COLOR_CYAN}\$${COLOR_RESET} "
+  fi
 }
 
 PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a ; prompt_function"
