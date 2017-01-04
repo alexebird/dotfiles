@@ -116,5 +116,18 @@ fix_caps_lock() {
 
 
 
-#aws s3 sync --delete --exclude=.DS_Store . s3://bird-papers/
+#aws s3 sync --exclude=.DS_Store --exclude=* --include=*.gpg . s3://bird-papers/
+#aws s3 sync --exclude=.DS_Store --dryrun s3://bird-papers/ .
+#aws s3 ls --recursive s3://bird-papers/
 #gpg -r FF32D64D -r D7F63FC6 -e 2016/12-december/31/lendup_insurance_card/Image-001.jpg
+
+gpg_import() {
+  for f in ~/.bash/gpg/public/*.pub ; do
+    gpg --import $f
+  done
+}
+
+gpg_encrypt() {
+  local fname="$1"
+  gpg -r FF32D64D -r D7F63FC6 -e "${fname}"
+}
