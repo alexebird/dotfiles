@@ -116,5 +116,5 @@ fix_caps_lock() {
 
 
 
-aws s3 sync --delete --exclude=.DS_Store . s3://bird-papers/
-gpg -r FF32D64D -r D7F63FC6 -e 2016/12-december/31/lendup_insurance_card/Image-001.jpg
+#aws s3 sync --delete --exclude=.DS_Store . s3://bird-papers/
+#gpg -r FF32D64D -r D7F63FC6 -e 2016/12-december/31/lendup_insurance_card/Image-001.jpg
