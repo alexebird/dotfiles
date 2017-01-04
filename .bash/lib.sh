@@ -113,3 +113,8 @@ fix_caps_lock() {
 #WantedBy=multi-user.target
 
 #for f in $(find . -type f -a \( -name '*.new.gpg' -prune -o -print \)) ; do echo "re-encrypting '${f}'" ; rm -f "${f/%gpg/new.gpg}" ; gpg -d -o "${f}" | gpg -e r <PUBKEY> -r ... -a -o "${f/%gpg/new.gpg}" && mv "${f/%gpg/new.gpg}" "${f}" ; done
+
+
+
+aws s3 sync --delete --exclude=.DS_Store . s3://bird-papers/
+gpg -r FF32D64D -r D7F63FC6 -e 2016/12-december/31/lendup_insurance_card/Image-001.jpg
