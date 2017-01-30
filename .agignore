@@ -7,7 +7,6 @@ icomoon-session.json
 .git
 public/assets
 monger
-test
 .lein-repl-history
 build/
 cordova
