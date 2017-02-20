@@ -1,6 +1,10 @@
 #!/bin/bash
-alias git='hub'
-eval "$(hub alias -s)"
+
+if which hub > /dev/null ; then
+  alias git='hub'
+  eval "$(hub alias -s)"
+fi
+
 alias gb='git branch'
 alias gd='git diff'
 alias gdc='git diff --cached'
