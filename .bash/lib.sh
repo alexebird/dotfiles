@@ -1,7 +1,7 @@
 source ~/.bash/aws-user.sh
 
-alias copy='xsel -ib'
-alias paste='xsel -b'
+#alias copy='xsel -ib'
+#alias paste='xsel -b'
 alias h='highlight'
 
 # arrow keys
@@ -48,7 +48,7 @@ prompt_function() {
   PS1="${COLOR_CYAN}\w$(git_color_ps1)$(aws_env_ps1)$(nomad_env_ps1)$(vpn_ps1)$(terraform_ps1)${COLOR_CYAN}\$${COLOR_RESET} "
 }
 
-PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a ; prompt_function"
+#PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a ; prompt_function"
 
 tab() {
   if [[ ${PWD} == ${HOME} ]]; then

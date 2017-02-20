@@ -24,7 +24,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-sleuth'
+"Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-cucumber'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
@@ -72,6 +72,9 @@ Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'slime-lang/vim-slime-syntax'
 
+" rust
+Plugin 'rust-lang/rust.vim'
+
 " lendup
 Plugin 'hashivim/vim-terraform'
 
@@ -110,6 +113,7 @@ set background=dark
 "colorscheme solarized
 "colorscheme cyberpunk
 colorscheme nofrils-dark
+"colorscheme slate
 
 set tabstop=4
 set shiftwidth=4
@@ -245,6 +249,7 @@ nnoremap YY "+yy
 "nnoremap <silent> YY :.w !pbcopy<CR><CR>
 
 " paste from system clipboard
+"nnoremap + o<ESC>"+p==
 nnoremap + "+p
 "nnoremap + :r !pbpaste<CR>
 
@@ -427,3 +432,8 @@ au Syntax clojure RainbowParenthesesLoadSquare
 au Syntax clojure RainbowParenthesesLoadBraces
 
 "autocmd FileType clojure nnoremap <buffer> cpc :Eval<cr>
+
+autocmd Filetype terraform setlocal et ts=2 sw=2 sts=2
+autocmd Filetype ruby setlocal et ts=2 sw=2 sts=2
+autocmd Filetype bash setlocal et ts=2 sw=2 sts=2
+autocmd Filetype sh setlocal et ts=2 sw=2 sts=2

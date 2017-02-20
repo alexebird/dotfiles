@@ -1,3 +1,4 @@
+#!/bin/bash
 alias git='hub'
 eval "$(hub alias -s)"
 alias gb='git branch'
@@ -22,3 +23,10 @@ alias less='less -R'
 alias banner='figlet -f graffiti'
 alias g='figlet -f doh G'
 #alias docker-nodes="docker info | tail -n+6 | head -n-3 | grep -v '└' | tail -n+2"
+
+alias ae='lendup-aws-env'
+alias ne='lendup-nomad-env'
+eval "$(complete -p | grep lendup-aws-env | awk 'NF{NF--};1') ae"
+#eval "$(complete -p | grep lendup-nomad-env | awk 'NF{NF--};1') ne"
+
+alias dontquit='vim /tmp/dontquit'

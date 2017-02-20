@@ -19,3 +19,7 @@ COLOR_RESET='\[\e[0m\]'
 
 # Highlighted
 COLOR_YELLOW_HL='\[\e[0;30;43m\]'
+COLOR_RED_HL='\[\e[1;97;101m\]'
+
+# Blinking
+COLOR_YELLOW_BL='\[\e[5;30;43m\]'

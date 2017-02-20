@@ -7,6 +7,7 @@ DOTFILES
 export HISTCONTROL=erasedups
 export HISTSIZE=
 export HISTFILESIZE=
+export HISTTIMEFORMAT="%d/%m/%y %T "
 shopt -s histappend
 
 export PATH="${HOME}/bin:${HOME}/.bash/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:$PATH"
