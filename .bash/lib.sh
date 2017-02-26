@@ -112,7 +112,13 @@ fix_caps_lock() {
 #[Install]
 #WantedBy=multi-user.target
 
-#for f in $(find . -type f -a \( -name '*.new.gpg' -prune -o -print \)) ; do echo "re-encrypting '${f}'" ; rm -f "${f/%gpg/new.gpg}" ; gpg -d -o "${f}" | gpg -e r <PUBKEY> -r ... -a -o "${f/%gpg/new.gpg}" && mv "${f/%gpg/new.gpg}" "${f}" ; done
+gpg_reencrypt() {
+  for f in $(find . -type f -a \( -name '*.new.gpg' -prune -o -print \)) ; do
+    echo "re-encrypting '${f}'"
+    rm -f "${f/%gpg/new.gpg}"
+    cat "${f}" | gpg -d -o- | gpg -e -r FF32D64D -r D7F63FC6 -a -o "${f/%gpg/new.gpg}" && mv "${f/%gpg/new.gpg}" "${f}"
+  done
+}
 
 
 
