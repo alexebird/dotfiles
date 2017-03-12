@@ -11,17 +11,17 @@ bind '"\e[B": history-search-forward'
 bind '"\C-p": history-search-backward'
 bind '"\C-n": history-search-forward'
 
-#remap_capslock() {
-  # remap caps lock to control
-#  setxkbmap -option 'caps:ctrl_modifier'
+remap_capslock() {
+   #remap caps lock to control
+  setxkbmap -option 'caps:ctrl_modifier'
 
-  # make caps lock be esc when pressed alone
-#  killall xcape &> /dev/null
-#  ~/bin/xcape -e 'Caps_Lock=Escape'
+   #make caps lock be esc when pressed alone
+  killall xcape &> /dev/null
+  xcape -e 'Caps_Lock=Escape'
 
-  # reload key repeat settings
-#  touch ~/.config/lxsession/Lubuntu/desktop.conf
-#}
+   #reload key repeat settings
+  touch ~/.config/lxsession/Lubuntu/desktop.conf
+}
 
 gpg_agent_start() {
   #export GPGKEY='F29B9AF3'
@@ -86,7 +86,7 @@ tab() {
 
 unswap_alt_super() {
   setxkbmap -layout us -option ''
-  remap_capslock
+  #remap_capslock
 }
 
 swap_alt_super() {

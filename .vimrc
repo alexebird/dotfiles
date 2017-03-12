@@ -54,7 +54,7 @@ Plugin 'rodjek/vim-puppet'
 Plugin 'asymmetric/upstart.vim'
 Plugin 'jamessan/vim-gnupg'
 Plugin 'alexebird/vim-ansible-yaml'
-"Plugin 'lucastadeu/cyberpunk.vim'
+Plugin 'lucastadeu/cyberpunk.vim'
 Plugin 'robertmeta/nofrils'
 
 " motion mods
@@ -112,8 +112,8 @@ syntax enable
 set background=dark
 "colorscheme solarized
 "colorscheme cyberpunk
-colorscheme nofrils-dark
-"colorscheme slate
+"colorscheme nofrils-dark
+colorscheme slate
 
 set tabstop=4
 set shiftwidth=4
@@ -431,7 +431,7 @@ au Syntax clojure RainbowParenthesesLoadRound
 au Syntax clojure RainbowParenthesesLoadSquare
 au Syntax clojure RainbowParenthesesLoadBraces
 
-au FileType elixir colorscheme slate
+"au FileType elixir colorscheme slate
 
 "autocmd FileType clojure nnoremap <buffer> cpc :Eval<cr>
 
