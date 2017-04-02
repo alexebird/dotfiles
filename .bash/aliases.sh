@@ -28,9 +28,8 @@ alias banner='figlet -f graffiti'
 alias g='figlet -f doh G'
 #alias docker-nodes="docker info | tail -n+6 | head -n-3 | grep -v '└' | tail -n+2"
 
-alias ae='lendup-aws-env'
-alias ne='lendup-nomad-env'
-eval "$(complete -p | grep lendup-aws-env | awk 'NF{NF--};1') ae"
+#alias ae='lendup-aws-env'
+#alias ne='lendup-nomad-env'
 #eval "$(complete -p | grep lendup-nomad-env | awk 'NF{NF--};1') ne"
 
 alias dontquit='vim /tmp/dontquit'
