@@ -5,6 +5,19 @@ BIRD'S DOTFILES
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
+LINUX
+=====
+
+Caps-Lock remap
+---
+
+```
+# in ~/.profile, after sourcing bashrc
+
+setxkbmap -option 'caps:ctrl_modifier'
+xcape -e 'Caps_Lock=Escape'
+```
+
 MACOS
 =====
 

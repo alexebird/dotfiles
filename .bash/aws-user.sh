@@ -1,3 +1,7 @@
-function aws-user() {
-  eval "$(gpg -d ${HOME}/.aws-users/${1}.sh.gpg)"
+function aws-env() {
+  eval "$(gpg -d ${HOME}/.davinci/${1}.sh.gpg)"
+}
+
+function do-env() {
+  eval "$(gpg -d ${HOME}/.davinci/${1}.sh.gpg)"
 }
