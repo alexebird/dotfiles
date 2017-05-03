@@ -5,8 +5,8 @@ BIRD'S DOTFILES
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
-LINUX
-=====
+LUBUNTU
+=======
 
 Caps-Lock remap
 ---
@@ -16,6 +16,13 @@ Caps-Lock remap
 
 setxkbmap -option 'caps:ctrl_modifier'
 xcape -e 'Caps_Lock=Escape'
+```
+
+Digital Clock
+----
+
+```
+%a %b %d %I:%M:%S %p
 ```
 
 MACOS
