@@ -1,1 +1,0 @@
-("~/as2/" "~/jarvis/" "/tmp/brizo/" "~/" "~/puppet/" "~/honesty/" "~/twinkleshine/" "~/engineering/" "~/integrity/" "~/pts/diesel/" "~/pts/luffer/")
