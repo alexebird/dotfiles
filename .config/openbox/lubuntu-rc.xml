@@ -339,6 +339,15 @@
       <action name="UnmaximizeFull"/>
       <action name="MoveResizeTo"><x>0</x><y>-0</y><width>100%</width><height>50%</height></action>
     </keybind>
+
+    <!-- custom -->
+    <keybind key="W-s">
+      <action name="Execute">
+        <command>bash /home/bird/bin/swoop.sh</command>
+      </action>
+    </keybind>
+    <!-- /custom -->
+
     <!-- Keybindings for running applications on Home + E -->
     <keybind key="W-e">
       <action name="Execute">

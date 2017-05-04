@@ -25,6 +25,23 @@ Digital Clock
 %a %b %d %I:%M:%S %p
 ```
 
+Swoop
+-----
+
+In ~/.config/openbox/lubuntu-rc.xml:
+
+```
+    <!-- custom - windows-s -->
+    <keybind key="W-s">
+      <action name="Execute">
+        <command>bash /home/bird/bin/swoop.sh</command>
+      </action>
+    </keybind>
+    <!-- /custom -->
+```
+
+You may need to edit swoop.sh to have the correct resolution for the monitor.
+
 MACOS
 =====
 
