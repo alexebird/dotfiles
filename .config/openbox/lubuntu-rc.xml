@@ -346,6 +346,11 @@
         <command>bash /home/bird/bin/swoop.sh</command>
       </action>
     </keybind>
+    <keybind key="W-g">
+      <action name="Execute">
+        <command>bash /home/bird/bin/grab.sh</command>
+      </action>
+    </keybind>
     <!-- /custom -->
 
     <!-- Keybindings for running applications on Home + E -->
