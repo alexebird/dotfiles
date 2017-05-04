@@ -938,5 +938,3 @@ _rustup() {
             ;;
     esac
 }
-
-complete -F _rustup rustup

@@ -56,7 +56,7 @@ main() {
     ASUS_RES="$(echo "${ASUS_MODE}" | awk '{print $1}')"
     echo "${ASUS_MODE}"
     swoop
-    source ~/.bash/remap_keys.sh
+    source ~/.davinci/sh/remap_keys.sh
   )
 }
 

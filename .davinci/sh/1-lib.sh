@@ -1,16 +1,3 @@
-source ~/.bash/aws-user.sh
-
-alias copy='xsel -ib'
-alias paste='xsel -b'
-alias h='highlight'
-
-# arrow keys
-bind '"\e[A": history-search-backward'
-bind '"\e[B": history-search-forward'
-# C-p/C-n
-bind '"\C-p": history-search-backward'
-bind '"\C-n": history-search-forward'
-
 gpg_agent_start() {
   #export GPGKEY='F29B9AF3'
   if [[ $(ps -ef | grep gpg-agent | grep -v grep) ]]; then
@@ -29,25 +16,25 @@ gpg_agent_start() {
   #fi
 }
 
-function my_git_color_ps1() {
-  if test $(git status 2> /dev/null | grep -c :) -eq 0; then
-    echo "${COLOR_GREEN}$(__git_ps1)${COLOR_RESET}"
-  else
-    echo "${COLOR_RED}$(__git_ps1)${COLOR_RESET}"
-  fi
-}
+#my_git_color_ps1() {
+  #if test $(git status 2> /dev/null | grep -c :) -eq 0; then
+    #echo "${COLOR_GREEN}$(__git_ps1)${COLOR_RESET}"
+  #else
+    #echo "${COLOR_RED}$(__git_ps1)${COLOR_RESET}"
+  #fi
+#}
 
-prompt_function() {
+#prompt_function() {
   #PS1="${LIGHT_GRAY}\u@\h: \w${git_color}$(__git_ps1)${LIGHT_GRAY}\$${RESET} "
   #PS1="${LIGHT_GRAY}[$(date +'%I:%M:%S%P %-m/%d')]\n${LIGHT_GRAY}\w${git_color}$(__git_ps1)${LIGHT_GRAY}\$${RESET} "
   #PS1="${LIGHT_GRAY}\w${git_color}$(__git_ps1)${awsenv}${vpn_info}${swarmy}${LIGHT_GRAY}\$${RESET} "
 
-  if [[ -n "${LENDUP_HOME}" ]]; then
-    PS1="${COLOR_CYAN}\w$(git_color_ps1)$(aws_env_ps1)$(nomad_env_ps1)$(vpn_ps1)$(terraform_ps1)${COLOR_CYAN}\$${COLOR_RESET} "
-  else
-    PS1="${COLOR_CYAN}\w$(my_git_color_ps1)${COLOR_CYAN}\$${COLOR_RESET} "
-  fi
-}
+  #if [[ -n "${DAVINCI_HOME}" ]]; then
+    #PS1="${COLOR_CYAN}\w$(git_color_ps1)$(aws_env_ps1)$(nomad_env_ps1)$(vpn_ps1)$(terraform_ps1)${COLOR_CYAN}\$${COLOR_RESET} "
+  #else
+    #PS1="${COLOR_CYAN}\w$(my_git_color_ps1)${COLOR_CYAN}\$${COLOR_RESET} "
+  #fi
+#}
 
 #PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a ; prompt_function"
 
@@ -123,4 +110,8 @@ gpg_import() {
 gpg_encrypt() {
   local fname="$1"
   gpg -r FF32D64D -r D7F63FC6 -e "${fname}"
+}
+
+ls-stash() {
+  find ~/search/infra/ -mindepth 1 -maxdepth 2 -exec bash -c 'cd {} ; echo Stash for: $PWD; git stash list ;echo' \;
 }
