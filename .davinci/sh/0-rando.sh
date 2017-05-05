@@ -1,4 +1,4 @@
-export GOPATH="${HOME}/.go"
+export GOPATH="${GOPATH}:${HOME}/.go"
 
 export HISTCONTROL=erasedups
 export HISTSIZE=
