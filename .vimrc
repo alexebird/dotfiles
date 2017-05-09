@@ -441,3 +441,4 @@ autocmd Filetype terraform setlocal et ts=2 sw=2 sts=2
 autocmd Filetype ruby setlocal et ts=2 sw=2 sts=2
 autocmd Filetype bash setlocal et ts=2 sw=2 sts=2
 autocmd Filetype sh setlocal et ts=2 sw=2 sts=2
+autocmd Filetype json setlocal et ts=2 sw=2 sts=2

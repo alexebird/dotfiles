@@ -34,3 +34,4 @@ alias h='highlight'
 #eval "$(complete -p | grep lendup-nomad-env | awk 'NF{NF--};1') ne"
 
 alias dontquit='vim /tmp/dontquit'
+alias ae='aws-env'
