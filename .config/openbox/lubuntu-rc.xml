@@ -366,6 +366,11 @@
         <command>amixer -q sset Master toggle</command>
       </action>
     </keybind>
+    <keybind key="C-A-l">
+      <action name="Execute">
+        <command>lxlock</command>
+      </action>
+    </keybind>
     <!-- /custom -->
 
     <!-- Keybindings for running applications on Home + E -->
