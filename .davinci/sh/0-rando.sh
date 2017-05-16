@@ -1,10 +1,12 @@
 export GOPATH="${GOPATH}:${HOME}/.go"
 
-export HISTCONTROL=erasedups
+shopt -s histappend
+export HISTCONTROL=ignoreboth
 export HISTSIZE=
 export HISTFILESIZE=
 export HISTTIMEFORMAT="[%d/%m/%y %T] "
-shopt -s histappend
+
+#PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a ; prompt_function"
 
 # arrow keys
 bind '"\e[A": history-search-backward'

@@ -363,7 +363,7 @@
     </keybind>
     <keybind key="C-A-m">
       <action name="Execute">
-        <command>amixer -q sset Master toggle</command>
+        <command>amixer -D pulse set Master 1+ toggle</command>
       </action>
     </keybind>
     <keybind key="C-A-l">

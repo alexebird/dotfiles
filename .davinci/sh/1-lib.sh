@@ -36,8 +36,6 @@ gpg_agent_start() {
   #fi
 #}
 
-#PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a ; prompt_function"
-
 tab() {
   if [[ ${PWD} == ${HOME} ]]; then
     TITLE='~'
