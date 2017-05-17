@@ -288,7 +288,7 @@ autocmd CmdwinLeave * :set number
 " NERDTree
 let g:nerdtree_tabs_open_on_gui_startup=0
 "let NERDTreeSortOrder=[]
-let g:NERDTreeIgnore = ['^node_modules$']
+"let g:NERDTreeIgnore = ['^node_modules$']
 
 " airline
 let g:airline#extensions#tabline#enabled = 1

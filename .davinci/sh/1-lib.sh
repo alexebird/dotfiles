@@ -37,11 +37,18 @@ gpg_agent_start() {
 #}
 
 tab() {
+  local name="${1:-}"
+
+  if [[ -z "${name}" ]]; then
+    name="$(git rev-parse --show-toplevel)"
+    name="$(basename "${name}")"
+  fi
+
   if [[ ${PWD} == ${HOME} ]]; then
     TITLE='~'
   elif [[ ${PWD} == '/' ]]; then
     TITLE='/'
-  elif [ -z "$1" ]; then
+  elif [ -z "${name}" ]; then
     SLASH_COUNT=$(echo -n ${PWD} | tr -d -c '/'  | wc -c)
     if [[ ${SLASH_COUNT} == 1 ]]; then
       TITLE="/${PWD##*/}"
@@ -52,7 +59,7 @@ tab() {
       #TITLE="${PWD/#$HOME/\~}"
     fi
   else
-    TITLE="${1}"
+    TITLE="${name}"
   fi
   echo -n -e "\033]0;${TITLE}\007"
 }
