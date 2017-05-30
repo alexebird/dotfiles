@@ -76,10 +76,11 @@ Plugin 'slime-lang/vim-slime-syntax'
 " rust
 Plugin 'rust-lang/rust.vim'
 
-" lendup
+" hashicorp
 Plugin 'hashivim/vim-terraform'
 
 Plugin 'dleonard0/pony-vim-syntax'
+
 
 
 " All of your Plugins must be added before the following line
