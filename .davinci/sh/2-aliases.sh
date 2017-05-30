@@ -35,3 +35,4 @@ alias h='highlight'
 
 alias dontquit='vim /tmp/dontquit'
 alias de='davinci-env'
+alias af='aws-find'
