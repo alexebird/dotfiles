@@ -1,7 +1,7 @@
 export GOPATH="${GOPATH}:${HOME}/.go"
 
 shopt -s histappend
-export HISTCONTROL=ignoreboth
+export HISTCONTROL='ignoreboth:erasedups'
 export HISTSIZE=
 export HISTFILESIZE=
 export HISTTIMEFORMAT="[%d/%m/%y %T] "
