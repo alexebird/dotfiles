@@ -12,7 +12,7 @@
 	st = status
 [color]
 	diff = auto
-	status = auto
+	status = always
 	interactive = auto
 	branch = auto
 [core]
