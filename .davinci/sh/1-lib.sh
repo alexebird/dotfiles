@@ -116,23 +116,3 @@ gpg_encrypt() {
   local fname="$1"
   gpg -r FF32D64D -r D7F63FC6 -e "${fname}"
 }
-
-ls-stash() {
-  #find "${DAVINCI_HOME}" -mindepth 1 -maxdepth 1 \
-    #-exec bash -c \
-      #'cd {}
-       #echo Stash for: $PWD
-       #git stash list
-       #echo
-       #git status
-       #echo ================================================' \;
-
-  for repo in $(ls -1trh "${DAVINCI_HOME}"); do
-    cd "${DAVINCI_HOME}/${repo}"
-    echo Stash for: $PWD
-    git stash list
-    echo
-    git status
-    echo ================================================
-  done
-}
