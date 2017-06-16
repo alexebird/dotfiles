@@ -57,6 +57,7 @@ Plugin 'jamessan/vim-gnupg'
 Plugin 'alexebird/vim-ansible-yaml'
 Plugin 'lucastadeu/cyberpunk.vim'
 Plugin 'robertmeta/nofrils'
+Plugin 'mustache/vim-mustache-handlebars'
 
 " motion mods
 Plugin 'bkad/CamelCaseMotion'
@@ -446,3 +447,4 @@ autocmd Filetype sh setlocal et ts=2 sw=2 sts=2
 autocmd Filetype json setlocal et ts=2 sw=2 sts=2
 autocmd BufRead,BufNewFile *.hcl setlocal ft=terraform
 autocmd BufRead,BufNewFile *.nomad setlocal ft=terraform
+autocmd BufRead,BufNewFile *.nomad.mustache setlocal ft=terraform.mustache

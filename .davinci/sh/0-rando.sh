@@ -6,8 +6,6 @@ export HISTSIZE=
 export HISTFILESIZE=
 export HISTTIMEFORMAT="[%d/%m/%y %T] "
 
-#PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a ; prompt_function"
-
 # arrow keys
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
