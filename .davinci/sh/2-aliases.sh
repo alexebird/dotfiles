@@ -26,6 +26,7 @@ alias grep='grep --color=auto'
 alias less='less -R'
 alias banner='figlet -f graffiti'
 alias g='figlet -f doh G'
+alias gf='figlet -f doh GF'
 #alias docker-nodes="docker info | tail -n+6 | head -n-3 | grep -v '└' | tail -n+2"
 alias h='highlight'
 
