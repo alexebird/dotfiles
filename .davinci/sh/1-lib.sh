@@ -38,29 +38,32 @@ gpg_agent_start() {
 
 tab() {
   local name="${1:-}"
+  local TITLE
 
-  if [[ -z "${name}" ]]; then
-    name="$(git rev-parse --show-toplevel)"
-    name="$(basename "${name}")"
-  fi
-
-  if [[ ${PWD} == ${HOME} ]]; then
+  if [[ -n "${name}" ]]; then
+    TITLE="${name}"
+  elif [[ ${PWD} == ${HOME} ]]; then
     TITLE='~'
   elif [[ ${PWD} == '/' ]]; then
     TITLE='/'
-  elif [ -z "${name}" ]; then
-    SLASH_COUNT=$(echo -n ${PWD} | tr -d -c '/'  | wc -c)
-    if [[ ${SLASH_COUNT} == 1 ]]; then
-      TITLE="/${PWD##*/}"
-    else
-      # only show last dir
-      TITLE="${PWD##*/}"
-      # show whole path plus the tilde
-      #TITLE="${PWD/#$HOME/\~}"
-    fi
   else
-    TITLE="${name}"
+    if git rev-parse --git-dir > /dev/null; then
+      name="$(git rev-parse --show-toplevel)"
+      name="$(basename "${name}")"
+    else
+      local slash_count=$(echo -n ${PWD} | tr -d -c '/'  | wc -c)
+
+      if [[ ${slash_count} == 1 ]]; then
+        TITLE="/${PWD##*/}"
+      else
+        # only show last dir
+        TITLE="${PWD##*/}"
+        # show whole path plus the tilde
+        #TITLE="${PWD/#$HOME/\~}"
+      fi
+    fi
   fi
+
   echo -n -e "\033]0;${TITLE}\007"
 }
 
