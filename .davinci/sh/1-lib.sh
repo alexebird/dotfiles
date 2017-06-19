@@ -37,7 +37,7 @@ gpg_agent_start() {
 #}
 
 tab() {
-  local name="${1:-}"
+  local name="${@:-}"
   local TITLE
 
   if [[ -n "${name}" ]]; then
