@@ -38,33 +38,34 @@ gpg_agent_start() {
 
 tab() {
   local name="${@:-}"
-  local TITLE
+  local title
 
   if [[ -n "${name}" ]]; then
-    TITLE="${name}"
+    title="${name}"
   elif [[ ${PWD} == ${HOME} ]]; then
-    TITLE='~'
+    title='~'
   elif [[ ${PWD} == '/' ]]; then
-    TITLE='/'
+    title='/'
   else
     if git rev-parse --git-dir > /dev/null; then
       name="$(git rev-parse --show-toplevel)"
       name="$(basename "${name}")"
+      title="${name}"
     else
       local slash_count=$(echo -n ${PWD} | tr -d -c '/'  | wc -c)
 
       if [[ ${slash_count} == 1 ]]; then
-        TITLE="/${PWD##*/}"
+        title="/${PWD##*/}"
       else
         # only show last dir
-        TITLE="${PWD##*/}"
+        title="${PWD##*/}"
         # show whole path plus the tilde
-        #TITLE="${PWD/#$HOME/\~}"
+        #title="${PWD/#$HOME/\~}"
       fi
     fi
   fi
 
-  echo -n -e "\033]0;${TITLE}\007"
+  echo -n -e "\033]0;${title}\007"
 }
 
 unswap_alt_super() {
