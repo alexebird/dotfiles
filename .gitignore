@@ -9,5 +9,6 @@
 .emacs.d/ac-comphist.dat
 .emacs.d/autosaves
 
-!.bash
-!.bash/**/*
+!.davinci
+!.davinci/**/*
+
