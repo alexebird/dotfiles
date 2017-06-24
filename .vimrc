@@ -42,7 +42,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'ervandew/supertab'
 "Plugin 'Valloric/YouCompleteMe'
-Plugin 'sjl/gundo.vim'
+Plugin 'simnalamburt/vim-mundo'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'scrooloose/syntastic'
 Plugin 'rking/ag.vim'
@@ -131,6 +131,9 @@ set smartcase
 set showcmd
 set nowrap
 set linebreak
+set hidden
+set undofile
+set undodir=/home/bird/.vim/undo
 set laststatus=2
 set notitle
 set synmaxcol=300 " Avoids editor lockup in files with extremely long lines."
@@ -183,6 +186,21 @@ noremap <leader>z :st<cr>
 "noremap <leader>tc :tabclose<cr>
 
 map <leader>x <Plug>NERDCommenterToggle
+
+inoremap <C-d> <Del>
+inoremap <C-t> <Esc>xpa
+
+inoremap <C-b> <Left>
+vnoremap <C-b> <Left>
+
+inoremap <C-f> <Right>
+vnoremap <C-f> <Right>
+
+inoremap <C-a> <Esc>^i
+vnoremap <C-a> ^
+
+inoremap <C-e> <Esc>$a
+vnoremap <C-e> $
 
 " Don't move around in insert mode
 "inoremap <up>    <nop>
@@ -268,7 +286,7 @@ endfunction
     "exec system("pbcopy", @z)
 "endfunction
 
-nnoremap <silent> <C-g> :call CopyFilnameToClipboard()<CR>
+nnoremap <silent> <C-c> :call CopyFilnameToClipboard()<CR>
 
 " / clipboard
 
@@ -331,8 +349,9 @@ nnoremap <C-k> :CtrlPBuffer<CR>
 "let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 
-" gundo (undo-tree)
-nnoremap <leader>g :GundoToggle<cr>
+" mundo (undo-tree)
+nnoremap <leader>g :MundoToggle<cr>
+let g:mundo_prefer_python3 = 0
 
 
 " gitgutter
@@ -346,7 +365,8 @@ command! GR GitGutterUndoHunk
 
 
 " auto-pairs
-let g:AutoPairsShortcutFastWrap = '<C-a>'
+let g:AutoPairsShortcutFastWrap = '<C-s>'
+let g:surround_no_insert_mappings = 1
 
 
 " ag
@@ -442,9 +462,11 @@ au Syntax clojure RainbowParenthesesLoadBraces
 
 autocmd Filetype terraform setlocal et ts=2 sw=2 sts=2
 autocmd Filetype ruby setlocal et ts=2 sw=2 sts=2
-autocmd Filetype bash setlocal et ts=2 sw=2 sts=2
-autocmd Filetype sh setlocal et ts=2 sw=2 sts=2
+autocmd Filetype bash setlocal et ts=2 sw=2 sts=2 iskeyword+=:
+autocmd Filetype sh setlocal et ts=2 sw=2 sts=2 iskeyword+=:
 autocmd Filetype json setlocal et ts=2 sw=2 sts=2
+autocmd Filetype yaml setlocal et ts=2 sw=2 sts=2
 autocmd BufRead,BufNewFile *.hcl setlocal ft=terraform
 autocmd BufRead,BufNewFile *.nomad setlocal ft=terraform
 autocmd BufRead,BufNewFile *.nomad.mustache setlocal ft=terraform.mustache
+autocmd BufRead,BufNewFile *.yml.ctmpl setlocal ft=yaml.mustache et ts=2 sw=2 sts=2
