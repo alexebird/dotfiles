@@ -11,6 +11,3 @@
 
 !.bash
 !.bash/**/*
-
-!.davinci-env
-!.davinci-env/**/*.gpg
