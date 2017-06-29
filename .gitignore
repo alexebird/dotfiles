@@ -10,8 +10,6 @@
 .emacs.d/autosaves
 
 # dont ignore untracked dirs
-!/*/**/*/
+#!/*/**/*/
 !/.davinci/
 !/.davinci/**/*
-!/.davinci-env/
-!/.davinci-env/**/*.gpg
