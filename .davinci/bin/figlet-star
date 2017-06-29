@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+find ~/clones/figlet-fonts/ -type f -name '*.flf' \
+  | grep -vi obanner \
+  | xargs -I{} bash -c "echo {}; figlet -f {} $1; echo; echo"

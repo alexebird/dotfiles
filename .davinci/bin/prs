@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+fname="/tmp/$(date +%Y-%m-%d_%H:%M:%S).txt"
+echo "${fname}"
+ls-prs $(ls -1tr "${DAVINCI_HOME}" | sed -e's;/$;;' | grep -v secrets | tail -1000) | tee "${fname}"

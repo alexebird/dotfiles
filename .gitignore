@@ -9,8 +9,9 @@
 .emacs.d/ac-comphist.dat
 .emacs.d/autosaves
 
-!.davinci
-!.davinci/**/*
-
-+!.davinci-env
-!.davinci-env/**/*.gpg
+# dont ignore untracked dirs
+!/*/**/*/
+!/.davinci/
+!/.davinci/**/*
+!/.davinci-env/
+!/.davinci-env/**/*.gpg
