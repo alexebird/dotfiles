@@ -1,5 +1,5 @@
 *
-.Rproj.user
+!.gitignore
 
 # emacs
 !.emacs.d
@@ -9,7 +9,7 @@
 .emacs.d/ac-comphist.dat
 .emacs.d/autosaves
 
-# dont ignore untracked dirs
-#!/*/**/*/
+# dont ignore some dirs
+!/.vim/
 !/.davinci/
 !/.davinci/**/*
