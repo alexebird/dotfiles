@@ -197,10 +197,10 @@ inoremap <C-f> <Right>
 vnoremap <C-f> <Right>
 
 inoremap <C-a> <Esc>^i
-vnoremap <C-a> ^
+"vnoremap <C-a> ^
 
 inoremap <C-e> <Esc>$a
-vnoremap <C-e> $
+"vnoremap <C-e> $
 
 " Don't move around in insert mode
 "inoremap <up>    <nop>
