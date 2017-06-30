@@ -408,6 +408,8 @@ let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion"
 "map <Leader>k <Plug>(easymotion-k)
 "map <Leader>h <Plug>(easymotion-linebackward)
 
+let g:GPGExecutable = 'gpg2'
+
 
 " supertab
 "let g:SuperTabDefaultCompletionType = "context"
