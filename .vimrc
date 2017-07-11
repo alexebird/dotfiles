@@ -408,6 +408,8 @@ let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion"
 "map <Leader>k <Plug>(easymotion-k)
 "map <Leader>h <Plug>(easymotion-linebackward)
 
+let g:GPGExecutable = 'gpg2'
+
 
 " supertab
 "let g:SuperTabDefaultCompletionType = "context"
@@ -470,3 +472,5 @@ autocmd BufRead,BufNewFile *.hcl setlocal ft=terraform
 autocmd BufRead,BufNewFile *.nomad setlocal ft=terraform
 autocmd BufRead,BufNewFile *.nomad.mustache setlocal ft=terraform.mustache
 autocmd BufRead,BufNewFile *.yml.ctmpl setlocal ft=yaml.mustache et ts=2 sw=2 sts=2
+
+hi Search cterm=NONE ctermfg=black ctermbg=green
