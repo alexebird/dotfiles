@@ -2,4 +2,4 @@
 
 find ~/clones/figlet-fonts/ -type f -name '*.flf' \
   | grep -vi obanner \
-  | xargs -I{} bash -c "echo {}; figlet -f {} $1; echo; echo"
+  | xargs -I{} bash -c "echo {}; figlet -w200 -f {} $1; echo; echo"
