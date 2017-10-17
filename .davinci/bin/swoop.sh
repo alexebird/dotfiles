@@ -2,7 +2,7 @@
 
 swoop_my_desk_external_modeline()
 {
-    local ident="${1:-1}"
+    local ident="${1:?must pass ident}"
 
     local x='1920'
     local y='1200'
@@ -38,24 +38,37 @@ swoop_show_my_desk_external()
 
 swoop() {
     if xrandr | grep -q "${EXTERNAL} disconnected" ; then
-        swoop_show_laptop "${LAPTOP}"
+        swoop_show_laptop
     else
         swoop_show_my_desk_external
     fi
 }
 
+undock() {
+    swoop_show_laptop
+}
+
+external() {
+    swoop_show_my_desk_external
+}
 
 main() {
   (
     set -e
     #set -v
-    set -x
+    #set -x
+    subcmd="${1:-swoop}"
+    logger -tswoop 'starting...'
+    logger -tswoop "subcmd: ${subcmd}"
     LAPTOP='eDP-1'
     EXTERNAL='DP-2-1'
-    ASUS_MODE="$(swoop_my_desk_external_modeline $1)"
+    ASUS_MODE="$(swoop_my_desk_external_modeline "1")"
     ASUS_RES="$(echo "${ASUS_MODE}" | awk '{print $1}')"
-    echo "${ASUS_MODE}"
-    swoop
+    logger -tswoop "laptop: ${LAPTOP}"
+    logger -tswoop "external: ${EXTERNAL}"
+    logger -tswoop "external-modeline: ${ASUS_MODE}"
+    logger -tswoop "external-res: ${ASUS_RES}"
+    ${1}
     source ~/.davinci/sh/remap_keys.sh
   )
 }

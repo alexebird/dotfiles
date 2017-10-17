@@ -247,9 +247,9 @@
         <to>4</to>
       </action>
     </keybind>
-    <keybind key="W-d">
-      <action name="ToggleShowDesktop"/>
-    </keybind>
+    <!--<keybind key="W-d">-->
+      <!--<action name="ToggleShowDesktop"/>-->
+    <!--</keybind>-->
     <!-- Keybindings for windows -->
     <keybind key="A-F4">
       <action name="Close"/>
@@ -343,7 +343,17 @@
     <!-- custom -->
     <keybind key="W-s">
       <action name="Execute">
-        <command>bash /home/bird/.davinci/bin/swoop.sh</command>
+        <command>bash /home/bird/.davinci/bin/swoop.sh swoop</command>
+      </action>
+    </keybind>
+    <keybind key="W-d">
+      <action name="Execute">
+        <command>bash /home/bird/.davinci/bin/swoop.sh undock</command>
+      </action>
+    </keybind>
+    <keybind key="W-e">
+      <action name="Execute">
+        <command>bash /home/bird/.davinci/bin/swoop.sh external</command>
       </action>
     </keybind>
     <keybind key="W-g">
@@ -374,15 +384,15 @@
     <!-- /custom -->
 
     <!-- Keybindings for running applications on Home + E -->
-    <keybind key="W-e">
-      <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>File manager</name>
-        </startupnotify>
-        <command>lxsession-default file_manager</command>
-      </action>
-    </keybind>
+    <!--<keybind key="W-e">-->
+      <!--<action name="Execute">-->
+        <!--<startupnotify>-->
+          <!--<enabled>true</enabled>-->
+          <!--<name>File manager</name>-->
+        <!--</startupnotify>-->
+        <!--<command>lxsession-default file_manager</command>-->
+      <!--</action>-->
+    <!--</keybind>-->
     <!-- Keybindings for running Run menu from Lxpanel on Home + R-->
     <keybind key="W-r">
       <action name="Execute">
