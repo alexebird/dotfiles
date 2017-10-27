@@ -4,8 +4,13 @@ swoop_my_desk_external_modeline()
 {
     local ident="${1:?must pass ident}"
 
-    local x='1920'
-    local y='1200'
+    # shitty dell
+    #local x='1920'
+    #local y='1200'
+
+    local x='2560'
+    local y='1440'
+
     local refresh='59.95'
 
     local mode="$(cvt $x $y | tail -1 | sed -e's/Modeline //' -e's/"//g' -e"s/_60.00/_${refresh}/")"

@@ -465,6 +465,7 @@ autocmd Filetype ruby setlocal et ts=2 sw=2 sts=2
 autocmd Filetype bash setlocal et ts=2 sw=2 sts=2 iskeyword+=:
 autocmd Filetype sh setlocal et ts=2 sw=2 sts=2 iskeyword+=:
 autocmd Filetype json setlocal et ts=2 sw=2 sts=2
+autocmd Filetype javascript setlocal et ts=2 sw=2 sts=2
 autocmd Filetype yaml setlocal et ts=2 sw=2 sts=2
 autocmd BufRead,BufNewFile *.hcl setlocal ft=terraform
 autocmd BufRead,BufNewFile *.nomad setlocal ft=terraform
