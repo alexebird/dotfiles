@@ -18,3 +18,4 @@ node_modules
 *.js.map
 *.tfstate
 *.tfstate.backup
+*.tfstate.*.backup

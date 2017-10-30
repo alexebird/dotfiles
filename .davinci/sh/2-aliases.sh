@@ -2,7 +2,6 @@
 
 if which hub > /dev/null ; then
   alias git='hub'
-  eval "$(hub alias -s)"
 fi
 
 alias gb='git branch'

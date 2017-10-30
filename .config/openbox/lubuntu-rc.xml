@@ -343,7 +343,7 @@
     <!-- custom -->
     <keybind key="W-s">
       <action name="Execute">
-        <command>bash /home/bird/.davinci/bin/swoop.sh swoop</command>
+        <command>bash /home/bird/.davinci/bin/swoop.sh swarp</command>
       </action>
     </keybind>
     <keybind key="W-d">

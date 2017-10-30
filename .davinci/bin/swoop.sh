@@ -17,6 +17,10 @@ swoop_my_desk_external_modeline()
     echo $mode
 }
 
+swoop_external_name() {
+  xrandr -q | grep \ connected | grep -v 'eDP-1' | awk '{print $1}'
+}
+
 swoop_my_desk_has_mode()
 {
     xrandr -q | grep -A10 "${EXTERNAL} connected" | grep -q "${ASUS_RES}"
@@ -57,25 +61,51 @@ external() {
     swoop_show_my_desk_external
 }
 
+swarp() {
+  local laptop="${1}" ; shift
+  local external="${1}" ; shift
+
+  if xrandr -q | grep -q "${external} disconnected" ; then
+    xrandr --output "${laptop}" --auto --output "${external}" --off
+  else
+    xrandr --output "${laptop}" --off --output "${external}" --auto
+  fi
+}
+
 main() {
   (
     set -e
-    #set -v
-    #set -x
-    subcmd="${1:-swoop}"
+
+    if [[ "${1}" == "-h" ]]; then
+      cat <<HERE
+usage: swoop.sh [-h -v] SUBCMD
+
+SUBCMD
+- swoop (classic)
+- swarp (new style swoop)
+- undock
+- external
+HERE
+      exit 0
+    elif [[ "${1}" == "-v" ]]; then
+      shift
+      set -x
+    fi
+
+    subcmd="${1:?must pass subcommand}"
     logger -tswoop 'starting...'
     logger -tswoop "subcmd: ${subcmd}"
     LAPTOP='eDP-1'
-    EXTERNAL='DP-2-1'
-    ASUS_MODE="$(swoop_my_desk_external_modeline "1")"
-    ASUS_RES="$(echo "${ASUS_MODE}" | awk '{print $1}')"
+    #ASUS_MODE="$(swoop_my_desk_external_modeline "1")"
+    #ASUS_RES="$(echo "${ASUS_MODE}" | awk '{print $1}')"
+    local external="$(swoop_external_name)"
     logger -tswoop "laptop: ${LAPTOP}"
-    logger -tswoop "external: ${EXTERNAL}"
-    logger -tswoop "external-modeline: ${ASUS_MODE}"
-    logger -tswoop "external-res: ${ASUS_RES}"
-    ${1}
+    logger -tswoop "external: ${external}"
+    #logger -tswoop "external-modeline: ${ASUS_MODE}"
+    #logger -tswoop "external-res: ${ASUS_RES}"
+    ${1} "${LAPTOP}" "$(swoop_external_name)"
     source ~/.davinci/sh/remap_keys.sh
   )
 }
 
-main $1
+main "${@}"
