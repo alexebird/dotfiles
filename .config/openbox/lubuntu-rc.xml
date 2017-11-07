@@ -281,6 +281,16 @@
         </finalactions>
       </action>
     </keybind>
+    <keybind key="W-Tab">
+      <action name="NextWindow">
+        <dialog>icons</dialog>
+        <finalactions>
+          <action name="Focus"/>
+          <action name="Raise"/>
+          <action name="Unshade"/>
+        </finalactions>
+      </action>
+    </keybind>
     <keybind key="A-S-Tab">
       <action name="PreviousWindow">
         <finalactions>

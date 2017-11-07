@@ -371,7 +371,7 @@ let g:surround_no_insert_mappings = 1
 
 " ag
 "let g:ag_working_path_mode="r"
-let g:ag_prg="ag --vimgrep --hidden --smart-case --ignore log"
+let g:ag_prg="ag --vimgrep --hidden --smart-case --ignore log --ignore grafana/json"
 
 
 " syntastic
