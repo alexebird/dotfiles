@@ -467,9 +467,9 @@ autocmd Filetype sh setlocal et ts=2 sw=2 sts=2 iskeyword+=:
 autocmd Filetype json setlocal et ts=2 sw=2 sts=2
 autocmd Filetype javascript setlocal et ts=2 sw=2 sts=2
 autocmd Filetype yaml setlocal et ts=2 sw=2 sts=2
-autocmd BufRead,BufNewFile *.hcl setlocal ft=terraform
-autocmd BufRead,BufNewFile *.nomad setlocal ft=terraform
-autocmd BufRead,BufNewFile *.nomad.mustache setlocal ft=terraform.mustache et ts=2 sw=2 sts=2
+autocmd BufRead,BufNewFile *.hcl setlocal ft=terraform et ts=2 sw=2 sts=2
+autocmd BufRead,BufNewFile *.hcl.tmpl setlocal ft=terraform et ts=2 sw=2 sts=2
+autocmd BufRead,BufNewFile *.hcl.mustache setlocal ft=terraform.mustache et ts=2 sw=2 sts=2
 autocmd BufRead,BufNewFile *.yml.ctmpl  setlocal ft=yaml.mustache et ts=2 sw=2 sts=2
 autocmd BufRead,BufNewFile *.conf.ctmpl setlocal ft=conf.mustache et ts=2 sw=2 sts=2
 
