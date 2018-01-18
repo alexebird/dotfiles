@@ -35,6 +35,6 @@ alias h='highlight'
 
 alias dontquit='vim /tmp/dontquit'
 alias de='davinci-env'
-alias af='aws-find'
+#alias af='aws-find'
 alias barf='gpgp find-secrets'
 alias eat='gpgp copy-secret'

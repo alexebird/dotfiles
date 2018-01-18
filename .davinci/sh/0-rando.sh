@@ -1,4 +1,5 @@
-export GOPATH="${GOPATH}:${HOME}/.go"
+export GOROOT="/usr/local/go"
+export GOPATH="${HOME}/go"
 
 shopt -s histappend
 export HISTCONTROL='ignoreboth:erasedups'
