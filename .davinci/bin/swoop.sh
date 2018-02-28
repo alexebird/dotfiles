@@ -18,7 +18,8 @@
 #}
 
 swoop_external_name() {
-  xrandr -q | grep -E 'connected [0-9]' | grep -v 'eDP-1' | awk '{print $1}'
+  #xrandr -q | grep -E 'connected [0-9]' | grep -v 'eDP-1' | awk '{print $1}'
+  xrandr -q | grep -E ' connected' | grep -v 'eDP-1' | awk '{print $1}'
 }
 
 #swoop_my_desk_has_mode()
