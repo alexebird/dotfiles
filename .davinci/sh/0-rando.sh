@@ -14,5 +14,6 @@ bind '"\e[B": history-search-forward'
 bind '"\C-p": history-search-backward'
 bind '"\C-n": history-search-forward'
 # ALT-p/ALT-n (as workaround for weird docker cli behavior)
-bind '"\\M-p": history-search-backward'
-bind '"\\M-n": history-search-forward'
+# doesnt work...wtf?
+#bind '"\M-p": history-search-backward'
+#bind '"\M-n": history-search-forward'
