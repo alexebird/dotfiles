@@ -2,7 +2,6 @@
 
 if which hub > /dev/null ; then
   alias git='hub'
-  eval "$(hub alias -s)"
 fi
 
 alias gb='git branch'
@@ -36,5 +35,6 @@ alias h='highlight'
 
 alias dontquit='vim /tmp/dontquit'
 alias de='davinci-env'
-alias af='aws-find'
+#alias af='aws-find'
 alias barf='gpgp find-secrets'
+alias eat='gpgp copy-secret'

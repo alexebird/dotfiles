@@ -1,4 +1,5 @@
-export GOPATH="${GOPATH}:${HOME}/.go"
+export GOROOT="/usr/local/go"
+export GOPATH="${HOME}/go"
 
 shopt -s histappend
 export HISTCONTROL='ignoreboth:erasedups'
@@ -12,3 +13,7 @@ bind '"\e[B": history-search-forward'
 # C-p/C-n
 bind '"\C-p": history-search-backward'
 bind '"\C-n": history-search-forward'
+# ALT-p/ALT-n (as workaround for weird docker cli behavior)
+# doesnt work...wtf?
+#bind '"\M-p": history-search-backward'
+#bind '"\M-n": history-search-forward'

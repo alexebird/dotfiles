@@ -42,7 +42,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'ervandew/supertab'
 "Plugin 'Valloric/YouCompleteMe'
-Plugin 'simnalamburt/vim-mundo'
+"Plugin 'simnalamburt/vim-mundo'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'scrooloose/syntastic'
 Plugin 'rking/ag.vim'
@@ -309,7 +309,7 @@ autocmd CmdwinLeave * :set number
 " NERDTree
 let g:nerdtree_tabs_open_on_gui_startup=0
 "let NERDTreeSortOrder=[]
-"let g:NERDTreeIgnore = ['^node_modules$']
+let g:NERDTreeIgnore = ['^__pycache__$']
 
 " airline
 let g:airline#extensions#tabline#enabled = 1
@@ -371,13 +371,11 @@ let g:surround_no_insert_mappings = 1
 
 " ag
 "let g:ag_working_path_mode="r"
-let g:ag_prg="ag --vimgrep --hidden --smart-case --ignore log"
+let g:ag_prg="ag --vimgrep --hidden --smart-case --ignore log --ignore grafana/json"
 
 
 " syntastic
-"let g:syntastic_mode_map = { 'mode': 'passive',
-              "\ 'active_filetypes': [],
-              "\ 'passive_filetypes': [] }
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': ['python'] }
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -467,10 +465,13 @@ autocmd Filetype ruby setlocal et ts=2 sw=2 sts=2
 autocmd Filetype bash setlocal et ts=2 sw=2 sts=2 iskeyword+=:
 autocmd Filetype sh setlocal et ts=2 sw=2 sts=2 iskeyword+=:
 autocmd Filetype json setlocal et ts=2 sw=2 sts=2
+autocmd Filetype javascript setlocal et ts=2 sw=2 sts=2
 autocmd Filetype yaml setlocal et ts=2 sw=2 sts=2
-autocmd BufRead,BufNewFile *.hcl setlocal ft=terraform
-autocmd BufRead,BufNewFile *.nomad setlocal ft=terraform
-autocmd BufRead,BufNewFile *.nomad.mustache setlocal ft=terraform.mustache
-autocmd BufRead,BufNewFile *.yml.ctmpl setlocal ft=yaml.mustache et ts=2 sw=2 sts=2
+autocmd Filetype qf setlocal cursorline
+autocmd BufRead,BufNewFile *.hcl setlocal ft=terraform et ts=2 sw=2 sts=2
+autocmd BufRead,BufNewFile *.hcl.tmpl setlocal ft=terraform et ts=2 sw=2 sts=2
+autocmd BufRead,BufNewFile *.hcl.mustache setlocal ft=terraform.mustache et ts=2 sw=2 sts=2
+autocmd BufRead,BufNewFile *.yml.ctmpl  setlocal ft=yaml.mustache et ts=2 sw=2 sts=2
+autocmd BufRead,BufNewFile *.conf.ctmpl setlocal ft=conf.mustache et ts=2 sw=2 sts=2
 
 hi Search cterm=NONE ctermfg=black ctermbg=green

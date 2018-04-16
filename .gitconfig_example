@@ -1,6 +1,7 @@
 [user]
-	email = bird@grandrounds.com
+	email =
 	name = Alex Bird
+	signingkey =
 [alias]
 	br = branch
 	ci = commit
@@ -22,3 +23,7 @@
 	default = current
 [pull]
 	default = current
+[diff]
+	tool = meld
+[commit]
+	gpgsign = true
