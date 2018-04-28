@@ -29,12 +29,7 @@ alias gf='figlet -f doh GF'
 #alias docker-nodes="docker info | tail -n+6 | head -n-3 | grep -v '└' | tail -n+2"
 alias h='highlight'
 
-#alias ae='lendup-aws-env'
-#alias ne='lendup-nomad-env'
-#eval "$(complete -p | grep lendup-nomad-env | awk 'NF{NF--};1') ne"
-
 alias dontquit='vim /tmp/dontquit'
 alias de='davinci-env'
-#alias af='aws-find'
 alias barf='gpgp find-secrets'
 alias eat='gpgp copy-secret'
