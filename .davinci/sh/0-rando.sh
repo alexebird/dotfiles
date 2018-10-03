@@ -1,5 +1,4 @@
-export GOROOT="/usr/local/go"
-export GOPATH="${HOME}/go"
+export EDITOR='vim'
 
 shopt -s histappend
 export HISTCONTROL='ignoreboth:erasedups'

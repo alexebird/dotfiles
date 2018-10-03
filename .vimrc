@@ -55,7 +55,6 @@ Plugin 'rodjek/vim-puppet'
 Plugin 'asymmetric/upstart.vim'
 Plugin 'jamessan/vim-gnupg'
 Plugin 'alexebird/vim-ansible-yaml'
-Plugin 'lucastadeu/cyberpunk.vim'
 Plugin 'robertmeta/nofrils'
 Plugin 'mustache/vim-mustache-handlebars'
 
@@ -475,3 +474,10 @@ autocmd BufRead,BufNewFile *.yml.ctmpl  setlocal ft=yaml.mustache et ts=2 sw=2 s
 autocmd BufRead,BufNewFile *.conf.ctmpl setlocal ft=conf.mustache et ts=2 sw=2 sts=2
 
 hi Search cterm=NONE ctermfg=black ctermbg=green
+
+
+function! PutsDate()
+ put =strftime('%c')
+endfunction
+
+command! Date call PutsDate()
