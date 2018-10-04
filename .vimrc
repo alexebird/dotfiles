@@ -177,6 +177,7 @@ nmap <leader>f <leader>l
 
 noremap <leader>r :NERDTreeToggle<cr>
 noremap <leader>e :TagbarToggle<cr>
+"let g:tagbar_left = 1
 
 "noremap <leader>w :wa<cr>
 noremap <leader>. :wa<cr>
