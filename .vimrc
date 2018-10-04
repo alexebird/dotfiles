@@ -57,6 +57,8 @@ Plugin 'jamessan/vim-gnupg'
 Plugin 'alexebird/vim-ansible-yaml'
 "Plugin 'robertmeta/nofrils'
 "Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'robertmeta/nofrils'
+Plugin 'mustache/vim-mustache-handlebars'
 
 " motion mods
 "Plugin 'bkad/CamelCaseMotion'
@@ -132,7 +134,7 @@ set nowrap
 set linebreak
 set hidden
 set undofile
-set undodir=/home/bird/.vim/undo
+set undodir=~/.vim/undo
 set laststatus=2
 set notitle
 set synmaxcol=300 " Avoids editor lockup in files with extremely long lines."
@@ -475,3 +477,10 @@ autocmd BufRead,BufNewFile *.yml.ctmpl  setlocal ft=yaml.mustache et ts=2 sw=2 s
 autocmd BufRead,BufNewFile *.conf.ctmpl setlocal ft=conf.mustache et ts=2 sw=2 sts=2
 
 hi Search cterm=NONE ctermfg=black ctermbg=green
+
+
+function! PutsDate()
+ put =strftime('%c')
+endfunction
+
+command! Date call PutsDate()

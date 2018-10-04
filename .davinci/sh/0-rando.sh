@@ -1,4 +1,5 @@
 export GOPATH="${HOME}/go"
+export EDITOR='vim'
 
 shopt -s histappend
 export HISTCONTROL='ignoreboth:erasedups'

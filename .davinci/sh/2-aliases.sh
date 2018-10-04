@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if which hub > /dev/null ; then
-  alias git='hub'
-fi
+#if which hub > /dev/null ; then
+  #alias git='hub'
+#fi
 
 alias gb='git branch'
 alias gd='git diff'
