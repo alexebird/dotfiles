@@ -21,7 +21,7 @@ Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'taglist.vim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'altercation/vim-colors-solarized'
+"Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'tpope/vim-rails'
@@ -30,8 +30,8 @@ Plugin 'tpope/vim-cucumber'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'kien/ctrlp.vim'
-Plugin 'slim-template/vim-slim'
-Plugin 'kchmck/vim-coffee-script'
+"Plugin 'slim-template/vim-slim'
+"Plugin 'kchmck/vim-coffee-script'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'kana/vim-textobj-user'
 Plugin 'nelstrom/vim-textobj-rubyblock'
@@ -51,16 +51,15 @@ Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'Lokaltog/vim-easymotion'
 "Plugin 'regedarek/ZoomWin'
 Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'rodjek/vim-puppet'
-Plugin 'asymmetric/upstart.vim'
+"Plugin 'rodjek/vim-puppet'
+"Plugin 'asymmetric/upstart.vim'
 Plugin 'jamessan/vim-gnupg'
 Plugin 'alexebird/vim-ansible-yaml'
-Plugin 'lucastadeu/cyberpunk.vim'
-Plugin 'robertmeta/nofrils'
-Plugin 'mustache/vim-mustache-handlebars'
+"Plugin 'robertmeta/nofrils'
+"Plugin 'mustache/vim-mustache-handlebars'
 
 " motion mods
-Plugin 'bkad/CamelCaseMotion'
+"Plugin 'bkad/CamelCaseMotion'
 
 " clj
 Plugin 'guns/vim-clojure-highlight'
@@ -75,12 +74,12 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'slime-lang/vim-slime-syntax'
 
 " rust
-Plugin 'rust-lang/rust.vim'
+"Plugin 'rust-lang/rust.vim'
 
 " hashicorp
 Plugin 'hashivim/vim-terraform'
 
-Plugin 'dleonard0/pony-vim-syntax'
+"Plugin 'dleonard0/pony-vim-syntax'
 
 
 
