@@ -350,8 +350,8 @@ nnoremap <C-k> :CtrlPBuffer<CR>
 
 
 " mundo (undo-tree)
-nnoremap <leader>g :MundoToggle<cr>
-let g:mundo_prefer_python3 = 0
+"nnoremap <leader>g :MundoToggle<cr>
+"let g:mundo_prefer_python3 = 0
 
 
 " gitgutter
