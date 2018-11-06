@@ -85,19 +85,6 @@ call plug#end()
 " begin vim configuration
 "
 
-
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList          - list configured plugins
-" :PluginInstall(!)    - install (update) plugins
-" :PluginSearch(!) foo - search (or refresh cache first) for foo
-" :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
 " required for vim-textobj-rubyblock
 runtime macros/matchit.vim
 
@@ -153,14 +140,14 @@ nnoremap <silent> <c-l> :noh<cr>
 
 " backup to ~/.tmp
 set backup
-set backupdir=,~/tmp,/tmp
+set backupdir=~/tmp,/tmp
 set backupskip=/tmp/*,/private/tmp/*
 set directory=~/tmp,/tmp
 set writebackup
 
 
 command! SS source $MYVIMRC
-command! SV edit ~/.vimrc
+command! SV edit ~/.config/nvim/init.vim
 command! TT ! ctags -R --languages=ruby --exclude=.git --exclude=log .
 "command! TT silent ! ctags -R --languages=ruby --exclude=.git --exclude=log . | execute ':redraw!'
 command! E Eval
