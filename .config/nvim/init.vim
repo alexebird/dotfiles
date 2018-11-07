@@ -464,7 +464,7 @@ hi Search cterm=NONE ctermfg=black ctermbg=green
 
 
 function! PutsDate()
- put =strftime('%c')
+ put =strftime('# %c')
 endfunction
 
 command! Date call PutsDate()
