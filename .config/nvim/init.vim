@@ -31,7 +31,7 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-cucumber'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 "Plug 'slim-template/vim-slim'
 "Plug 'kchmck/vim-coffee-script'
 Plug 'thoughtbot/vim-rspec'
@@ -468,3 +468,5 @@ function! PutsDate()
 endfunction
 
 command! Date call PutsDate()
+
+let g:github_enterprise_urls = ['https://github.cbhq.net']

@@ -1,8 +1,12 @@
-require 'awesome_print'
+begin
+  require 'awesome_print'
 
-# Allow rails console to setup whether awesome_print gets used
-if !defined?(Rails)
-  AwesomePrint.pry!
+  # Allow rails console to setup whether awesome_print gets used
+  if !defined?(Rails)
+    AwesomePrint.pry!
+  end
+rescue LoadError
+  # bummer
 end
 
 Pry.editor = 'vim'
