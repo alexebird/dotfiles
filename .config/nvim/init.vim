@@ -78,6 +78,7 @@ Plug 'slime-lang/vim-slime-syntax'
 " hashicorp
 Plug 'hashivim/vim-terraform'
 "Plug 'dleonard0/pony-vim-syntax'
+Plug 'rhysd/vim-crystal'
 
 call plug#end()
 
@@ -103,7 +104,7 @@ set background=dark
 "colorscheme solarized
 "colorscheme cyberpunk
 "colorscheme nofrils-dark
-colorscheme slate
+colorscheme desert
 
 set tabstop=4
 set shiftwidth=4
@@ -357,7 +358,7 @@ let g:surround_no_insert_mappings = 1
 
 " ag
 "let g:ag_working_path_mode="r"
-let g:ag_prg="ag --vimgrep --hidden --smart-case --ignore log --ignore grafana/json"
+let g:ag_prg="ag --vimgrep --hidden --smart-case --ignore log --ignore fixture_data"
 
 
 " syntastic
@@ -453,6 +454,7 @@ autocmd Filetype sh setlocal et ts=2 sw=2 sts=2 iskeyword+=:
 autocmd Filetype json setlocal et ts=2 sw=2 sts=2
 autocmd Filetype javascript setlocal et ts=2 sw=2 sts=2
 autocmd Filetype yaml setlocal et ts=2 sw=2 sts=2
+autocmd Filetype crystal setlocal et ts=2 sw=2 sts=2
 autocmd Filetype qf setlocal cursorline
 autocmd BufRead,BufNewFile *.hcl setlocal ft=terraform et ts=2 sw=2 sts=2
 autocmd BufRead,BufNewFile *.hcl.tmpl setlocal ft=terraform et ts=2 sw=2 sts=2

@@ -12,7 +12,7 @@ readonly BS='git-branch-search'
 readonly GIT_CHECKOUT='git checkout'
 
 command -v ${BS} > /dev/null 2>&1 || \
-    { echo "${BS} is required (and should be in ~/engineering/bin/)" >&2 exit 1; }
+    { echo "${BS} is required" >&2 exit 1; }
 
 # checkout the last branch when '-' is passed
 if [[ ${SUBSTRING} ==  '-' ]]; then
