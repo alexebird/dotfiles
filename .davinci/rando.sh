@@ -240,28 +240,28 @@ tab() {
   local name="${@:-}"
   local title
 
-  if [[ -n "${name}" ]]; then
+  if [[ "${name}" == "pwd" ]]; then
+    title="$(basename "$(pwd)")"
+  elif [[ -n "${name}" ]]; then
     title="${name}"
   elif [[ ${PWD} == ${HOME} ]]; then
     title='~'
   elif [[ ${PWD} == '/' ]]; then
     title='/'
+  elif git rev-parse --git-dir > /dev/null; then
+    name="$(git rev-parse --show-toplevel)"
+    name="$(basename "${name}")"
+    title="${name}"
   else
-    if git rev-parse --git-dir > /dev/null; then
-      name="$(git rev-parse --show-toplevel)"
-      name="$(basename "${name}")"
-      title="${name}"
-    else
-      local slash_count=$(echo -n ${PWD} | tr -d -c '/'  | wc -c)
+    local slash_count=$(echo -n ${PWD} | tr -d -c '/'  | wc -c)
 
-      if [[ ${slash_count} == 1 ]]; then
-        title="/${PWD##*/}"
-      else
-        # only show last dir
-        title="${PWD##*/}"
-        # show whole path plus the tilde
-        #title="${PWD/#$HOME/\~}"
-      fi
+    if [[ ${slash_count} == 1 ]]; then
+      title="/${PWD##*/}"
+    else
+      # only show last dir
+      title="${PWD##*/}"
+      # show whole path plus the tilde
+      #title="${PWD/#$HOME/\~}"
     fi
   fi
 
