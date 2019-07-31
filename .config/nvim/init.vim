@@ -47,7 +47,8 @@ Plug 'ervandew/supertab'
 "Plug 'simnalamburt/vim-mundo'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'scrooloose/syntastic'
-Plug 'rking/ag.vim'
+"Plug 'rking/ag.vim'
+Plug 'mileszs/ack.vim'
 Plug 'lmeijvogel/vim-yaml-helper'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'Lokaltog/vim-easymotion'
@@ -223,13 +224,17 @@ autocmd BufWinEnter * if &buftype == 'quickfix' | setlocal nonumber | endif
 
 " Searching
 " global search prompt
-nnoremap \ :Ag! ''<Left>
+nnoremap \ :Ack! ''<Left>
 " global search for whole word under cursor using '|' character
-nnoremap <bar> :Ag! '\b<cword>\b'<CR>
+nnoremap <bar> :Ack! '\b<cword>\b'<CR>
 " global search for word under cursor as text
-nnoremap g\ :Ag! <cword><CR>
+nnoremap g\ :Ack! <cword><CR>
 " global search for selection (<Esc> clears the range)
-vnoremap \ "9y<Esc>:Ag! '<C-r>9'<CR>
+vnoremap \ "9y<Esc>:Ack! '<C-r>9'<CR>
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep --hidden --smart-case --ignore log --ignore fixture_data'
+endif
 
 " search for selection
 " Esc to clear the selection, then search for the last selected thing.
@@ -312,7 +317,7 @@ let g:airline_right_sep=''
 
 " ctrlp
 let g:ctrlp_map = '<C-p>'
-let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_working_path_mode = 0
 let g:ctrlp_root_markers = ['Gemfile', 'project.clj']
 "let g:ctrlp_match_window_reversed = 0
 "let g:ctrlp_cmd = 'CtrlPMRU'
@@ -344,21 +349,16 @@ nnoremap <C-k> :CtrlPBuffer<CR>
 " gitgutter
 "highlight clear SignColumn
 "highlight SignColumn ctermbg=bg
-"highlight GitGutterAdd ctermfg=darkgreen
-"highlight GitGutterChange ctermfg=darkyellow
-"highlight GitGutterDelete ctermfg=darkred
-"highlight GitGutterChangeDelete ctermfg=darkyellow
+highlight GitGutterAdd ctermfg=darkgreen
+highlight GitGutterChange ctermfg=darkyellow
+highlight GitGutterDelete ctermfg=darkred
+highlight GitGutterChangeDelete ctermfg=darkyellow
 command! GR GitGutterUndoHunk
 
 
 " auto-pairs
 let g:AutoPairsShortcutFastWrap = '<C-s>'
 let g:surround_no_insert_mappings = 1
-
-
-" ag
-"let g:ag_working_path_mode="r"
-let g:ag_prg="ag --vimgrep --hidden --smart-case --ignore log --ignore fixture_data"
 
 
 " syntastic
@@ -438,10 +438,10 @@ let g:rbpt_colorpairs = [
 	"\ ['darkred',     'DarkOrchid3'],
 	"\ ['red',         'firebrick3'],
 	"\ ]
-au FileType clojure RainbowParenthesesActivate
-au Syntax clojure RainbowParenthesesLoadRound
-au Syntax clojure RainbowParenthesesLoadSquare
-au Syntax clojure RainbowParenthesesLoadBraces
+"au FileType clojure RainbowParenthesesActivate
+"au Syntax clojure RainbowParenthesesLoadRound
+"au Syntax clojure RainbowParenthesesLoadSquare
+"au Syntax clojure RainbowParenthesesLoadBraces
 
 "au FileType elixir colorscheme slate
 
@@ -455,6 +455,8 @@ autocmd Filetype json setlocal et ts=2 sw=2 sts=2
 autocmd Filetype javascript setlocal et ts=2 sw=2 sts=2
 autocmd Filetype yaml setlocal et ts=2 sw=2 sts=2
 autocmd Filetype crystal setlocal et ts=2 sw=2 sts=2
+autocmd Filetype html setlocal et ts=2 sw=2 sts=2
+autocmd Filetype css setlocal et ts=2 sw=2 sts=2
 autocmd Filetype qf setlocal cursorline
 autocmd BufRead,BufNewFile *.hcl setlocal ft=terraform et ts=2 sw=2 sts=2
 autocmd BufRead,BufNewFile *.hcl.tmpl setlocal ft=terraform et ts=2 sw=2 sts=2
@@ -466,9 +468,16 @@ hi Search cterm=NONE ctermfg=black ctermbg=green
 
 
 function! PutsDate()
- put =strftime('# %c')
+    put =strftime('# %c')
 endfunction
 
 command! Date call PutsDate()
 
 let g:github_enterprise_urls = ['https://github.cbhq.net']
+
+
+function! ResizeForWideAssMonitor()
+    vertical resize 100
+endfunction
+
+command! RR call ResizeForWideAssMonitor()
