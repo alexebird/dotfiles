@@ -113,7 +113,7 @@ HERE
     #logger -tswoop "external-modeline: ${ASUS_MODE}"
     #logger -tswoop "external-res: ${ASUS_RES}"
     ${1} "${LAPTOP}" "$(swoop_external_name)"
-    source ~/.davinci/sh/remap_keys.sh
+    #source ~/.davinci/sh/remap_keys.sh
   )
 }
 
