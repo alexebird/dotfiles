@@ -80,7 +80,11 @@ Plugin 'rust-lang/rust.vim'
 " hashicorp
 Plugin 'hashivim/vim-terraform'
 
+" pony-lang
 Plugin 'dleonard0/pony-vim-syntax'
+
+" crypto
+Plugin 'tomlion/vim-solidity'
 
 
 
