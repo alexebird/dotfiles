@@ -29,7 +29,7 @@ Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-cucumber'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 "Plugin 'slim-template/vim-slim'
 "Plugin 'kchmck/vim-coffee-script'
 Plugin 'thoughtbot/vim-rspec'
@@ -81,7 +81,7 @@ Plugin 'slime-lang/vim-slime-syntax'
 " hashicorp
 Plugin 'hashivim/vim-terraform'
 
-"Plugin 'dleonard0/pony-vim-syntax'
+Plugin 'jakwings/vim-pony'
 
 
 
@@ -302,6 +302,9 @@ autocmd CmdwinLeave * :set number
 " Shell command to generate ctags for ruby
 "ctags -R --languages=ruby --exclude=.git --exclude=log .
 
+" set folds to have same bg color as rest of buffer
+hi Folded ctermbg=0
+
 
 
 "----------------------------------------------------------------------
@@ -480,7 +483,7 @@ hi Search cterm=NONE ctermfg=black ctermbg=green
 
 
 function! PutsDate()
- put =strftime('%c')
+ put =strftime('# %c')
 endfunction
 
 command! Date call PutsDate()
