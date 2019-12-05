@@ -47,3 +47,12 @@ MACOS
 
 - compiled neovim from source to get clipboard functionality
 - install gnu tools https://www.topbug.net/blog/2013/04/14/install-and-use-gnu-command-line-tools-in-mac-os-x/
+
+keyboard/mouse
+---
+
+```
+defaults write .GlobalPreferences com.apple.mouse.scaling -1
+defaults write -g InitialKeyRepeat -int 12 # normal minimum is 15 (225 ms)
+defaults write -g KeyRepeat -int 0 # normal minimum is 2 (30 ms)
+```
