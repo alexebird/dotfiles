@@ -80,6 +80,7 @@ Plug 'hashivim/vim-terraform'
 Plug 'rhysd/vim-crystal'
 " golang
 Plug 'fatih/vim-go'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
@@ -398,6 +399,7 @@ let g:GPGExecutable = 'gpg2'
 
 " supertab
 "let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabCrMapping = 1
 
 
 " rainbow parens
@@ -480,4 +482,8 @@ command! Date call PutsDate()
 
 "command! RR call ResizeForWideAssMonitor()
 
-command! RR call ResizeForWideAssMonitor()
+" golang
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+" colors for error popup
+hi default CocFloating ctermfg=Red ctermbg=White
