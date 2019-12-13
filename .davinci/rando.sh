@@ -389,3 +389,11 @@ done
 whereisfunc() {
   shopt -s extdebug ; declare -F "$1" ; shopt -s extdebug
 }
+
+if [[ "${OSTYPE}" == "linux-gnu" ]] && which xsel > /dev/null; then
+  . ~/.davinci/linux-shit/setup-linux-caps-lock-mapping.sh
+
+  #reload key repeat settings
+  touch ~/.config/lxsession/Lubuntu/desktop.conf
+#elif [[ "${OSTYPE}" == "darwin"* ]]; then
+fi

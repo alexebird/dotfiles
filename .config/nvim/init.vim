@@ -5,8 +5,7 @@
 "     \_/  |_|_| |_| |_|  alexebird@gmail.com
 "
 
-"set nocompatible
-
+" auto-install plug.vim
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -15,7 +14,7 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'gmarik/Vundle.vim'
+"Plug 'gmarik/Vundle.vim'
 Plug 'vim-ruby/vim-ruby'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
@@ -28,7 +27,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-rails'
 "Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-cucumber'
+"Plug 'tpope/vim-cucumber'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -37,7 +36,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'thoughtbot/vim-rspec'
 Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'fatih/vim-go'
 Plug 'majutsushi/tagbar'
 "Plug 'SirVer/ultisnips'
 "Plug 'honza/vim-snippets'
@@ -80,6 +78,9 @@ Plug 'slime-lang/vim-slime-syntax'
 Plug 'hashivim/vim-terraform'
 "Plug 'dleonard0/pony-vim-syntax'
 Plug 'rhysd/vim-crystal'
+" golang
+Plug 'fatih/vim-go'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
@@ -398,6 +399,7 @@ let g:GPGExecutable = 'gpg2'
 
 " supertab
 "let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabCrMapping = 1
 
 
 " rainbow parens
@@ -473,11 +475,15 @@ endfunction
 
 command! Date call PutsDate()
 
-let g:github_enterprise_urls = ['https://github.cbhq.net']
 
+"function! ResizeForWideAssMonitor()
+    "vertical resize 100
+"endfunction
 
-function! ResizeForWideAssMonitor()
-    vertical resize 100
-endfunction
+"command! RR call ResizeForWideAssMonitor()
 
-command! RR call ResizeForWideAssMonitor()
+" golang
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+" colors for error popup
+hi default CocFloating ctermfg=Red ctermbg=White
