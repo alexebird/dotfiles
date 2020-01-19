@@ -289,6 +289,9 @@ cnoremap <C-w><C-q> <C-w>c
 autocmd CmdwinEnter * :set nonumber
 autocmd CmdwinLeave * :set number
 
+nnoremap <C-w>, <C-w>10<
+nnoremap <C-w>. <C-w>10>
+
 
 " Shell command to generate ctags for ruby
 "ctags -R --languages=ruby --exclude=.git --exclude=log .
