@@ -234,7 +234,7 @@ nnoremap g\ :Ack! <cword><CR>
 vnoremap \ "9y<Esc>:Ack! '<C-r>9'<CR>
 
 if executable('ag')
-  let g:ackprg = 'ag --vimgrep --hidden --smart-case --ignore log --ignore fixture_data'
+  let g:ackprg = 'ag --vimgrep --hidden --smart-case --ignore log --ignore fixture_data --ignore big --ignore out'
 endif
 
 " search for selection
