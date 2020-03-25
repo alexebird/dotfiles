@@ -46,7 +46,6 @@ MACOS
 =====
 
 - compiled neovim from source to get clipboard functionality
-- install gnu tools https://www.topbug.net/blog/2013/04/14/install-and-use-gnu-command-line-tools-in-mac-os-x/
 
 keyboard/mouse
 ---
@@ -55,4 +54,28 @@ keyboard/mouse
 defaults write .GlobalPreferences com.apple.mouse.scaling -1
 defaults write -g InitialKeyRepeat -int 12 # normal minimum is 15 (225 ms)
 defaults write -g KeyRepeat -int 0 # normal minimum is 2 (30 ms)
+```
+
+gnu tools, coreutils
+---
+- install gnu tools https://www.topbug.net/blog/2013/04/14/install-and-use-gnu-command-line-tools-in-mac-os-x/
+```
+brew install coreutils
+brew install binutils
+brew install diffutils
+brew install ed
+brew install findutils
+brew install gawk
+brew install gnu-indent
+brew install gnu-sed
+brew install gnu-tar
+brew install gnu-which
+brew install gnutls
+brew install grep
+brew install gzip
+brew install screen
+brew install watch
+brew install wdiff
+brew install wget
+brew install less
 ```

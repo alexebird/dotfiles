@@ -80,7 +80,7 @@ Plug 'hashivim/vim-terraform'
 Plug 'rhysd/vim-crystal'
 " golang
 Plug 'fatih/vim-go'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
