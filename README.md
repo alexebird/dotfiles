@@ -51,9 +51,16 @@ keyboard/mouse
 ---
 
 ```
+defaults write -g ApplePressAndHoldEnabled -bool false
 defaults write .GlobalPreferences com.apple.mouse.scaling -1
+
 defaults write -g InitialKeyRepeat -int 12 # normal minimum is 15 (225 ms)
+# or
+defaults write -g InitialKeyRepeat -int 11
+
 defaults write -g KeyRepeat -int 0 # normal minimum is 2 (30 ms)
+# or
+defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 ```
 
 gnu tools, coreutils
