@@ -63,7 +63,7 @@ defaults write -g KeyRepeat -int 0 # normal minimum is 2 (30 ms)
 defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 ```
 
-gnu tools, coreutils
+gnu tools, coreutils, brew installs
 ---
 - install gnu tools https://www.topbug.net/blog/2013/04/14/install-and-use-gnu-command-line-tools-in-mac-os-x/
 ```
@@ -79,10 +79,16 @@ brew install gnu-tar
 brew install gnu-which
 brew install gnutls
 brew install grep
-brew install gzip
+brew install time
 brew install screen
 brew install watch
 brew install wdiff
 brew install wget
 brew install less
+brew install gzip
+brew install python3
+brew install autojump
+brew install figlet
+
+pip install awscli
 ```
