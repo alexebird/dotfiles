@@ -325,7 +325,7 @@ let g:ctrlp_working_path_mode = 0
 let g:ctrlp_root_markers = ['Gemfile', 'project.clj']
 "let g:ctrlp_match_window_reversed = 0
 "let g:ctrlp_cmd = 'CtrlPMRU'
-let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup --hidden --smart-case -g ""'
+let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup --hidden --smart-case --skip-vcs-ignores -g ""'
 " overcome limit imposed by max height
 let g:ctrlp_match_window = 'results:50'
 " ag is fast enough that CtrlP doesn't need to cache
