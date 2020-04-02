@@ -93,6 +93,11 @@ _git_color_ps1() {
   fi
 }
 
+_git_performant_ps1() {
+  local g="$(\git rev-parse --git-dir 2>/dev/null)"
+  echo "${PROMPT_COLOR_GRAY}$(__davinci_git_ps1)${PROMPT_COLOR_RESET}"
+}
+
 _davinci_env_ps1() {
   local parens_color="${PROMPT_COLOR_LIGHT_GREEN}"
   if declare -F | grep -q _coinbase_assume_role; then
@@ -135,7 +140,12 @@ _davinci_safety_ps1() {
     if [[ "${USER}" == "root" ]]; then
       _PROMPT_COLOR="${PROMPT_COLOR_LIGHT_RED}"
     fi
-    PS1="${_PROMPT_COLOR}${DAVINCI_PROMPT_PREFIX} $(_git_color_ps1)$(_davinci_env_ps1)${_PROMPT_COLOR}\$${PROMPT_COLOR_RESET} "
+    # change prompt coloring based on performance
+    if [[ "$(git rev-parse --show-toplevel)" = /Users/bird/dev* ]]; then
+      PS1="${_PROMPT_COLOR}${DAVINCI_PROMPT_PREFIX} $(_git_performant_ps1)$(_davinci_env_ps1)${_PROMPT_COLOR}\$${PROMPT_COLOR_RESET} "
+    else
+      PS1="${_PROMPT_COLOR}${DAVINCI_PROMPT_PREFIX} $(_git_color_ps1)$(_davinci_env_ps1)${_PROMPT_COLOR}\$${PROMPT_COLOR_RESET} "
+    fi
   fi
 }
 
