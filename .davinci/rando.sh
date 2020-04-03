@@ -93,6 +93,11 @@ _git_color_ps1() {
   fi
 }
 
+_git_performant_ps1() {
+  local g="$(\git rev-parse --git-dir 2>/dev/null)"
+  echo "${PROMPT_COLOR_GRAY}$(__davinci_git_ps1)${PROMPT_COLOR_RESET}"
+}
+
 _davinci_env_ps1() {
   local parens_color="${PROMPT_COLOR_LIGHT_GREEN}"
   if declare -F | grep -q _coinbase_assume_role; then
@@ -135,7 +140,12 @@ _davinci_safety_ps1() {
     if [[ "${USER}" == "root" ]]; then
       _PROMPT_COLOR="${PROMPT_COLOR_LIGHT_RED}"
     fi
-    PS1="${_PROMPT_COLOR}${DAVINCI_PROMPT_PREFIX} $(_git_color_ps1)$(_davinci_env_ps1)${_PROMPT_COLOR}\$${PROMPT_COLOR_RESET} "
+    # change prompt coloring based on performance
+    if [[ "$(git rev-parse --show-toplevel)" = /Users/bird/dev* ]]; then
+      PS1="${_PROMPT_COLOR}${DAVINCI_PROMPT_PREFIX} $(_git_performant_ps1)$(_davinci_env_ps1)${_PROMPT_COLOR}\$${PROMPT_COLOR_RESET} "
+    else
+      PS1="${_PROMPT_COLOR}${DAVINCI_PROMPT_PREFIX} $(_git_color_ps1)$(_davinci_env_ps1)${_PROMPT_COLOR}\$${PROMPT_COLOR_RESET} "
+    fi
   fi
 }
 
@@ -276,27 +286,31 @@ orphaned_local_branches() {
 }
 
 # hook pattern for custom prompt variables
-_coinbase_assume_role() {
-  local new_ps1
-  local env_color="${PROMPT_COLOR_LIGHT_YELLOW}"
-  local sensitive_env_color="${PROMPT_COLOR_RED_HL_BLACK}"
-  local somewhat_sensitive_env_color="${PROMPT_COLOR_LIGHT_YELLOW}"
+#_coinbase_assume_role() {
+  #local new_ps1
+  #local env_color="${PROMPT_COLOR_LIGHT_YELLOW}"
+  #local sensitive_env_color="${PROMPT_COLOR_RED_HL_BLACK}"
+  #local somewhat_sensitive_env_color="${PROMPT_COLOR_LIGHT_YELLOW}"
 
-  local env="${AWS_ACCOUNT_NAME}:${AWS_ACCOUNT_ROLE}"
+  #local env="${AWS_ACCOUNT_NAME}:${AWS_ACCOUNT_ROLE}"
 
-  # empty prompt section if env isnt set
-  if [[ "${env}" == ":" ]] ; then
-    echo
-    return 0
-  fi
+  ## empty prompt section if env isnt set
+  #if [[ "${env}" == ":" ]] ; then
+    #echo
+    #return 0
+  #fi
 
-  if [[ "${env}" == *production* ]] || [[ "${env}" == *corporate* ]]; then
-    new_ps1="${sensitive_env_color}${env}${PROMPT_COLOR_RESET}"
-  else
-    new_ps1="${env_color}${env}"
-  fi
+  #if [[ "${env}" == *production* ]] || [[ "${env}" == *corporate* ]]; then
+    #new_ps1="${sensitive_env_color}${env}${PROMPT_COLOR_RESET}"
+  #else
+    #new_ps1="${env_color}${env}"
+  #fi
 
-  echo "${new_ps1}"
+  #echo "${new_ps1}"
+#}
+
+whereisfunc() {
+  shopt -s extdebug ; declare -F "$1" ; shopt -s extdebug
 }
 
 #########################################################################
@@ -323,7 +337,7 @@ alias ls='ls -F --color=auto'
 alias l='ls'
 alias l1='\ls -1'
 alias ll='\ls -Fltrh --color=auto'
-alias la='\ls -FltrhA --color=auto'
+alias la='\ls -Fltrha --color=auto'
 alias grep='grep --color=auto'
 alias less='less -R'
 alias banner='figlet -f graffiti'
@@ -343,11 +357,14 @@ alias fco='git fast-checkout'
 alias pm='git checkout master && git pull && git checkout - && git merge master'
 alias git-track='git branch --set-upstream-to=origin/`bs` `bs`'
 
-
 alias dp='docker ps --format "table {{.ID}}\t{{.Status}}\t{{.Names}}"'
 alias dpp='docker ps --format "table {{.ID}}\t{{.Status}}\t{{.Ports}}\t{{.Names}}"'
 alias urlencode='python -c "import urllib, sys; print urllib.quote(sys.argv[1])"'
 alias urldecode='python -c "import urllib, sys; print urllib.unquote(sys.argv[1])"'
+
+if which nvim > /dev/null ; then
+  alias vim=nvim
+fi
 
 if ! uname -a | grep -q Darwin ; then
   alias open='xdg-open'
@@ -370,7 +387,7 @@ fl() {
   awk '{print $NF}'
 }
 
-for i in $(seq 10); do
+for i in $(seq 20); do
   eval "alias f$i='f $i'"
 done
 
@@ -385,10 +402,6 @@ done
   #local query=$(python -c "import urllib, sys; print urllib.quote(sys.argv[1])" "$*")
   #google-chrome https://www.google.com/search?q=${query}
 #}
-
-whereisfunc() {
-  shopt -s extdebug ; declare -F "$1" ; shopt -s extdebug
-}
 
 if [[ "${OSTYPE}" == "linux-gnu" ]] && which xsel > /dev/null; then
   . ~/.davinci/linux-shit/setup-linux-caps-lock-mapping.sh

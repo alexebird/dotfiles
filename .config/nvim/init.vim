@@ -80,7 +80,7 @@ Plug 'hashivim/vim-terraform'
 Plug 'rhysd/vim-crystal'
 " golang
 Plug 'fatih/vim-go'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
@@ -234,7 +234,7 @@ nnoremap g\ :Ack! <cword><CR>
 vnoremap \ "9y<Esc>:Ack! '<C-r>9'<CR>
 
 if executable('ag')
-  let g:ackprg = 'ag --vimgrep --hidden --smart-case --ignore log --ignore fixture_data --ignore big --ignore out'
+  let g:ackprg = 'ag --vimgrep --hidden --smart-case --skip-vcs-ignores'
 endif
 
 " search for selection
@@ -325,7 +325,7 @@ let g:ctrlp_working_path_mode = 0
 let g:ctrlp_root_markers = ['Gemfile', 'project.clj']
 "let g:ctrlp_match_window_reversed = 0
 "let g:ctrlp_cmd = 'CtrlPMRU'
-let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup --hidden --smart-case -g ""'
+let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup --hidden --smart-case --skip-vcs-ignores -g ""'
 " overcome limit imposed by max height
 let g:ctrlp_match_window = 'results:50'
 " ag is fast enough that CtrlP doesn't need to cache
