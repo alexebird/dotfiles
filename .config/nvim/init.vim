@@ -403,6 +403,7 @@ let g:GPGExecutable = 'gpg2'
 " supertab
 "let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabCrMapping = 1
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
 
 " rainbow parens
