@@ -141,7 +141,7 @@ _davinci_safety_ps1() {
       _PROMPT_COLOR="${PROMPT_COLOR_LIGHT_RED}"
     fi
     # change prompt coloring based on performance
-    if [[ "$(git rev-parse --show-toplevel)" = /Users/bird/dev* ]]; then
+    if [[ "$(git rev-parse --show-toplevel 2>/dev/null)" = /Users/bird/dev* ]]; then
       PS1="${_PROMPT_COLOR}${DAVINCI_PROMPT_PREFIX} $(_git_performant_ps1)$(_davinci_env_ps1)${_PROMPT_COLOR}\$${PROMPT_COLOR_RESET} "
     else
       PS1="${_PROMPT_COLOR}${DAVINCI_PROMPT_PREFIX} $(_git_color_ps1)$(_davinci_env_ps1)${_PROMPT_COLOR}\$${PROMPT_COLOR_RESET} "
