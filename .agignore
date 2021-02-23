@@ -1,3 +1,5 @@
+userdata/out/
+
 log
 /rel
 tmp
@@ -21,3 +23,29 @@ node_modules
 *.tfstate.*.backup
 go/src
 crash.log
+
+# qualia
+node_modules/
+.meteor/
+pdf.worker.js/
+pdfjs/
+semantic_ui/
+qualia_semantic/
+pdfjs/
+global_services/
+global_sys_services/
+stewart_jacket/
+stewart_cpl/
+global-portal/
+global_portal/
+global-deployment-center/
+kadira/
+huddy/sablon/
+packages/zones/
+packages/debug/
+packages/dragula/
+packages/qualia_moment/
+pdf.worker.js
+*.md
+fips.json
+*.min.js*

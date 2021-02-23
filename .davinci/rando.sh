@@ -3,6 +3,29 @@
 # this is a nice pattern that i will probably forget.
 #source "$(/usr/bin/dirname "$BASH_SOURCE")/sh/toolme.sh"
 
+
+source ~/.davinci/linux-shit/kube-ps1.sh
+KUBE_PS1_SYMBOL_ENABLE='false'
+bird_kube_ps1_cluster_function() {
+  echo "$1" | sed 's|.*/||g'
+}
+KUBE_PS1_CLUSTER_FUNCTION='bird_kube_ps1_cluster_function'
+
+CTX=$(kubectl ctx -c | sed 's|.*/||g')
+if [[ $CTX == *"staging"* ]]; then
+  KUBE_PS1_CTX_COLOR="black"
+  KUBE_PS1_NS_COLOR="black"
+  KUBE_PS1_BG_COLOR="yellow"
+elif [[ $CTX == *"prod"* ]]; then
+  KUBE_PS1_CTX_COLOR="white"
+  KUBE_PS1_NS_COLOR="white"
+  KUBE_PS1_BG_COLOR="red"
+else
+  KUBE_PS1_CTX_COLOR="green"
+  KUBE_PS1_NS_COLOR="green"
+  KUBE_PS1_BG_COLOR="black"
+fi
+
 PROMPT_COLOR_BLUE='\[\e[0;34m\]'
 PROMPT_COLOR_LIGHT_BLUE='\[\e[1;34m\]'
 PROMPT_COLOR_PURPLE='\[\e[0;35m\]'
@@ -99,18 +122,17 @@ _git_performant_ps1() {
 }
 
 _davinci_env_ps1() {
-  local parens_color="${PROMPT_COLOR_LIGHT_GREEN}"
-  if declare -F | grep -q _coinbase_assume_role; then
-    local new_ps1="$(_coinbase_assume_role)"
-    if [[ -n "${new_ps1}" ]]; then
-      echo "${parens_color}(${new_ps1}${parens_color})${PROMPT_COLOR_RESET}"
-    else
-      echo
-    fi
-fi
-}
+  #local parens_color="${PROMPT_COLOR_LIGHT_GREEN}"
 
-_davinci_ps1(){
+  #if declare -F | grep -q _coinbase_assume_role; then
+    #local new_ps1="$(_coinbase_assume_role)"
+    #if [[ -n "${new_ps1}" ]]; then
+      #echo "${parens_color}(${new_ps1}${parens_color})${PROMPT_COLOR_RESET}"
+    #else
+      #echo
+    #fi
+  #fi
+
   local new_ps1
   local env_color="${PROMPT_COLOR_LIGHT_YELLOW}"
   local sensitive_env_color="${PROMPT_COLOR_RED_HL_BLACK}"
@@ -123,11 +145,33 @@ _davinci_ps1(){
   fi
 
   if [[ "${DAVINCI_ENV}" == "prod" ]] ; then
-    new_ps1="${sensitive_env_color}${DAVINCI_ENV_FULL}${PROMPT_COLOR_RESET}"
+    new_ps1="${sensitive_env_color}${DAVINCI_ENV}${PROMPT_COLOR_RESET}"
   elif [[ "${DAVINCI_ENV}" == "dev" ]] ; then
-    new_ps1="${somewhat_sensitive_env_color}${DAVINCI_ENV_FULL}${PROMPT_COLOR_RESET}"
+    new_ps1="${somewhat_sensitive_env_color}${DAVINCI_ENV}${PROMPT_COLOR_RESET}"
   else
-    new_ps1="${env_color}${DAVINCI_ENV_FULL}"
+    new_ps1="${env_color}${DAVINCI_ENV}"
+  fi
+
+  echo "${new_ps1}"
+}
+
+_prompt_kubecontext() {
+  if [[ -f $KUBECONFIG || -f ~/.kube/config ]] ; then
+    WARNING=""
+    if [[ -f ~/.kube/config ]]; then
+      prompt_segment red yellow "KUBECONFIG EXISTS"
+    fi
+    CTX=$(kubectx -c | sed 's|.*/||g')
+    CNS=$(kubens -c)
+    if [[ $CTX == *"tooling"* ]]; then
+         prompt_segment green black "(⎈ ${CNS}:${CTX})"
+    elif [[ $CTX == *"nonprod"* ]]; then
+         prompt_segment yellow black "(⎈ ${CNS}:${CTX})"
+    elif [[ $CTX == *"prod"* ]]; then
+         prompt_segment red yellow "(⎈ ${CNS}:${CTX})"
+    else
+	       prompt_segment green black "(⎈ ${CNS}:${CTX})"
+    fi
   fi
 }
 
@@ -140,12 +184,19 @@ _davinci_safety_ps1() {
     if [[ "${USER}" == "root" ]]; then
       _PROMPT_COLOR="${PROMPT_COLOR_LIGHT_RED}"
     fi
+
     # change prompt coloring based on performance
     if [[ "$(git rev-parse --show-toplevel 2>/dev/null)" = /Users/bird/dev* ]]; then
-      PS1="${_PROMPT_COLOR}${DAVINCI_PROMPT_PREFIX} $(_git_performant_ps1)$(_davinci_env_ps1)${_PROMPT_COLOR}\$${PROMPT_COLOR_RESET} "
+      GIT_PART="$(_git_performant_ps1)"
     else
-      PS1="${_PROMPT_COLOR}${DAVINCI_PROMPT_PREFIX} $(_git_color_ps1)$(_davinci_env_ps1)${_PROMPT_COLOR}\$${PROMPT_COLOR_RESET} "
+      GIT_PART="$(_git_color_ps1)"
     fi
+
+    if [[ "${PWD}" == *"/go-repo" ]] || [[ "${PWD}" == *"/infra-2.0" ]] ; then
+      K8S_PART=" $(kube_ps1)"
+    fi
+
+    PS1="${_PROMPT_COLOR}${DAVINCI_PROMPT_PREFIX}${K8S_PART} ${GIT_PART}$(_davinci_env_ps1)${_PROMPT_COLOR}\$${PROMPT_COLOR_RESET} "
   fi
 }
 
