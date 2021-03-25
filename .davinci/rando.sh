@@ -170,7 +170,7 @@ _prompt_kubecontext() {
     elif [[ $CTX == *"prod"* ]]; then
          prompt_segment red yellow "(⎈ ${CNS}:${CTX})"
     else
-	       prompt_segment green black "(⎈ ${CNS}:${CTX})"
+         prompt_segment green black "(⎈ ${CNS}:${CTX})"
     fi
   fi
 }
@@ -192,8 +192,14 @@ _davinci_safety_ps1() {
       GIT_PART="$(_git_color_ps1)"
     fi
 
-    if [[ "${PWD}" == *"/go-repo" ]] || [[ "${PWD}" == *"/infra-2.0" ]] ; then
-      K8S_PART=" $(kube_ps1)"
+    if [[ "${PWD}" == *"/go-repo"* ]] || [[ "${PWD}" == *"/infra-2.0"* ]] ; then
+      #K8S_PART=" ${PROMPT_COLOR_RESET}$(kube_ps1)"
+
+      CTX=$(kubectl ctx -c | sed 's|.*/||g')
+      CNS=$(kubectl ns -c)
+      K8S_PART=" ${PROMPT_COLOR_LIGHT_BLUE}(${CTX}:${CNS})"
+    else
+      K8S_PART=''
     fi
 
     PS1="${_PROMPT_COLOR}${DAVINCI_PROMPT_PREFIX}${K8S_PART} ${GIT_PART}$(_davinci_env_ps1)${_PROMPT_COLOR}\$${PROMPT_COLOR_RESET} "
