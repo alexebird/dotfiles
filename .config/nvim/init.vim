@@ -31,7 +31,7 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'ctrlpvim/ctrlp.vim'
-"Plug 'slim-template/vim-slim'
+Plug 'slim-template/vim-slim'
 "Plug 'kchmck/vim-coffee-script'
 Plug 'thoughtbot/vim-rspec'
 Plug 'kana/vim-textobj-user'
@@ -81,6 +81,7 @@ Plug 'rhysd/vim-crystal'
 " golang
 Plug 'fatih/vim-go'
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'chr4/nginx.vim'
 
 call plug#end()
 

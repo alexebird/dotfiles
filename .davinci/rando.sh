@@ -350,6 +350,7 @@ alias dontquit='vim /tmp/dontquit'
 #alias de='davinci-env'
 #alias barf='gpgp find-secrets'
 #alias eat='gpgp copy-secret'
+alias af='aws-find'
 
 # git
 alias bs='git branch-search'
