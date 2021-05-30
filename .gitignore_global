@@ -6,4 +6,6 @@ Session.vim
 \#*\#
 .env
 NERD_tree_1
+.NERDTreeBookmarks
 .byebug_history
+_h_*

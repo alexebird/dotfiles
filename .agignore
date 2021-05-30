@@ -1,23 +1,28 @@
+# general
 log
-/rel
 tmp
 *.sock
-*.fugitiveblame
-icomoon-session.json
 .git
+
+# rails
 public/assets
-monger
-.lein-repl-history
-build/
-cordova
-jquery.*.js
 app/javascript/vendor
-_build
+jquery.*.js
+
+# javascript
 node_modules
+
+# infra
 *_rsa*
 *.js.map
 *.tfstate
 *.tfstate.backup
 *.tfstate.*.backup
-go/src
-crash.log
+
+# clojure
+.lein-repl-history
+
+# literal
+glass-api/sidekiq_api.log
+glass-api/sidekiq_low.log
+video_processor/*

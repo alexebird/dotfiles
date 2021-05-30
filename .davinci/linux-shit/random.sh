@@ -12,6 +12,6 @@
   #setxkbmap -option altwin:swap_alt_win
 #}
 
-#fix_caps_lock() {
-  #setxkbmap -layout us -option ''
-#}
+fix_caps_lock() {
+  setxkbmap -layout us -option ''
+}
