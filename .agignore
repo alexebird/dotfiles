@@ -11,6 +11,8 @@ jquery.*.js
 
 # javascript
 node_modules
+*.map
+yarn.lock
 
 # infra
 *_rsa*
@@ -26,6 +28,7 @@ node_modules
 glass-api/sidekiq_api.log
 glass-api/sidekiq_low.log
 video_processor/*
+build/*
 
 go/src
 crash.log

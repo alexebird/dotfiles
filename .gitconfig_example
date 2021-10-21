@@ -1,6 +1,6 @@
 [user]
 	email =
-	name = Alex Bird
+	name =
 	signingkey =
 [alias]
 	br = branch
@@ -18,7 +18,7 @@
 	branch = auto
 [core]
 	editor = vim
-	excludesfile = /home/bird/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [push]
 	default = current
 [pull]

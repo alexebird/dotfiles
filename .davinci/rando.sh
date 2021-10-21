@@ -192,15 +192,22 @@ _davinci_safety_ps1() {
       GIT_PART="$(_git_color_ps1)"
     fi
 
-    if [[ "${PWD}" == *"/go-repo"* ]] || [[ "${PWD}" == *"/infra-2.0"* ]] ; then
+    #if [[ "${PWD}" == *"/go-repo"* ]] || [[ "${PWD}" == *"/infra-2.0"* ]] ; then
       #K8S_PART=" ${PROMPT_COLOR_RESET}$(kube_ps1)"
 
-      CTX=$(kubectl ctx -c | sed 's|.*/||g')
-      CNS=$(kubectl ns -c)
-      K8S_PART=" ${PROMPT_COLOR_LIGHT_BLUE}(${CTX}:${CNS})"
-    else
-      K8S_PART=''
-    fi
+      #CTX=$(kubectl ctx -c | sed 's|.*/||g')
+      KCTX="$(yq e '.current-context | split("_") | .[1] | split("-") | .[2]' ~/.kube/config)"
+      KNS="$(yq e '.current-context as $ctx | .contexts[] | select(.name == $ctx) | .context.namespace // "default"' ~/.kube/config)"
+      #CNS=$(kubectl ns -c)
+      #K8S_PART=" ${PROMPT_COLOR_LIGHT_BLUE}(${CTX}:${CNS})"
+      if [[ "${KCTX}" == "pizzathehutt" ]]; then
+        K8S_PART=" ${PROMPT_COLOR_LIGHT_BLUE}(${PROMPT_COLOR_RED_HL_BLACK}${KCTX}${PROMPT_COLOR_RESET}${PROMPT_COLOR_LIGHT_BLUE}:${KNS})"
+      else
+        K8S_PART=" ${PROMPT_COLOR_LIGHT_BLUE}(${KCTX}:${KNS})"
+      fi
+    #else
+      #K8S_PART=''
+    #fi
 
     PS1="${_PROMPT_COLOR}${DAVINCI_PROMPT_PREFIX}${K8S_PART} ${GIT_PART}$(_davinci_env_ps1)${_PROMPT_COLOR}\$${PROMPT_COLOR_RESET} "
   fi
@@ -416,8 +423,8 @@ alias git-track='git branch --set-upstream-to=origin/`bs` `bs`'
 
 alias dp='docker ps --format "table {{.ID}}\t{{.Status}}\t{{.Names}}"'
 alias dpp='docker ps --format "table {{.ID}}\t{{.Status}}\t{{.Ports}}\t{{.Names}}"'
-alias urlencode='python -c "import urllib, sys; print urllib.quote(sys.argv[1])"'
-alias urldecode='python -c "import urllib, sys; print urllib.unquote(sys.argv[1])"'
+alias urlencode='python -c "import urllib.parse, sys; print(urllib.parse.quote_plus(sys.argv[1]))"'
+alias urldecode='python -c "import urllib.parse, sys; print(urllib.parse.unquote_plus(sys.argv[1]))"'
 
 if which nvim > /dev/null ; then
   alias vim=nvim

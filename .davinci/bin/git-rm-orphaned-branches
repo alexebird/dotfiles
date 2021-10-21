@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+require 'set'
+
+l = (`git branch`).gsub("*","").lines.map(&:strip).to_set
+r = (`git branch -r | grep -v HEAD`).gsub("origin/","").lines.map(&:strip).to_set
+rm = (l-(r&l)).to_a
+
+puts rm
+rm.each do |branch|
+  puts "remove branch '#{branch}'? (y/N)"
+
+  if gets.strip == "y"
+    puts "deleting"
+    cmd="git branch -D #{branch}"
+    puts
+    puts cmd
+    system cmd
+  else
+    puts "aborting"
+  end
+end
