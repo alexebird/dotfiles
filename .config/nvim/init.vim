@@ -1,17 +1,9 @@
 "  __     ___
 "  \ \   / (_)_ __ ___
-"   \ \ / /| | '_ ` _ \   Ftw
+"   \ \ / /| | '_ ` _ \
 "    \ V / | | | | | | |
 "     \_/  |_|_| |_| |_|  alexebird@gmail.com
 "
-
-" auto-install plug.vim
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
 call plug#begin('~/.config/nvim/plugged')
 
 " core
@@ -19,16 +11,13 @@ Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-"Plug 'vim-scripts/taglist.vim'
 Plug 'preservim/tagbar'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
+Plug 'tpope/vim-sleuth'
+"Plug 'scrooloose/syntastic'
 "Plug 'ervandew/supertab'
-Plug 'jiangmiao/auto-pairs'
-Plug 'scrooloose/syntastic' " syntax checking
-Plug 'bronson/vim-trailing-whitespace'
-Plug 'chr4/nginx.vim'
-Plug 'chr4/sslsecure.vim'
+"Plug 'vim-scripts/taglist.vim'
 
 " git
 Plug 'airblade/vim-gitgutter'
@@ -37,63 +26,64 @@ Plug 'tpope/vim-rhubarb' " github extension for fugitive
 
 " coloring
 Plug 'kyoz/purify', { 'rtp': 'vim' }
-Plug 'andreasvc/vim-256noir'
-"Plug 'altercation/vim-colors-solarized'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'junegunn/rainbow_parentheses.vim'
-
+Plug 'jiangmiao/auto-pairs'
+"Plug 'andreasvc/vim-256noir'
+"Plug 'altercation/vim-colors-solarized'
 
 " tools
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'jamessan/vim-gnupg'
+Plug 'chr4/nginx.vim'
+Plug 'chr4/sslsecure.vim'
+Plug 'bronson/vim-trailing-whitespace'
 "Plug 'SirVer/ultisnips'
+
+" textobjs
+Plug 'kana/vim-textobj-user'
+Plug 'nelstrom/vim-textobj-rubyblock'
 
 " motion mods
 Plug 'Lokaltog/vim-easymotion'
 
-" langs - general
-Plug 'kana/vim-textobj-user'
+" Language Server Protcol
+Plug 'neovim/nvim-lspconfig'
+Plug 'Shougo/ddc.vim'
+Plug 'vim-denops/denops.vim'
+Plug 'Shougo/ddc-around'
+Plug 'Shougo/ddc-matcher_head'
+Plug 'Shougo/ddc-sorter_rank'
 
-" langs - various
+" langs - general
 Plug 'lmeijvogel/vim-yaml-helper'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'hashivim/vim-terraform'
+Plug 'keith/swift.vim'
 "Plug 'dleonard0/pony-vim-syntax'
 "Plug 'rust-lang/rust.vim'
-Plug 'hashivim/vim-terraform'
 
-" ruby
+" langs - ruby
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'thoughtbot/vim-rspec'
-Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'slim-template/vim-slim'
 
-" clj
+" langs - clj
 "Plug 'guns/vim-clojure-highlight'
 "Plug 'guns/vim-clojure-static'
 "Plug 'guns/vim-sexp'
 "Plug 'tpope/vim-sexp-mappings-for-regular-people'
 "Plug 'tpope/vim-fireplace'
 
-" elixir
+" langs - elixir
 "Plug 'elixir-lang/vim-elixir'
 "Plug 'slime-lang/vim-slime-syntax'
 
-" golang
+" langs - golang
 "Plug 'fatih/vim-go'
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-Plug 'neovim/nvim-lspconfig'
-Plug 'Shougo/ddc.vim'
-Plug 'vim-denops/denops.vim'
-" Install your sources
-Plug 'Shougo/ddc-around'
-" Install your filters
-Plug 'Shougo/ddc-matcher_head'
-Plug 'Shougo/ddc-sorter_rank'
-
-Plug 'keith/swift.vim'
 
 call plug#end()
 
@@ -133,23 +123,24 @@ set listchars=eol:$
 "set autowriteall  " <---- huh??
 "set colorcolumn=80
 " Elimiate delay switching to normal mode
-set timeoutlen=500 ttimeoutlen=0
+"set timeoutlen=500 ttimeoutlen=0
+
 let mapleader = ","
 nnoremap <Space> <Nop>
 let maplocalleader=" "
 
 " see coc.vim readme
-set cmdheight=2
-set updatetime=300
-set shortmess+=c
+"set cmdheight=2
+"set updatetime=300
+"set shortmess+=c
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
+"if has("patch-8.1.1564")
+  "" Recently vim can merge signcolumn and number column into one
+  "set signcolumn=number
+"else
+  "set signcolumn=yes
+"endif
 
 " backup to ~/.tmp
 " disabled for coc
@@ -187,16 +178,13 @@ highlight Visual cterm=bold ctermfg=white ctermbg=26 " 26 blue
 highlight Search cterm=NONE ctermfg=black ctermbg=226 " 226 yellow
 highlight SpellBad cterm=bold ctermfg=white ctermbg=1 " 1 red
 
-" cursor color
-"
-
 "-------------------------------------------------------------
 " mappings
 "-------------------------------------------------------------
 noremap <leader>n :set relativenumber!<cr>
 
 " don't enter ex mode with Q
-nnoremap Q <nop>
+"nnoremap Q <nop>
 " clear highlighted search results.
 nnoremap <silent> <c-l> :noh<cr>
 " don't advance when searching with *
@@ -208,19 +196,14 @@ command! SV edit ~/.config/nvim/init.vim
 
 noremap <leader>r :NERDTreeToggle<cr>
 noremap <leader>e :TagbarToggle<cr>
+map <leader>x <Plug>NERDCommenterToggle
 
 noremap <leader>. :wa<cr>
-noremap <leader>z :st<cr>
+"noremap <leader>z :st<cr>
 
 " resize windows faster
 nnoremap <C-w>, <C-w>10<
 nnoremap <C-w>. <C-w>10>
-
-" not sure
-"cnoremap <C-w>q <C-w>c
-"cnoremap <C-w><C-q> <C-w>c
-
-map <leader>x <Plug>NERDCommenterToggle
 
 " readline nice-to-haves
 inoremap <C-d> <Del>
@@ -230,9 +213,7 @@ vnoremap <C-b> <Left>
 inoremap <C-f> <Right>
 vnoremap <C-f> <Right>
 inoremap <C-a> <Esc>^i
-"vnoremap <C-a> ^
 inoremap <C-e> <Esc>$a
-"vnoremap <C-e> $
 
 " Navigate through wrapped lines intuitively
 imap <silent> <down> <c-o>gj
@@ -253,42 +234,37 @@ function! PutsDate()
 endfunction
 command! Date call PutsDate()
 
-"function! ResizeForWideAssMonitor()
-    "vertical resize 100
-"endfunction
-
-"command! RR call ResizeForWideAssMonitor()
-
 "-------------------------------------------------------------
 " filetype adjustments
 "-------------------------------------------------------------
 " ruby
-autocmd FileType ruby set omnifunc=rubycomplete#Complete
-autocmd FileType ruby let g:rubycomplete_buffer_loading=1
-autocmd FileType ruby let g:rubycomplete_classes_in_global=1
-autocmd Filetype ruby setlocal et ts=2 sw=2 sts=2
-autocmd FileType sh setl shiftwidth=4 softtabstop=4 expandtab
-autocmd FileType bash setl sw=4 sts=4 et
-autocmd Filetype terraform setlocal et ts=2 sw=2 sts=2
-autocmd Filetype bash setlocal et ts=2 sw=2 sts=2 iskeyword+=:
-autocmd Filetype sh setlocal et ts=2 sw=2 sts=2 iskeyword+=:
-autocmd Filetype json setlocal et ts=2 sw=2 sts=2
-autocmd Filetype javascript setlocal et ts=2 sw=2 sts=2
-autocmd Filetype yaml setlocal et ts=2 sw=2 sts=2
-autocmd Filetype crystal setlocal et ts=2 sw=2 sts=2
-autocmd Filetype html setlocal et ts=2 sw=2 sts=2
-autocmd Filetype css setlocal et ts=2 sw=2 sts=2
+"autocmd FileType ruby set omnifunc=rubycomplete#Complete
+"autocmd FileType ruby let g:rubycomplete_buffer_loading=1
+"autocmd FileType ruby let g:rubycomplete_classes_in_global=1
+"autocmd Filetype ruby setlocal et ts=2 sw=2 sts=2
 
-autocmd BufRead,BufNewFile *.md set filetype=markdown
-autocmd BufRead,BufNewFile *.hcl setlocal ft=terraform et ts=2 sw=2 sts=2
-autocmd BufRead,BufNewFile *.hcl.tmpl setlocal ft=terraform et ts=2 sw=2 sts=2
-autocmd BufRead,BufNewFile *.hcl.mustache setlocal ft=terraform.mustache et ts=2 sw=2 sts=2
-autocmd BufRead,BufNewFile *.yml.ctmpl  setlocal ft=yaml.mustache et ts=2 sw=2 sts=2
-autocmd BufRead,BufNewFile *.conf.ctmpl setlocal ft=conf.mustache et ts=2 sw=2 sts=2
+"autocmd FileType sh             setlocal shiftwidth=4 softtabstop=4 expandtab
+"autocmd FileType bash           setlocal sw=4 sts=4 et
+"autocmd Filetype terraform      setlocal et ts=2 sw=2 sts=2
+"autocmd Filetype bash           setlocal et ts=2 sw=2 sts=2 iskeyword+=:
+"autocmd Filetype sh             setlocal et ts=2 sw=2 sts=2 iskeyword+=:
+"autocmd Filetype json           setlocal et ts=2 sw=2 sts=2
+"autocmd Filetype javascript     setlocal et ts=2 sw=2 sts=2
+"autocmd Filetype yaml           setlocal et ts=2 sw=2 sts=2
+"autocmd Filetype crystal        setlocal et ts=2 sw=2 sts=2
+"autocmd Filetype html           setlocal et ts=2 sw=2 sts=2
+"autocmd Filetype css            setlocal et ts=2 sw=2 sts=2
 
-autocmd BufWinEnter * if &buftype == 'quickfix' | setlocal nonumber | endif
+"autocmd BufRead,BufNewFile *.md set filetype=markdown
+"autocmd BufRead,BufNewFile *.hcl setlocal ft=terraform et ts=2 sw=2 sts=2
+"autocmd BufRead,BufNewFile *.hcl.tmpl setlocal ft=terraform et ts=2 sw=2 sts=2
+"autocmd BufRead,BufNewFile *.hcl.mustache setlocal ft=terraform.mustache et ts=2 sw=2 sts=2
+"autocmd BufRead,BufNewFile *.yml.ctmpl  setlocal ft=yaml.mustache et ts=2 sw=2 sts=2
+"autocmd BufRead,BufNewFile *.conf.ctmpl setlocal ft=conf.mustache et ts=2 sw=2 sts=2
 
-autocmd CmdwinEnter * :setlocal nonumber
+"autocmd BufWinEnter * if &buftype == 'quickfix' | setlocal nonumber | endif
+
+"autocmd CmdwinEnter * :setlocal nonumber
 "autocmd CmdwinLeave * :setlocal number
 
 "-------------------------------------------------------------
@@ -344,11 +320,11 @@ let g:NERDTreeBookmarksFile='./.NERDTreeBookmarks'
 " airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
-let g:airline_powerline_fonts = 0
 let g:airline#extensions#branch#enabled = 0
 let g:airline#extensions#hunks#enabled = 0
 " default section_z from https://github.com/bling/vim-airline/blob/master/autoload/airline/init.vim#L107
 let g:airline_section_z = airline#section#create(['%p%%', 'linenr', ':%c'])
+let g:airline_powerline_fonts = 0
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_theme='purify'
@@ -360,10 +336,10 @@ let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup --hidden --smart-case --skip-vcs-ignores -g ""'
 " overcome limit imposed by max height
-let g:ctrlp_match_window = 'results:50'
+"let g:ctrlp_match_window = 'results:50'
 " ag is fast enough that CtrlP doesn't need to cache
-let g:ctrlp_use_caching = 1
-let g:ctrlp_mruf_relative = 1
+"let g:ctrlp_use_caching = 1
+"let g:ctrlp_mruf_relative = 1
 let g:ctrlp_mruf_exclude = '/tmp/.*\|\.git/.*|\.pyc$'
 nnoremap <C-h> :CtrlPTag<CR>
 nnoremap <C-j> :CtrlPMRU<CR>
@@ -381,13 +357,13 @@ let g:AutoPairsShortcutFastWrap = '<C-s>'
 let g:surround_no_insert_mappings = 1
 
 " syntastic
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': ['python'] }
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_sh_checkers = ['shellcheck']
+"let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': ['python'] }
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_sh_checkers = ['shellcheck']
 
 " easymotion
 let g:EasyMotion_do_mapping = 0 " disable default mappings
@@ -405,8 +381,25 @@ let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion"
 
 " supertab
 "let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabCrMapping = 1
-let g:SuperTabDefaultCompletionType = "<c-n>"
+"let g:SuperTabCrMapping = 1
+"let g:SuperTabDefaultCompletionType = "<c-n>"
+
+" indent guides
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 0
+"let g:indent_guides_guide_size = 1
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=233
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=0
+
+" rainbowparens
+let g:rainbow#blacklist = [0, 7, 8,
+      \ 232, 233, 234, 235, 236, 237,
+      \ 238, 239, 240, 241, 242, 243,
+      \ 244, 245, 246, 247, 248, 249,
+      \ 250, 251, 252, 253, 254, 255
+  \ ]
+let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+autocmd FileType * RainbowParentheses
 
 
 "----------------------------------------------------------------------
@@ -416,35 +409,167 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 "map <C-b> :cprevious<cr>
 "map <C-n> :cnext<cr>
 
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
+"let g:go_def_mode='gopls'
+"let g:go_info_mode='gopls'
 
-" run goimports upon save
-let g:go_fmt_command = "gopls"
-let g:go_gopls_gofumpt=1
+"" run goimports upon save
+"let g:go_fmt_command = "gopls"
+"let g:go_gopls_gofumpt=1
 
-let g:go_rename_command = 'gopls'
-let g:go_list_type = "quickfix"
+"let g:go_rename_command = 'gopls'
+"let g:go_list_type = "quickfix"
 
-" shortcut to for go build
-autocmd FileType go nmap <leader>b  <Plug>(go-build)
+"" shortcut to for go build
+"autocmd FileType go nmap <leader>b  <Plug>(go-build)
 
-" Automatically get signature/type info for object under cursor
-let g:go_auto_type_info = 1
+"" Automatically get signature/type info for object under cursor
+"let g:go_auto_type_info = 1
 
-" syntax highlighting
-let g:go_highlight_functions = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_operators = 1
+"" syntax highlighting
+"let g:go_highlight_functions = 1
+"let g:go_highlight_fields = 1
+"let g:go_highlight_functions = 1
+"let g:go_highlight_function_calls = 1
+"let g:go_highlight_extra_types = 1
+"let g:go_highlight_operators = 1
 
 " auto-open omnifunc when you type a period.
 "au filetype go inoremap <buffer> . .<C-x><C-o>
 
+
+" Swift
+let g:NERDCustomDelimiters = { 'swift': { 'left': '//', 'leftAlt': '/*', 'rightAlt': '*/' } }
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Language Server Stuff
+
+" Errors in Red
+hi LspDiagnosticsVirtualTextError guifg=Red ctermfg=Red
+" Warnings in Yellow
+hi LspDiagnosticsVirtualTextWarning guifg=Yellow ctermfg=Yellow
+" Info and Hints in White
+hi LspDiagnosticsVirtualTextInformation guifg=White ctermfg=White
+hi LspDiagnosticsVirtualTextHint guifg=White ctermfg=White
+
+" Underline the offending code
+hi LspDiagnosticsUnderlineError guifg=NONE ctermfg=NONE cterm=underline gui=underline
+hi LspDiagnosticsUnderlineWarning guifg=NONE ctermfg=NONE cterm=underline gui=underline
+hi LspDiagnosticsUnderlineInformation guifg=NONE ctermfg=NONE cterm=underline gui=underline
+hi LspDiagnosticsUnderlineHint guifg=NONE ctermfg=NONE cterm=underline gui=underline
+
+lua << EOF
+local nvim_lsp = require('lspconfig')
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  vim.lsp.set_log_level("debug")
+
+  -- Enable completion triggered by <c-x><c-o>
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  --buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+end
+
+-- Use a loop to conveniently call 'setup' on multiple servers and
+-- map buffer local keybindings when the language server attaches
+local servers = { 'pyright', 'solargraph', 'tsserver', 'bashls' }
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup {
+    on_attach = on_attach,
+    flags = {
+      debounce_text_changes = 150,
+    }
+  }
+end
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+ vim.lsp.diagnostic.on_publish_diagnostics, {
+   -- Enable underline, use default values
+   underline = false,
+   -- Enable virtual text only on Warning or above, override spacing to 2
+   virtual_text = {
+     spacing = 2,
+     severity_limit = "Warning",
+   },
+ }
+)
+EOF
+
+" Customize global settings
+" Use around source.
+" https://github.com/Shougo/ddc-around
+call ddc#custom#patch_global('sources', ['around'])
+
+" Use matcher_head and sorter_rank.
+" https://github.com/Shougo/ddc-matcher_head
+" https://github.com/Shougo/ddc-sorter_rank
+call ddc#custom#patch_global('sourceOptions', {
+      \ '_': {
+      \   'matchers': ['matcher_head'],
+      \   'sorters': ['sorter_rank']},
+      \ })
+
+" Change source options
+"call ddc#custom#patch_global('sourceOptions', {
+      "\ 'around': {'mark': 'A'},
+      "\ })
+call ddc#custom#patch_global('sourceParams', {
+      \ 'around': {'maxSize': 500},
+      \ })
+
+" Customize settings on a filetype
+"call ddc#custom#patch_filetype(['c', 'cpp'], 'sources', ['around', 'clangd'])
+"call ddc#custom#patch_filetype(['c', 'cpp'], 'sourceOptions', {
+      "\ 'clangd': {'mark': 'C'},
+      "\ })
+"call ddc#custom#patch_filetype('markdown', 'sourceParams', {
+      "\ 'around': {'maxSize': 100},
+      "\ })
+
+" Mappings
+
+" <TAB>: completion.
+inoremap <silent><expr> <TAB>
+\ pumvisible() ? '<C-n>' :
+\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+\ '<TAB>' : ddc#map#manual_complete()
+
+" <S-TAB>: completion back.
+inoremap <expr><S-TAB>  pumvisible() ? '<C-p>' : '<C-h>'
+
+" Use ddc.
+call ddc#enable()
+
+" End Language Server Stuff
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 "-------------------------------------------------------------
-" coc.vim
+" coc.vim (old language server attempt)
 " colors for error popup
 "hi default CocFloating ctermfg=Red ctermbg=White
 
@@ -590,148 +715,3 @@ let g:go_highlight_operators = 1
 
 " end coc.vim
 "-------------------------------------------------------------
-
-" indent guides
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_auto_colors = 0
-"let g:indent_guides_guide_size = 1
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=233
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=0
-
-" rainbowparens
-let g:rainbow#blacklist = [0, 7, 8,
-      \ 232, 233, 234, 235, 236, 237,
-      \ 238, 239, 240, 241, 242, 243,
-      \ 244, 245, 246, 247, 248, 249,
-      \ 250, 251, 252, 253, 254, 255
-  \ ]
-let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
-autocmd FileType * RainbowParentheses
-
-" Errors in Red
-hi LspDiagnosticsVirtualTextError guifg=Red ctermfg=Red
-" Warnings in Yellow
-hi LspDiagnosticsVirtualTextWarning guifg=Yellow ctermfg=Yellow
-" Info and Hints in White
-hi LspDiagnosticsVirtualTextInformation guifg=White ctermfg=White
-hi LspDiagnosticsVirtualTextHint guifg=White ctermfg=White
-
-" Underline the offending code
-hi LspDiagnosticsUnderlineError guifg=NONE ctermfg=NONE cterm=underline gui=underline
-hi LspDiagnosticsUnderlineWarning guifg=NONE ctermfg=NONE cterm=underline gui=underline
-hi LspDiagnosticsUnderlineInformation guifg=NONE ctermfg=NONE cterm=underline gui=underline
-hi LspDiagnosticsUnderlineHint guifg=NONE ctermfg=NONE cterm=underline gui=underline
-
-lua << EOF
-local nvim_lsp = require('lspconfig')
-
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-  vim.lsp.set_log_level("debug")
-
-  -- Enable completion triggered by <c-x><c-o>
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  -- Mappings.
-  local opts = { noremap=true, silent=true }
-
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  --buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-
-end
-
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'solargraph', 'tsserver' }
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-    on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 150,
-    }
-  }
-end
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
- vim.lsp.diagnostic.on_publish_diagnostics, {
-   -- Enable underline, use default values
-   underline = false,
-   -- Enable virtual text only on Warning or above, override spacing to 2
-   virtual_text = {
-     spacing = 2,
-     severity_limit = "Warning",
-   },
- }
-)
-EOF
-
-"autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
-
-" Customize global settings
-" Use around source.
-" https://github.com/Shougo/ddc-around
-call ddc#custom#patch_global('sources', ['around'])
-
-" Use matcher_head and sorter_rank.
-" https://github.com/Shougo/ddc-matcher_head
-" https://github.com/Shougo/ddc-sorter_rank
-call ddc#custom#patch_global('sourceOptions', {
-      \ '_': {
-      \   'matchers': ['matcher_head'],
-      \   'sorters': ['sorter_rank']},
-      \ })
-
-" Change source options
-"call ddc#custom#patch_global('sourceOptions', {
-      "\ 'around': {'mark': 'A'},
-      "\ })
-call ddc#custom#patch_global('sourceParams', {
-      \ 'around': {'maxSize': 500},
-      \ })
-
-" Customize settings on a filetype
-"call ddc#custom#patch_filetype(['c', 'cpp'], 'sources', ['around', 'clangd'])
-"call ddc#custom#patch_filetype(['c', 'cpp'], 'sourceOptions', {
-      "\ 'clangd': {'mark': 'C'},
-      "\ })
-"call ddc#custom#patch_filetype('markdown', 'sourceParams', {
-      "\ 'around': {'maxSize': 100},
-      "\ })
-
-" Mappings
-
-" <TAB>: completion.
-inoremap <silent><expr> <TAB>
-\ pumvisible() ? '<C-n>' :
-\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
-\ '<TAB>' : ddc#map#manual_complete()
-
-" <S-TAB>: completion back.
-inoremap <expr><S-TAB>  pumvisible() ? '<C-p>' : '<C-h>'
-
-" Use ddc.
-call ddc#enable()
-
-
-" Swift
-let g:NERDCustomDelimiters = { 'swift': { 'left': '//', 'leftAlt': '/*', 'rightAlt': '*/' } }

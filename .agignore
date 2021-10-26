@@ -32,3 +32,6 @@ build/*
 
 go/src
 crash.log
+
+# iOS
+.build
