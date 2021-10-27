@@ -60,6 +60,7 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'hashivim/vim-terraform'
 Plug 'keith/swift.vim'
 Plug 'lmeijvogel/vim-yaml-helper'
+Plug 'udalov/kotlin-vim'
 "Plug 'dleonard0/pony-vim-syntax'
 "Plug 'rust-lang/rust.vim'
 
@@ -340,7 +341,7 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup --hidden --smart-case -
 "let g:ctrlp_match_window = 'results:50'
 " ag is fast enough that CtrlP doesn't need to cache
 "let g:ctrlp_use_caching = 1
-"let g:ctrlp_mruf_relative = 1
+let g:ctrlp_mruf_relative = 1
 let g:ctrlp_mruf_exclude = '/tmp/.*\|\.git/.*|\.pyc$'
 nnoremap <C-h> :CtrlPTag<CR>
 nnoremap <C-j> :CtrlPMRU<CR>
