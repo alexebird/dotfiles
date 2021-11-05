@@ -9,7 +9,7 @@ call plug#begin('~/.config/nvim/plugged')
 " core
 Plug 'bling/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'ervandew/supertab'
+"Plug 'ervandew/supertab'
 Plug 'mileszs/ack.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree'
@@ -36,6 +36,7 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'chr4/nginx.vim'
 Plug 'chr4/sslsecure.vim'
 Plug 'jamessan/vim-gnupg'
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 "Plug 'SirVer/ultisnips'
@@ -48,12 +49,16 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'Lokaltog/vim-easymotion'
 
 " Language Server Protcol
-Plug 'Shougo/ddc-around'
-Plug 'Shougo/ddc-matcher_head'
-Plug 'Shougo/ddc-sorter_rank'
-Plug 'Shougo/ddc.vim'
-Plug 'neovim/nvim-lspconfig'
-Plug 'vim-denops/denops.vim'
+"Plug 'Shougo/ddc-around'
+"Plug 'Shougo/ddc-matcher_head'
+"Plug 'Shougo/ddc-sorter_rank'
+"Plug 'Shougo/ddc.vim'
+"Plug 'neovim/nvim-lspconfig'
+"Plug 'vim-denops/denops.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = [
+  \ 'coc-tsserver'
+  \ ]
 
 " langs - general
 Plug 'ekalinin/Dockerfile.vim'
@@ -61,6 +66,8 @@ Plug 'hashivim/vim-terraform'
 Plug 'keith/swift.vim'
 Plug 'lmeijvogel/vim-yaml-helper'
 Plug 'udalov/kotlin-vim'
+Plug 'pangloss/vim-javascript'
+Plug 'MaxMEllon/vim-jsx-pretty'
 "Plug 'dleonard0/pony-vim-syntax'
 "Plug 'rust-lang/rust.vim'
 
@@ -83,7 +90,6 @@ Plug 'vim-ruby/vim-ruby'
 
 " langs - golang
 "Plug 'fatih/vim-go'
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
@@ -196,6 +202,9 @@ nnoremap <silent> * :let @/='\<<C-r>=expand("<cword>")<cr>\>'<cr>:set hls<cr>
 
 command! SS source $MYVIMRC
 command! SV edit ~/.config/nvim/init.vim
+
+
+command! FW FixWhitespace
 
 noremap <leader>r :NERDTreeToggle<cr>
 noremap <leader>e :TagbarToggle<cr>
@@ -454,6 +463,7 @@ let g:NERDCustomDelimiters = { 'swift': { 'left': '//', 'leftAlt': '/*', 'rightA
 
 " considered more stable and performant, but not built in.
 "source ~/.config/nvim/personal/coc.vim
+source ~/.config/nvim/personal/coc-2.vim
 
 " built-in, but experimental in 0.5.x
 "source ~/.config/nvim/personal/neovim-lsp.vim
