@@ -426,6 +426,8 @@ alias dpp='docker ps --format "table {{.ID}}\t{{.Status}}\t{{.Ports}}\t{{.Names}
 alias urlencode='python -c "import urllib.parse, sys; print(urllib.parse.quote_plus(sys.argv[1]))"'
 alias urldecode='python -c "import urllib.parse, sys; print(urllib.parse.unquote_plus(sys.argv[1]))"'
 
+export EDITOR=nvim
+
 if which nvim > /dev/null ; then
   alias vim=nvim
 fi
