@@ -248,22 +248,20 @@ command! Date call PutsDate()
 "-------------------------------------------------------------
 " filetype adjustments
 "-------------------------------------------------------------
+autocmd Filetype sh             setlocal et ts=2 sw=2 sts=2 iskeyword+=:
+autocmd Filetype bash           setlocal et ts=2 sw=2 sts=2 iskeyword+=:
+autocmd Filetype terraform      setlocal et ts=2 sw=2 sts=2
+autocmd Filetype json           setlocal et ts=2 sw=2 sts=2
+autocmd Filetype javascript     setlocal et ts=2 sw=2 sts=2
+autocmd Filetype yaml           setlocal et ts=2 sw=2 sts=2
+autocmd Filetype html           setlocal et ts=2 sw=2 sts=2
+autocmd Filetype css            setlocal et ts=2 sw=2 sts=2
+
 " ruby
 "autocmd FileType ruby set omnifunc=rubycomplete#Complete
 "autocmd FileType ruby let g:rubycomplete_buffer_loading=1
 "autocmd FileType ruby let g:rubycomplete_classes_in_global=1
 "autocmd Filetype ruby setlocal et ts=2 sw=2 sts=2
-
-"autocmd FileType sh             setlocal shiftwidth=4 softtabstop=4 expandtab
-"autocmd Filetype sh             setlocal et ts=2 sw=2 sts=2 iskeyword+=:
-"autocmd FileType bash           setlocal sw=4 sts=4 et
-"autocmd Filetype bash           setlocal et ts=2 sw=2 sts=2 iskeyword+=:
-"autocmd Filetype terraform      setlocal et ts=2 sw=2 sts=2
-"autocmd Filetype json           setlocal et ts=2 sw=2 sts=2
-"autocmd Filetype javascript     setlocal et ts=2 sw=2 sts=2
-"autocmd Filetype yaml           setlocal et ts=2 sw=2 sts=2
-"autocmd Filetype html           setlocal et ts=2 sw=2 sts=2
-"autocmd Filetype css            setlocal et ts=2 sw=2 sts=2
 
 "autocmd BufRead,BufNewFile *.md set filetype=markdown
 "autocmd BufRead,BufNewFile *.hcl setlocal ft=terraform et ts=2 sw=2 sts=2

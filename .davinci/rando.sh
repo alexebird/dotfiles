@@ -310,34 +310,71 @@ bind '"\C-n": history-search-forward'
 #########################################################################
 # formerly lib.sh
 
+# args:
+#   <no_arg>  = basename_pwd
+#   v         = vim:basename_pwd
+#   g         = basename_git_root
+#   vg        = vim:basename_git_root
 tab() {
-  local name="${@:-}"
-  local title
+  local arg="${@:-}"
+  local title=''
+  local loc=''
+  local mods=''
 
-  if [[ "${name}" == "pwd" ]]; then
-    title="$(basename "$(pwd)")"
-  elif [[ -n "${name}" ]]; then
-    title="${name}"
-  elif [[ ${PWD} == ${HOME} ]]; then
-    title='~'
-  elif [[ ${PWD} == '/' ]]; then
-    title='/'
-  elif git rev-parse --git-dir > /dev/null; then
-    name="$(git rev-parse --show-toplevel)"
-    name="$(basename "${name}")"
-    title="${name}"
-  else
-    local slash_count=$(echo -n ${PWD} | tr -d -c '/'  | wc -c)
-
-    if [[ ${slash_count} == 1 ]]; then
-      title="/${PWD##*/}"
+  if [[ "${arg}" == "" ]]; then
+    if [[ "${PWD}" == "${HOME}" ]]; then
+      loc='~'
+    elif [[ "${PWD}" == "/" ]]; then
+      loc='/'
     else
-      # only show last dir
-      title="${PWD##*/}"
-      # show whole path plus the tilde
-      #title="${PWD/#$HOME/\~}"
+      loc="$(basename "$(pwd)")"
     fi
+  elif [[ "${arg}" == "v" ]]; then
+    loc="$(basename "$(pwd)")"
+    mods='vim:'
+  elif [[ "${arg}" == "g" ]]; then
+    loc="$(git rev-parse --show-toplevel)"
+    loc="$(basename "${loc}")"
+  elif [[ "${arg}" == "vg" ]]; then
+    loc="$(git rev-parse --show-toplevel)"
+    loc="$(basename "${loc}")"
+    mods='vim:'
   fi
+
+  echo $title
+
+  title="${mods}${loc}"
+
+  #if [[ "${name}" == "-h" ]]; then
+    #cat <<HERE
+#set tab title
+
+#tab [-h | -p | NAME]
+
+    #-h  this help text
+    #-p  use `basename \$PWD`
+#HERE
+    #return 0
+  #elif [[ "${name}" == "-p" ]]; then
+    #title="$(basename "$(pwd)")"
+  #elif [[ -n "${name}" ]]; then
+    #title="${name}"
+  #elif git rev-parse --git-dir > /dev/null; then
+    #name="$(git rev-parse --show-toplevel)"
+    #name="$(basename "${name}")"
+    #title="${name}"
+  #else
+    #local slash_count=$(echo -n ${PWD} | tr -d -c '/'  | wc -c)
+
+    #if [[ ${slash_count} == 1 ]]; then
+      #title="/${PWD##*/}"
+    #else
+      ## only show last dir
+      #title="${PWD##*/}"
+      ## show whole path plus the tilde
+      ##title="${PWD/#$HOME/\~}"
+    #fi
+  #fi
 
   echo -n -e "\033]0;${title}\007"
 }
