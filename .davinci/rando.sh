@@ -339,6 +339,8 @@ tab() {
     loc="$(git rev-parse --show-toplevel)"
     loc="$(basename "${loc}")"
     mods='vim:'
+  else
+    loc="${arg}"
   fi
 
   echo $title
@@ -440,7 +442,7 @@ alias l1='\ls -1'
 alias ll='\ls -Fltrh --color=auto'
 alias la='\ls -Fltrha --color=auto'
 alias grep='grep --color=auto'
-alias less='less -R'
+alias less='less -RS'
 alias banner='figlet -f graffiti'
 alias g='figlet -f doh G'
 alias gf='figlet -f doh GF'
