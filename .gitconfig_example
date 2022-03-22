@@ -7,8 +7,8 @@
 	ci = commit
 	co = checkout
 	d  = diff
-	;lg = log --graph --decorate
-	# waterlog = log --pretty=format:'%C(yellow)%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --graph
+	#lg = log --graph --decorate
+	#waterlog = log --pretty=format:'%C(yellow)%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --graph
 	lg = log --pretty=format:'%C(yellow)%h%C(reset) %C(green)%cr%C(reset) %C(blue)%an%C(reset)%C(auto)%d%C(reset) | %s' --abbrev-commit --date=relative --graph
 	st = status
 [color]
@@ -17,13 +17,12 @@
 	interactive = auto
 	branch = auto
 [core]
-	editor = vim
+	editor = nvim
 	excludesfile = ~/.gitignore_global
 [push]
 	default = current
 [pull]
 	default = current
-[diff]
-	tool = meld
+	rebase = false
 [commit]
 	gpgsign = true

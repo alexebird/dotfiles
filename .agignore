@@ -8,6 +8,7 @@ tmp
 public/assets
 app/javascript/vendor
 jquery.*.js
+.byebug_history
 
 # javascript
 node_modules
@@ -35,3 +36,4 @@ crash.log
 
 # iOS
 .build
+*.xcodeproj/*
