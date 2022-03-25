@@ -1,15 +1,15 @@
--- 
+--
 --   __     ___
 --   \ \   / (_)_ __ ___
 --    \ \ / /| | '_ ` _ \
 --     \ V / | | | | | | |
 --      \_/  |_|_| |_| |_| v2
--- 
--- 
+--
+--
 --  alexebird@gmail.com
 --  created 2022/03/15
--- 
--- 
+--
+--
 
 local function map(mode, lhs, rhs)
     vim.api.nvim_set_keymap(mode, lhs, rhs, { noremap = true, silent = true })
@@ -33,9 +33,35 @@ map('x', '<leader>x', '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(v
 map('x', '<leader>c', '<ESC><CMD>lua require("Comment.api").toggle_blockwise_op(vim.fn.visualmode())<CR>')
 
 
-require('lualine').setup()
+require('lualine').setup({
+  sections = {
+    lualine_c = {
+      {
+        'filename',
+        path = 1,
+      }
+    }
+  }
+})
+
 require('gitsigns').setup()
 require('telescope').setup()
+require('nvim-autopairs').setup()
+-- require('neoscroll').setup()
+require('colorizer').setup()
+require('nvim-ts-autotag').setup()
+require('indent_blankline').setup {
+    -- for example, context is off by default, use this to turn it on
+    show_current_context = true,
+    show_current_context_start = true,
+}
+
+require('hop').setup {
+  keys = 'etovxqpdygfblzhckisuran'
+}
+
+vim.api.nvim_set_keymap('n', 's', "<cmd>lua require'hop'.hint_char1()<cr>", {})
+vim.api.nvim_set_keymap('n', 'S', "<cmd>lua require'hop'.hint_char2()<cr>", {})
 
 -- Colorscheme
 local my_colors = {
@@ -91,7 +117,7 @@ cmp.setup({
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
   sources = cmp.config.sources({
-    { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it. 
+    { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
   }, {
     { name = 'buffer' },
   })
