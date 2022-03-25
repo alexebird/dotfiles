@@ -192,6 +192,7 @@ _davinci_safety_ps1() {
       GIT_PART="$(_git_color_ps1)"
     fi
 
+    if [[ -f ~/.kube/config ]]; then
     #if [[ "${PWD}" == *"/go-repo"* ]] || [[ "${PWD}" == *"/infra-2.0"* ]] ; then
       #K8S_PART=" ${PROMPT_COLOR_RESET}$(kube_ps1)"
 
@@ -208,6 +209,7 @@ _davinci_safety_ps1() {
     #else
       #K8S_PART=''
     #fi
+    fi
 
     PS1="${_PROMPT_COLOR}${DAVINCI_PROMPT_PREFIX}${K8S_PART} ${GIT_PART}$(_davinci_env_ps1)${_PROMPT_COLOR}\$${PROMPT_COLOR_RESET} "
   fi
