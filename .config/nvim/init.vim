@@ -49,6 +49,7 @@ set wildmenu
 set wildmode=longest:full,full
 set synmaxcol=300 " Avoids editor lockup in files with extremely long lines."
 set listchars=eol:$
+set termguicolors
 "set autowriteall  " <---- huh??
 "set colorcolumn=80
 " Elimiate delay switching to normal mode
@@ -131,14 +132,19 @@ command! Date call PutsDate()
 "-------------------------------------------------------------
 " filetype adjustments
 "-------------------------------------------------------------
-autocmd Filetype sh             setlocal et ts=2 sw=2 sts=2 iskeyword+=:
-autocmd Filetype bash           setlocal et ts=2 sw=2 sts=2 iskeyword+=:
-autocmd Filetype terraform      setlocal et ts=2 sw=2 sts=2
-autocmd Filetype json           setlocal et ts=2 sw=2 sts=2
-autocmd Filetype javascript     setlocal et ts=2 sw=2 sts=2
-autocmd Filetype yaml           setlocal et ts=2 sw=2 sts=2
-autocmd Filetype html           setlocal et ts=2 sw=2 sts=2
-autocmd Filetype css            setlocal et ts=2 sw=2 sts=2
+" autocmd Filetype sh             setlocal et ts=2 sw=2 sts=2 iskeyword+=:
+" autocmd Filetype bash           setlocal et ts=2 sw=2 sts=2 iskeyword+=:
+" autocmd Filetype terraform      setlocal et ts=2 sw=2 sts=2
+" autocmd Filetype json           setlocal et ts=2 sw=2 sts=2
+" autocmd Filetype javascript     setlocal et ts=2 sw=2 sts=2
+" autocmd Filetype yaml           setlocal et ts=2 sw=2 sts=2
+" autocmd Filetype html           setlocal et ts=2 sw=2 sts=2
+" autocmd Filetype css            setlocal et ts=2 sw=2 sts=2
+
+autocmd BufNewFile,BufRead *.tf         set ft=terraform
+autocmd BufNewFile,BufRead *.tfvars     set ft=terraform
+
+let g:extra_whitespace_ignored_filetypes = ['TelescopePrompt']
 
 
 "-------------------------------------------------------------
@@ -162,9 +168,10 @@ endfunction
 command! CopyFname call CopyFilnameToClipboard()
 
 nnoremap <C-p> <cmd>Telescope find_files<cr>
-" nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <C-j> <cmd>Telescope buffers<cr>
-" nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <C-k> <cmd>Telescope buffers<cr>
+nnoremap <C-j> <cmd>Telescope oldfiles<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 "-------------------------------------------------------------
 " searching
@@ -178,9 +185,9 @@ nnoremap <bar> :Rg '\b<cword>\b'<CR>
 " global search for selection (<Esc> clears the range)
 vnoremap \ "9y<Esc>:Rg '<C-r>9'<CR>
 
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep --hidden --smart-case --skip-vcs-ignores'
-endif
+" if executable('ag')
+"   let g:ackprg = 'ag --vimgrep --hidden --smart-case --skip-vcs-ignores'
+" endif
 
 " search for selection
 " Esc to clear the selection, then search for the last selected thing.
