@@ -86,7 +86,7 @@ return require('packer').startup(function()
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
-  -- use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-nvim-lsp'
   --
   -- treesitter
   use {
@@ -110,13 +110,13 @@ return require('packer').startup(function()
       'nvim-telescope/telescope.nvim' -- optional
     },
   }
+  -- language servers
+  use 'neovim/nvim-lspconfig' -- Quickstart configurations for the Nvim LSP client.
+  use 'williamboman/nvim-lsp-installer' -- Neovim plugin that allows you to seamlessly install LSP servers locally.
 
 
   -- ^^^DONE^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-  -- language servers
-  -- use 'williamboman/nvim-lsp-installer' -- Neovim plugin that allows you to seamlessly install LSP servers locally.
-  -- use 'neovim/nvim-lspconfig' -- Quickstart configurations for the Nvim LSP client.
   -- use 'folke/trouble.nvim' -- A pretty list for showing diagnostics, references, telescope results, quickfix and location lists to help you solve all the trouble your code is causing.
   -- use 'tami5/lspsaga.nvim' -- A light-weight lsp plugin based on neovim built-in lsp with highly a performant UI.
   -- use {'ray-x/navigator.lua', requires = {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}}
