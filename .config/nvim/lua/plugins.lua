@@ -111,8 +111,19 @@ return require('packer').startup(function()
     },
   }
   -- language servers
-  use 'neovim/nvim-lspconfig' -- Quickstart configurations for the Nvim LSP client.
-  use 'williamboman/nvim-lsp-installer' -- Neovim plugin that allows you to seamlessly install LSP servers locally.
+  -- use 'neovim/nvim-lspconfig' -- Quickstart configurations for the Nvim LSP client.
+  -- use 'williamboman/nvim-lsp-installer' -- Neovim plugin that allows you to seamlessly install LSP servers locally.
+  use {
+    "williamboman/nvim-lsp-installer",
+    {
+      "neovim/nvim-lspconfig",
+      config = function()
+        require("nvim-lsp-installer").setup {}
+        local lspconfig = require("lspconfig")
+        lspconfig.sumneko_lua.setup {}
+      end
+    }
+  }
 
 
   -- ^^^DONE^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -169,8 +169,9 @@ command! CopyFname call CopyFilnameToClipboard()
 
 nnoremap <C-p> <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <C-k> <cmd>Telescope buffers<cr>
-nnoremap <C-j> <cmd>Telescope oldfiles<cr>
+nnoremap <C-j> <cmd>Telescope buffers<cr>
+" nnoremap <C-j> <cmd>Telescope oldfiles only_cwd=true<cr>
+" nnoremap <C-j> <cmd>lua require('telescope.builtin').oldfiles({only_cwd=true})<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 "-------------------------------------------------------------
