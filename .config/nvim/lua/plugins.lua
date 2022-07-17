@@ -109,17 +109,23 @@ return require('packer').startup(function()
       'nvim-treesitter/nvim-treesitter',
       'nvim-telescope/telescope.nvim' -- optional
     },
+    config = function ()
+      require("config.yaml")
+    end,
   }
+
+  use 'sbdchd/neoformat'
+
   -- language servers
   -- use 'neovim/nvim-lspconfig' -- Quickstart configurations for the Nvim LSP client.
   -- use 'williamboman/nvim-lsp-installer' -- Neovim plugin that allows you to seamlessly install LSP servers locally.
   use {
-    "williamboman/nvim-lsp-installer",
+    'williamboman/nvim-lsp-installer',
     {
-      "neovim/nvim-lspconfig",
+      'neovim/nvim-lspconfig',
       config = function()
-        require("nvim-lsp-installer").setup {}
-        local lspconfig = require("lspconfig")
+        require('nvim-lsp-installer').setup {}
+        local lspconfig = require('lspconfig')
         lspconfig.sumneko_lua.setup {}
       end
     }

@@ -143,6 +143,7 @@ command! Date call PutsDate()
 
 autocmd BufNewFile,BufRead *.tf         set ft=terraform
 autocmd BufNewFile,BufRead *.tfvars     set ft=terraform
+autocmd BufWritePre *.js Neoformat
 
 let g:extra_whitespace_ignored_filetypes = ['TelescopePrompt']
 
