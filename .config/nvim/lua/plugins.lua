@@ -102,17 +102,17 @@ return require('packer').startup(function()
   use 'ekalinin/Dockerfile.vim'
   use 'pangloss/vim-javascript'
   use 'MaxMEllon/vim-jsx-pretty'
-  use {
-    'cuducos/yaml.nvim',
-    ft = {'yaml'}, -- optional
-    requires = {
-      'nvim-treesitter/nvim-treesitter',
-      'nvim-telescope/telescope.nvim' -- optional
-    },
-    config = function ()
-      require("config.yaml")
-    end,
-  }
+  -- use {
+  --   'cuducos/yaml.nvim',
+  --   ft = {'yaml'}, -- optional
+  --   requires = {
+  --     'nvim-treesitter/nvim-treesitter',
+  --     'nvim-telescope/telescope.nvim' -- optional
+  --   },
+  --   config = function ()
+  --     require("config.yaml")
+  --   end,
+  -- }
 
   use 'sbdchd/neoformat'
 
