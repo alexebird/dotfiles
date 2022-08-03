@@ -47,7 +47,7 @@ set laststatus=2
 set notitle
 set wildmenu
 set wildmode=longest:full,full
-set synmaxcol=300 " Avoids editor lockup in files with extremely long lines."
+set synmaxcol=1000 " Avoids editor lockup in files with extremely long lines."
 set listchars=eol:$
 set termguicolors
 "set autowriteall  " <---- huh??
