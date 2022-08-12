@@ -9,3 +9,12 @@ NERD_tree_1
 .NERDTreeBookmarks
 .byebug_history
 _h_*
+
+**/captures/**/*.mp4
+**/captures/**/*.mp4.old
+**/captures/**/*.json
+**/captures/**/*.chlsj
+**/captures/**/*.chlsj.old
+**/captures/**/*.zip
+**/captures/**/zip
+**/captures/**/*.tar.gz

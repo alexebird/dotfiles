@@ -47,7 +47,7 @@ set laststatus=2
 set notitle
 set wildmenu
 set wildmode=longest:full,full
-set synmaxcol=300 " Avoids editor lockup in files with extremely long lines."
+set synmaxcol=1000 " Avoids editor lockup in files with extremely long lines."
 set listchars=eol:$
 set termguicolors
 "set autowriteall  " <---- huh??
@@ -145,6 +145,7 @@ autocmd FileType eruby setlocal commentstring=<!--\ %s\ -->
 
 autocmd BufNewFile,BufRead *.tf         set ft=terraform
 autocmd BufNewFile,BufRead *.tfvars     set ft=terraform
+autocmd BufWritePre *.js Neoformat
 
 let g:extra_whitespace_ignored_filetypes = ['TelescopePrompt']
 

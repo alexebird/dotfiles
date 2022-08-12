@@ -121,97 +121,113 @@ _git_performant_ps1() {
   echo "${PROMPT_COLOR_GRAY}$(__davinci_git_ps1)${PROMPT_COLOR_RESET}"
 }
 
-_davinci_env_ps1() {
-  #local parens_color="${PROMPT_COLOR_LIGHT_GREEN}"
+# _davinci_env_ps1() {
+#   #local parens_color="${PROMPT_COLOR_LIGHT_GREEN}"
+#
+#   #if declare -F | grep -q _coinbase_assume_role; then
+#     #local new_ps1="$(_coinbase_assume_role)"
+#     #if [[ -n "${new_ps1}" ]]; then
+#       #echo "${parens_color}(${new_ps1}${parens_color})${PROMPT_COLOR_RESET}"
+#     #else
+#       #echo
+#     #fi
+#   #fi
+#
+#   local new_ps1
+#   local env_color="${PROMPT_COLOR_LIGHT_YELLOW}"
+#   local sensitive_env_color="${PROMPT_COLOR_RED_HL_BLACK}"
+#   local somewhat_sensitive_env_color="${PROMPT_COLOR_LIGHT_YELLOW}"
+#
+#   # empty prompt section if env isnt set
+#   if [[ -z "${DAVINCI_ENV}" ]] ; then
+#     echo
+#     return 0
+#   fi
+#
+#   if [[ "${DAVINCI_ENV}" == "prod" ]] ; then
+#     new_ps1="${sensitive_env_color}${DAVINCI_ENV}${PROMPT_COLOR_RESET}"
+#   elif [[ "${DAVINCI_ENV}" == "dev" ]] ; then
+#     new_ps1="${somewhat_sensitive_env_color}${DAVINCI_ENV}${PROMPT_COLOR_RESET}"
+#   else
+#     new_ps1="${env_color}${DAVINCI_ENV}"
+#   fi
+#
+#   echo "${new_ps1}"
+# }
 
-  #if declare -F | grep -q _coinbase_assume_role; then
-    #local new_ps1="$(_coinbase_assume_role)"
-    #if [[ -n "${new_ps1}" ]]; then
-      #echo "${parens_color}(${new_ps1}${parens_color})${PROMPT_COLOR_RESET}"
-    #else
-      #echo
-    #fi
-  #fi
-
-  local new_ps1
-  local env_color="${PROMPT_COLOR_LIGHT_YELLOW}"
-  local sensitive_env_color="${PROMPT_COLOR_RED_HL_BLACK}"
-  local somewhat_sensitive_env_color="${PROMPT_COLOR_LIGHT_YELLOW}"
-
-  # empty prompt section if env isnt set
-  if [[ -z "${DAVINCI_ENV}" ]] ; then
-    echo
-    return 0
-  fi
-
-  if [[ "${DAVINCI_ENV}" == "prod" ]] ; then
-    new_ps1="${sensitive_env_color}${DAVINCI_ENV}${PROMPT_COLOR_RESET}"
-  elif [[ "${DAVINCI_ENV}" == "dev" ]] ; then
-    new_ps1="${somewhat_sensitive_env_color}${DAVINCI_ENV}${PROMPT_COLOR_RESET}"
-  else
-    new_ps1="${env_color}${DAVINCI_ENV}"
-  fi
-
-  echo "${new_ps1}"
-}
-
-_prompt_kubecontext() {
-  if [[ -f $KUBECONFIG || -f ~/.kube/config ]] ; then
-    WARNING=""
-    if [[ -f ~/.kube/config ]]; then
-      prompt_segment red yellow "KUBECONFIG EXISTS"
-    fi
-    CTX=$(kubectx -c | sed 's|.*/||g')
-    CNS=$(kubens -c)
-    if [[ $CTX == *"tooling"* ]]; then
-         prompt_segment green black "(⎈ ${CNS}:${CTX})"
-    elif [[ $CTX == *"nonprod"* ]]; then
-         prompt_segment yellow black "(⎈ ${CNS}:${CTX})"
-    elif [[ $CTX == *"prod"* ]]; then
-         prompt_segment red yellow "(⎈ ${CNS}:${CTX})"
-    else
-         prompt_segment green black "(⎈ ${CNS}:${CTX})"
-    fi
-  fi
-}
+# _prompt_kubecontext() {
+#   if [[ -f $KUBECONFIG || -f ~/.kube/config ]] ; then
+#     WARNING=""
+#     if [[ -f ~/.kube/config ]]; then
+#       prompt_segment red yellow "KUBECONFIG EXISTS"
+#     fi
+#     CTX=$(kubectx -c | sed 's|.*/||g')
+#     CNS=$(kubens -c)
+#     if [[ $CTX == *"tooling"* ]]; then
+#          prompt_segment green black "(⎈ ${CNS}:${CTX})"
+#     elif [[ $CTX == *"nonprod"* ]]; then
+#          prompt_segment yellow black "(⎈ ${CNS}:${CTX})"
+#     elif [[ $CTX == *"prod"* ]]; then
+#          prompt_segment red yellow "(⎈ ${CNS}:${CTX})"
+#     else
+#          prompt_segment green black "(⎈ ${CNS}:${CTX})"
+#     fi
+#   fi
+# }
 
 _davinci_safety_ps1() {
   if [ ${ZSH_VERSION} ]; then
     [ "${ORIG_PS1}" ] || ORIG_PS1="${PS1}"
-    PS1="${ORIG_PS1} $(_davinci_env_ps1)%# "
+    # PS1="${ORIG_PS1} $(_davinci_env_ps1)%# "
   elif [ ${BASH_VERSION} ]; then
     _PROMPT_COLOR="${DAVINCI_PROMPT_COLOR}"
+
     if [[ "${USER}" == "root" ]]; then
       _PROMPT_COLOR="${PROMPT_COLOR_LIGHT_RED}"
     fi
 
     # change prompt coloring based on performance
+    GIT_PART=''
     if [[ "$(git rev-parse --show-toplevel 2>/dev/null)" = /Users/bird/dev* ]]; then
-      GIT_PART="$(_git_performant_ps1)"
+      GIT_PART=" $(_git_performant_ps1)"
     else
-      GIT_PART="$(_git_color_ps1)"
+      GIT_PART=" $(_git_color_ps1)"
     fi
 
+    K8S_PART=''
     if [[ -f ~/.kube/config ]]; then
-    #if [[ "${PWD}" == *"/go-repo"* ]] || [[ "${PWD}" == *"/infra-2.0"* ]] ; then
-      #K8S_PART=" ${PROMPT_COLOR_RESET}$(kube_ps1)"
+      #if [[ "${PWD}" == *"/go-repo"* ]] || [[ "${PWD}" == *"/infra-2.0"* ]] ; then
 
       #CTX=$(kubectl ctx -c | sed 's|.*/||g')
-      KCTX="$(yq e '.current-context | split("_") | .[1] | split("-") | .[2]' ~/.kube/config)"
+      KCTX="$(yq e '.current-context | split("_") | .[1] | split("-") | .[1]' ~/.kube/config)"
+      KCTX="ctx:${KCTX}"
+
       KNS="$(yq e '.current-context as $ctx | .contexts[] | select(.name == $ctx) | .context.namespace // "default"' ~/.kube/config)"
       #CNS=$(kubectl ns -c)
-      #K8S_PART=" ${PROMPT_COLOR_LIGHT_BLUE}(${CTX}:${CNS})"
-      if [[ "${KCTX}" == "pizzathehutt" ]]; then
-        K8S_PART=" ${PROMPT_COLOR_LIGHT_BLUE}(${PROMPT_COLOR_RED_HL_BLACK}${KCTX}${PROMPT_COLOR_RESET}${PROMPT_COLOR_LIGHT_BLUE}:${KNS})"
+      if [[ "${KNS}" == "default" ]]; then
+        KNS=''
       else
-        K8S_PART=" ${PROMPT_COLOR_LIGHT_BLUE}(${KCTX}:${KNS})"
+        KNS=",ns:${KNS}"
       fi
-    #else
-      #K8S_PART=''
-    #fi
+
+      if [[ "${KCTX}" == "pizzathehutt" ]]; then
+        K8S_PART=" ${PROMPT_COLOR_LIGHT_BLUE}(k8s:${PROMPT_COLOR_RED_HL_BLACK}${KCTX}${PROMPT_COLOR_RESET}${PROMPT_COLOR_LIGHT_BLUE}${KNS})"
+      else
+        K8S_PART=" ${PROMPT_COLOR_LIGHT_BLUE}(k8s:${KCTX}${KNS})"
+      fi
     fi
 
-    PS1="${_PROMPT_COLOR}${DAVINCI_PROMPT_PREFIX}${K8S_PART} ${GIT_PART}$(_davinci_env_ps1)${_PROMPT_COLOR}\$${PROMPT_COLOR_RESET} "
+    TF_PART=''
+    if [[ -d .terraform ]]; then
+      local tf_workspace="$(cat .terraform/environment)"
+      if [[ "${tf_workspace}" == "production" ]]; then
+        TF_PART=" ${PROMPT_COLOR_RED_HL_BLACK}(tf:${tf_workspace})${PROMPT_COLOR_RESET}"
+      else
+        TF_PART=" ${PROMPT_COLOR_LIGHT_BLUE}(tf:${tf_workspace})"
+      fi
+    fi
+
+    PS1="${_PROMPT_COLOR}${DAVINCI_PROMPT_PREFIX}${TF_PART}${K8S_PART}${GIT_PART}${_PROMPT_COLOR}\$${PROMPT_COLOR_RESET} "
   fi
 }
 

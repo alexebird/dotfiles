@@ -80,6 +80,8 @@ require('hop').setup {
 vim.api.nvim_set_keymap('n', 's', "<cmd>lua require'hop'.hint_char1()<cr>", {})
 vim.api.nvim_set_keymap('n', 'S', "<cmd>lua require'hop'.hint_char2()<cr>", {})
 
+-- require("vim-prettier").setup()
+
 -- Colorscheme
 local my_colors = {
   bg_search = "#00ff00",
