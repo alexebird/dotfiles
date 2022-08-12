@@ -141,6 +141,8 @@ command! Date call PutsDate()
 " autocmd Filetype html           setlocal et ts=2 sw=2 sts=2
 " autocmd Filetype css            setlocal et ts=2 sw=2 sts=2
 
+autocmd FileType eruby setlocal commentstring=<!--\ %s\ -->
+
 autocmd BufNewFile,BufRead *.tf         set ft=terraform
 autocmd BufNewFile,BufRead *.tfvars     set ft=terraform
 
