@@ -18,3 +18,5 @@ _h_*
 **/captures/**/*.zip
 **/captures/**/zip
 **/captures/**/*.tar.gz
+**/captures/**/*.yml
+**/captures/**/

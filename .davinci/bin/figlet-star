@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-find ~/.figlet-fonts/ -type f -name '*.flf' \
+find /opt/homebrew/Cellar/figlet/2.2.5/share/figlet/fonts/ -type f -name '*.flf' \
   | grep -vi obanner \
   | xargs -I{} bash -c "echo {}; figlet -w200 -f {} $1; echo; echo"

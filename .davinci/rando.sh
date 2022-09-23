@@ -210,8 +210,10 @@ _davinci_safety_ps1() {
         KNS=",ns:${KNS}"
       fi
 
-      if [[ "${KCTX}" == "pizzathehutt" ]]; then
+      if [[ "${KCTX}" == "ctx:production" ]]; then
         K8S_PART=" ${PROMPT_COLOR_LIGHT_BLUE}(k8s:${PROMPT_COLOR_RED_HL_BLACK}${KCTX}${PROMPT_COLOR_RESET}${PROMPT_COLOR_LIGHT_BLUE}${KNS})"
+      elif [[ "${KCTX}" == "ctx:staging" ]] ; then
+        K8S_PART=" ${PROMPT_COLOR_LIGHT_BLUE}(k8s:${PROMPT_COLOR_YELLOW_HL}${KCTX}${PROMPT_COLOR_RESET}${PROMPT_COLOR_LIGHT_BLUE}${KNS})"
       else
         K8S_PART=" ${PROMPT_COLOR_LIGHT_BLUE}(k8s:${KCTX}${KNS})"
       fi
