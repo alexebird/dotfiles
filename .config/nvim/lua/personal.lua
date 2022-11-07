@@ -41,10 +41,10 @@ require'nvim-tree'.setup {
 
 -- Comment
 require('Comment').setup()
-map('n', '<leader>x', '<CMD>lua require("Comment.api").toggle_current_linewise()<CR>')
-map('n', '<leader>c', '<CMD>lua require("Comment.api").toggle_current_blockwise()<CR>')
-map('x', '<leader>x', '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>')
-map('x', '<leader>c', '<ESC><CMD>lua require("Comment.api").toggle_blockwise_op(vim.fn.visualmode())<CR>')
+map('n', '<leader>x', '<CMD>lua require("Comment.api").toggle.linewise.current()<CR>')
+map('n', '<leader>c', '<CMD>lua require("Comment.api").toggle.blockwise.current()<CR>')
+map('x', '<leader>x', '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>')
+map('x', '<leader>c', '<ESC><CMD>lua require("Comment.api").toggle.blockwise(vim.fn.visualmode())<CR>')
 
 
 require('lualine').setup({
@@ -222,7 +222,7 @@ end
 
 -- NOTE: Don't use more than 1 servers otherwise nvim is unstable
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 -- capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- Use pylsp

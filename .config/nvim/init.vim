@@ -12,10 +12,8 @@
 "
 
 
-lua << EOF
-require('impatient')
-require('plugins')
-EOF
+lua require('impatient')
+lua require('plugins')
 
 " required for vim-textobj-rubyblock
 "runtime macros/matchit.vim
@@ -119,6 +117,24 @@ nmap <silent> k gk
 " close quickfix
 nnoremap <leader>a :cclose<cr>
 
+" nnoremap <F1> <nop>
+" inoremap <F1> <nop>
+
+" Normal mode
+nnoremap <F1> <Esc>
+" Insert and Replace mode
+inoremap <F1> <Esc>
+" Visual and Select mode
+vnoremap <F1> <Esc>
+" Visual mode
+xnoremap <F1> <Esc>
+" Select mode
+snoremap <F1> <Esc>
+" Command-line mode
+cnoremap <F1> <Esc>
+" Operator pending mode
+onoremap <F1> <Esc>
+
 
 "-------------------------------------------------------------
 " custom functions
@@ -199,9 +215,7 @@ vnoremap * "9y<Esc>/<C-r>9<CR>
 vnoremap # "9y<Esc>?<C-r>9<CR>
 
 
-lua << EOF
-require('personal')
-EOF
+lua require('personal')
 
 
 " let g:purify_override_colors = {
