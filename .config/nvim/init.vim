@@ -225,4 +225,3 @@ lua require('personal')
 " highlight Visual cterm=bold ctermfg=white ctermbg=26 " 26 blue
 " highlight Search cterm=NONE ctermfg=black ctermbg=226 " 226 yellow
 " highlight SpellBad cterm=bold ctermfg=white ctermbg=1 " 1 red
-colorscheme kanagawa

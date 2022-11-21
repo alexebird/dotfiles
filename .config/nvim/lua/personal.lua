@@ -14,10 +14,11 @@
 -- - https://numbersmithy.com/migrating-from-vim-to-neovim-at-the-beginning-of-2022/#nvim-cmp_completion_does_not_pick_up_words_from_other_buffers
 
 local function map(mode, lhs, rhs)
-    vim.api.nvim_set_keymap(mode, lhs, rhs, { noremap = true, silent = true })
+  vim.api.nvim_set_keymap(mode, lhs, rhs, { noremap = true, silent = true })
 end
 
-require'nvim-tree'.setup {
+
+require('nvim-tree').setup {
   open_on_setup = false,
   filters = {
     dotfiles = true,
@@ -73,27 +74,37 @@ require('indent_blankline').setup {
     show_current_context_start = true,
 }
 
-require('hop').setup {
-  keys = 'etovxqpdygfblzhckisuran'
+require("hop").setup {
+  keys = "etovxqpdygfblzhckisuran"
 }
 
-vim.api.nvim_set_keymap('n', 's', "<cmd>lua require'hop'.hint_char1()<cr>", {})
-vim.api.nvim_set_keymap('n', 'S', "<cmd>lua require'hop'.hint_char2()<cr>", {})
+vim.api.nvim_set_keymap("n", "s", "<cmd>lua require'hop'.hint_char1()<cr>", {})
+vim.api.nvim_set_keymap("n", "S", "<cmd>lua require'hop'.hint_char2()<cr>", {})
 
 -- require("vim-prettier").setup()
 
 -- Colorscheme
-local my_colors = {
-  bg_search = "#00ff00",
-}
+local default_colors = require("kanagawa.colors").setup()
+local color = require("kanagawa.color")
+-- local my_colors = {
+--   bg_search = "#00ff00",
+-- }
 local overrides = {
   Search = { fg = "#000000", bg = "#FFFF00" },
   Visual = { fg = "#FFFFFF",bg = "#005FD7" },
   ExtraWhitespace = { bg = "darkred" },
+  WinSeparator = { fg = tostring(color(default_colors.bg_light2)) },
 }
-require('kanagawa').setup({ overrides = overrides, colors = my_colors })
+require("kanagawa").setup({
+  -- colors = my_colors,
+  overrides = overrides,
+  -- dimInactive = true,        -- dim inactive window `:h hl-NormalNC`
+  globalStatus = true,       -- adjust window separators highlight for laststatus=3
+})
+-- print(vim.inspect(overrides))
+vim.cmd("colorscheme kanagawa")
 
-local cmp = require('cmp')
+local cmp = require("cmp")
 
 cmp.setup({
   -- snippet = {
