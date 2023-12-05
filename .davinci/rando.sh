@@ -188,49 +188,49 @@ _davinci_safety_ps1() {
 
     # change prompt coloring based on performance
     GIT_PART=''
-    if [[ "$(git rev-parse --show-toplevel 2>/dev/null)" = /Users/bird/dev* ]]; then
+    if [[ "$(git rev-parse --show-toplevel 2>/dev/null)" =~ ^/Users/bird/dev|^/mnt/g/SteamLibrary/steamapps/common/BeamNG.drive ]]; then
       GIT_PART=" $(_git_performant_ps1)"
     else
       GIT_PART=" $(_git_color_ps1)"
     fi
 
-    K8S_PART=''
-    if [[ -f ~/.kube/config ]]; then
-      #if [[ "${PWD}" == *"/go-repo"* ]] || [[ "${PWD}" == *"/infra-2.0"* ]] ; then
+    # K8S_PART=''
+    # if [[ -f ~/.kube/config ]]; then
+    #   #if [[ "${PWD}" == *"/go-repo"* ]] || [[ "${PWD}" == *"/infra-2.0"* ]] ; then
+    #
+    #   #CTX=$(kubectl ctx -c | sed 's|.*/||g')
+    #   KCTX="$(yq e '.current-context | split("_") | .[1] | split("-") | .[1]' ~/.kube/config)"
+    #   KCTX="ctx:${KCTX}"
+    #
+    #   KNS="$(yq e '.current-context as $ctx | .contexts[] | select(.name == $ctx) | .context.namespace // "default"' ~/.kube/config)"
+    #   #CNS=$(kubectl ns -c)
+    #   if [[ "${KNS}" == "default" ]]; then
+    #     KNS=''
+    #   else
+    #     KNS=",ns:${KNS}"
+    #   fi
+    #
+    #   if [[ "${KCTX}" == "ctx:production" ]]; then
+    #     K8S_PART=" ${PROMPT_COLOR_LIGHT_BLUE}(k8s:${PROMPT_COLOR_RED_HL_BLACK}${KCTX}${PROMPT_COLOR_RESET}${PROMPT_COLOR_LIGHT_BLUE}${KNS})"
+    #   elif [[ "${KCTX}" == "ctx:staging" ]] ; then
+    #     K8S_PART=" ${PROMPT_COLOR_LIGHT_BLUE}(k8s:${PROMPT_COLOR_YELLOW_HL}${KCTX}${PROMPT_COLOR_RESET}${PROMPT_COLOR_LIGHT_BLUE}${KNS})"
+    #   else
+    #     K8S_PART=" ${PROMPT_COLOR_LIGHT_BLUE}(k8s:${KCTX}${KNS})"
+    #   fi
+    # fi
 
-      #CTX=$(kubectl ctx -c | sed 's|.*/||g')
-      KCTX="$(yq e '.current-context | split("_") | .[1] | split("-") | .[1]' ~/.kube/config)"
-      KCTX="ctx:${KCTX}"
-
-      KNS="$(yq e '.current-context as $ctx | .contexts[] | select(.name == $ctx) | .context.namespace // "default"' ~/.kube/config)"
-      #CNS=$(kubectl ns -c)
-      if [[ "${KNS}" == "default" ]]; then
-        KNS=''
-      else
-        KNS=",ns:${KNS}"
-      fi
-
-      if [[ "${KCTX}" == "ctx:production" ]]; then
-        K8S_PART=" ${PROMPT_COLOR_LIGHT_BLUE}(k8s:${PROMPT_COLOR_RED_HL_BLACK}${KCTX}${PROMPT_COLOR_RESET}${PROMPT_COLOR_LIGHT_BLUE}${KNS})"
-      elif [[ "${KCTX}" == "ctx:staging" ]] ; then
-        K8S_PART=" ${PROMPT_COLOR_LIGHT_BLUE}(k8s:${PROMPT_COLOR_YELLOW_HL}${KCTX}${PROMPT_COLOR_RESET}${PROMPT_COLOR_LIGHT_BLUE}${KNS})"
-      else
-        K8S_PART=" ${PROMPT_COLOR_LIGHT_BLUE}(k8s:${KCTX}${KNS})"
-      fi
-    fi
-
-    TF_PART=''
-    if [[ -d .terraform ]]; then
-      local tf_workspace="$(cat .terraform/environment)"
-      if [[ "${tf_workspace}" == "production" ]]; then
-        TF_PART=" ${PROMPT_COLOR_RED_HL_BLACK}(tf:${tf_workspace})${PROMPT_COLOR_RESET}"
-      else
-        TF_PART=" ${PROMPT_COLOR_LIGHT_BLUE}(tf:${tf_workspace})"
-      fi
-    fi
+    # TF_PART=''
+    # if [[ -d .terraform ]]; then
+    #   local tf_workspace="$(cat .terraform/environment)"
+    #   if [[ "${tf_workspace}" == "production" ]]; then
+    #     TF_PART=" ${PROMPT_COLOR_RED_HL_BLACK}(tf:${tf_workspace})${PROMPT_COLOR_RESET}"
+    #   else
+    #     TF_PART=" ${PROMPT_COLOR_LIGHT_BLUE}(tf:${tf_workspace})"
+    #   fi
+    # fi
 
     # PS1="${_PROMPT_COLOR}${DAVINCI_PROMPT_PREFIX}${TF_PART}${K8S_PART}${GIT_PART}${_PROMPT_COLOR}\$${PROMPT_COLOR_RESET} "
-    PS1="${_PROMPT_COLOR}${DAVINCI_PROMPT_PREFIX}${TF_PART}${GIT_PART}${_PROMPT_COLOR}\$${PROMPT_COLOR_RESET} "
+    PS1="${_PROMPT_COLOR}${DAVINCI_PROMPT_PREFIX}${GIT_PART}${_PROMPT_COLOR}\$${PROMPT_COLOR_RESET} "
   fi
 }
 
