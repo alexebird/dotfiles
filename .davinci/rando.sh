@@ -188,7 +188,7 @@ _davinci_safety_ps1() {
 
     # change prompt coloring based on performance
     GIT_PART=''
-    if [[ "$(git rev-parse --show-toplevel 2>/dev/null)" =~ ^/Users/bird/dev|^/mnt/g/SteamLibrary/steamapps/common/BeamNG.drive|^/mnt/c/Users/bird/AppData/Local/BeamNG.drive/0.30/mods/unpacked/beamng-aipacenotes-mod ]]; then
+    if [[ "$(git rev-parse --show-toplevel 2>/dev/null)" =~ ^/Users/bird/dev|^/mnt/g/SteamLibrary/steamapps/common/BeamNG.drive|^/mnt/c/Users/bird/AppData/Local/BeamNG.drive/0.30/mods/unpacked/beamng-aipacenotes-mod|gh_repos/beamng-aipacenotes-desktop ]]; then
       GIT_PART=" $(_git_performant_ps1)"
     else
       GIT_PART=" $(_git_color_ps1)"
