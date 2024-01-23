@@ -188,7 +188,7 @@ _davinci_safety_ps1() {
 
     # change prompt coloring based on performance
     GIT_PART=''
-    if [[ "$(git rev-parse --show-toplevel 2>/dev/null)" =~ ^/Users/bird/dev|^/mnt/g/SteamLibrary/steamapps/common/BeamNG.drive|beamng-aipacenotes-mod|gh_repos/beamng-aipacenotes-desktop|gh_repos/beamng-private ]]; then
+    if [[ "$(git rev-parse --show-toplevel 2>/dev/null)" =~ ^/Users/bird/dev|^/mnt/g/SteamLibrary/steamapps/common/BeamNG.drive|beamng-aipacenotes-mod|gh_repos/beamng ]]; then
       GIT_PART=" $(_git_performant_ps1)"
     else
       GIT_PART=" $(_git_color_ps1)"
@@ -309,7 +309,7 @@ _davinci_set_safety_prompt_command
 
 
 export GOPATH="${HOME}/go"
-export EDITOR='vim'
+export EDITOR='nvim'
 
 shopt -s histappend
 export HISTCONTROL='ignoreboth:erasedups'
