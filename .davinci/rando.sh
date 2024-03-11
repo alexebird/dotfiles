@@ -46,7 +46,7 @@ PROMPT_COLOR_RESET='\[\e[0m\]'
 # Highlighted
 # bold white on bright red
 PROMPT_COLOR_YELLOW_HL='\[\e[0;30;43m\]'
-PROMPT_COLOR_RED_HL_BLACK='\[\e[0;30;41m\]'
+PROMPT_COLOR_RED_HL_BLACK='\[\e[1;30;41m\]'
 PROMPT_COLOR_RED_HL='\[\e[1;97;101m\]'
 
 # Blinking
@@ -188,7 +188,7 @@ _davinci_safety_ps1() {
 
     # change prompt coloring based on performance
     GIT_PART=''
-    if [[ "$(git rev-parse --show-toplevel 2>/dev/null)" =~ ^/Users/bird/dev|^/mnt/g/SteamLibrary/steamapps/common/BeamNG.drive|^/mnt/c/Users/bird/AppData/Local/BeamNG.drive/0.30/mods/unpacked/beamng-aipacenotes-mod|gh_repos/beamng-aipacenotes-desktop ]]; then
+    if [[ "$(git rev-parse --show-toplevel 2>/dev/null)" =~ ^/Users/bird/dev|^/mnt/g/SteamLibrary/steamapps/common/BeamNG.drive|beamng-aipacenotes-mod|gh_repos/beamng ]]; then
       GIT_PART=" $(_git_performant_ps1)"
     else
       GIT_PART=" $(_git_color_ps1)"
@@ -309,7 +309,7 @@ _davinci_set_safety_prompt_command
 
 
 export GOPATH="${HOME}/go"
-export EDITOR='vim'
+export EDITOR='nvim'
 
 shopt -s histappend
 export HISTCONTROL='ignoreboth:erasedups'
