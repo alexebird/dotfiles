@@ -194,6 +194,35 @@ _davinci_safety_ps1() {
       GIT_PART=" $(_git_color_ps1)"
     fi
 
+    AWS_PART=''
+    if [[ "${AWS_PROFILE}" != '' ]]; then
+      local AWS_STR="${AWS_PROFILE}"
+
+      if [[ "${ALDOA_AWS_ASSUMED_ROLE}" != '' ]]; then
+        AWS_STR="${ALDOA_AWS_ASSUMED_ROLE}"
+      fi
+
+      AWS_PART=" ${PROMPT_COLOR_YELLOW}(aws:${PROMPT_COLOR_RED_HL}${AWS_STR}${PROMPT_COLOR_YELLOW})"
+
+      if which aws_config_parser.py > /dev/null 2>&1 ; then
+        local non_prod="$(aws_config_parser.py non_prod)"
+        if [[ "${non_prod}" == 'true' ]]; then
+          AWS_PART=" ${PROMPT_COLOR_YELLOW}(aws:${AWS_STR})"
+        fi
+      fi
+    fi
+
+    PULUMI_PART=''
+    if which pulumi_stack_name.py > /dev/null 2>&1 ; then
+      # PULUMI_PART=" ${PROMPT_COLOR_YELLOW}(aws:${PROMPT_COLOR_RED_HL}${AWS_PROFILE}${PROMPT_COLOR_YELLOW})"
+      local pulumi_stack="$(pulumi_stack_name.py)"
+      if [[ "${pulumi_stack}" =~ "dev" ]]; then
+        PULUMI_PART=" ${PROMPT_COLOR_LIGHT_BLUE}(pl:${pulumi_stack})"
+      elif ! [[ "${pulumi_stack}" == "" ]]; then
+        PULUMI_PART=" ${PROMPT_COLOR_LIGHT_BLUE}(pl:${PROMPT_COLOR_RED_HL}${pulumi_stack}${PROMPT_COLOR_RESET}${PROMPT_COLOR_LIGHT_BLUE})"
+      fi
+    fi
+
     # K8S_PART=''
     # if [[ -f ~/.kube/config ]]; then
     #   #if [[ "${PWD}" == *"/go-repo"* ]] || [[ "${PWD}" == *"/infra-2.0"* ]] ; then
@@ -229,8 +258,7 @@ _davinci_safety_ps1() {
     #   fi
     # fi
 
-    PS1="${_PROMPT_COLOR}${DAVINCI_PROMPT_PREFIX}${TF_PART}${K8S_PART}${GIT_PART}${_PROMPT_COLOR}\$${PROMPT_COLOR_RESET} "
-    # PS1="[$(hostname)] ${_PROMPT_COLOR}${DAVINCI_PROMPT_PREFIX}${GIT_PART}${_PROMPT_COLOR}\$${PROMPT_COLOR_RESET} "
+    PS1="${_PROMPT_COLOR}${DAVINCI_PROMPT_PREFIX}${AWS_PART}${PULUMI_PART}${GIT_PART}${_PROMPT_COLOR}\$${PROMPT_COLOR_RESET} "
   fi
 }
 
@@ -469,6 +497,7 @@ alias g='figlet -f doh G'
 alias gf='figlet -f doh GF'
 #alias docker-nodes="docker info | tail -n+6 | head -n-3 | grep -v '└' | tail -n+2"
 alias h='highlight'
+alias diff='diff --color=always -u'
 
 alias dontquit='vim /tmp/dontquit'
 #alias de='davinci-env'

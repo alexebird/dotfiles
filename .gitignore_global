@@ -20,3 +20,6 @@ _h_*
 **/captures/**/*.tar.gz
 **/captures/**/*.yml
 **/captures/**/
+
+dist
+node_modules
