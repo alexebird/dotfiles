@@ -198,9 +198,9 @@ _davinci_safety_ps1() {
     if [[ "${AWS_PROFILE}" != '' ]]; then
       local AWS_STR="${AWS_PROFILE}"
 
-      if [[ "${ALDOA_AWS_ASSUMED_ROLE}" != '' ]]; then
-        AWS_STR="${ALDOA_AWS_ASSUMED_ROLE}"
-      fi
+      # if [[ "${ALDOA_AWS_ASSUMED_ROLE}" != '' ]]; then
+      #   AWS_STR="${ALDOA_AWS_ASSUMED_ROLE}"
+      # fi
 
       AWS_PART=" ${PROMPT_COLOR_YELLOW}(aws:${PROMPT_COLOR_RED_HL}${AWS_STR}${PROMPT_COLOR_YELLOW})"
 
@@ -212,16 +212,16 @@ _davinci_safety_ps1() {
       fi
     fi
 
-    PULUMI_PART=''
-    if which pulumi_stack_name.py > /dev/null 2>&1 ; then
-      # PULUMI_PART=" ${PROMPT_COLOR_YELLOW}(aws:${PROMPT_COLOR_RED_HL}${AWS_PROFILE}${PROMPT_COLOR_YELLOW})"
-      local pulumi_stack="$(pulumi_stack_name.py)"
-      if [[ "${pulumi_stack}" =~ "dev" ]]; then
-        PULUMI_PART=" ${PROMPT_COLOR_LIGHT_BLUE}(pl:${pulumi_stack})"
-      elif ! [[ "${pulumi_stack}" == "" ]]; then
-        PULUMI_PART=" ${PROMPT_COLOR_LIGHT_BLUE}(pl:${PROMPT_COLOR_RED_HL}${pulumi_stack}${PROMPT_COLOR_RESET}${PROMPT_COLOR_LIGHT_BLUE})"
-      fi
-    fi
+    # PULUMI_PART=''
+    # if which pulumi_stack_name.py > /dev/null 2>&1 ; then
+    #   # PULUMI_PART=" ${PROMPT_COLOR_YELLOW}(aws:${PROMPT_COLOR_RED_HL}${AWS_PROFILE}${PROMPT_COLOR_YELLOW})"
+    #   local pulumi_stack="$(pulumi_stack_name.py)"
+    #   if [[ "${pulumi_stack}" =~ "dev" ]]; then
+    #     PULUMI_PART=" ${PROMPT_COLOR_LIGHT_BLUE}(pl:${pulumi_stack})"
+    #   elif ! [[ "${pulumi_stack}" == "" ]]; then
+    #     PULUMI_PART=" ${PROMPT_COLOR_LIGHT_BLUE}(pl:${PROMPT_COLOR_RED_HL}${pulumi_stack}${PROMPT_COLOR_RESET}${PROMPT_COLOR_LIGHT_BLUE})"
+    #   fi
+    # fi
 
     # K8S_PART=''
     # if [[ -f ~/.kube/config ]]; then
